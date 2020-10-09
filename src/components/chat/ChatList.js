@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react"
+import { useHistory } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
 import { ChatCard } from "./ChatCard"
 import 'semantic-ui-css/semantic.min.css'
@@ -11,8 +12,14 @@ export const ChatList = () => {
         getMessages()
     }, [])
 
+    const history = useHistory()
+
     return (
         <>
+            <button onClick={() => { history.push("messages/new") }}>
+                New Message
+            </button>
+
             <div className="messages">
                 {
                     messages.map(message => {
