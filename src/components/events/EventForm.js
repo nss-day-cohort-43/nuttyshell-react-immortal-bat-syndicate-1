@@ -4,7 +4,7 @@ import { EventContext } from "./EventProvider";
 import { useHistory, useParams } from "react-router-dom";
 
 export const EventForm = () => {
-  const { addEvent, getEventById, updateEvent } = useContext(EventContext);
+  const { saveEvent, getEventById, updateEvent } = useContext(EventContext);
   const [event, setEvent] = useState({});
 
   const [isLoading, setIsLoading] = useState(true);
@@ -43,6 +43,7 @@ export const EventForm = () => {
     setIsLoading(true);
     if (eventId) {
       //PUT - update
+      console.log("Updating Event")
       updateEvent({
         id: event.id,
         name: event.name,
@@ -53,14 +54,16 @@ export const EventForm = () => {
         zip: event.zip,
       }).then(() => history.push(`/events/detail/${event.id}`));
     } else {
+        console.log("Adding Event")
       //POST - add
-      addEvent({
+      saveEvent({
         name: event.name,
         date: event.date,
         address: event.address,
         city: event.city,
         state: event.state,
         zip: event.zip,
+        userId: parseInt(localStorage.getItem("nutty_customer"))
       }).then(() => history.push("/events"));
     }
   };
