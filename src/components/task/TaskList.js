@@ -14,17 +14,20 @@ export const TaskList = () => {
             getTasksByUserId(userId)
     }, [])
 
+    //Prevents completed task from showing up on the DOM
     const incompleteTasks = tasks.filter(task => task.completed === false)
 
     return (	
         <>
             <h2>Tasks</h2>
             <button type="button" onClick={() => {
+                //takes user to task form
                 history.push("/tasks/create")
             }}>New Task</button>
             <div className="tasks">
                 {
                     incompleteTasks.map(task => {
+                        //creates card for each task
                         return <TaskCard key={task.id} task={task} />
                     })
                 }
