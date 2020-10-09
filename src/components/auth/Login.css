@@ -15,8 +15,7 @@ fieldset {
     text-align: left;
 }
 
-.form--login > fieldset > input[type="email"],
-.form--login > fieldset > input[type="password"] {
+.form--login > fieldset > input[type="email"] {
     width: 25em;
 }
 
