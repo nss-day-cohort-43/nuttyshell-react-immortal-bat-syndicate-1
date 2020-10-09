@@ -11,6 +11,10 @@
 # production
 /build
 
+# api
+database.json
+Settings.js
+
 # misc
 .DS_Store
 .env.local
@@ -29,3 +33,4 @@ dist/
 database.json
 .vscode
 Settings.js
+package.json
