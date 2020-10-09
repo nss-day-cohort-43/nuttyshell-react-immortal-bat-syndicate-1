@@ -18,7 +18,6 @@ export const EventDetail = (_) => {
       if (user === response.user.id) {
         setOwned(true);
       }
-      console.log("user ID", user, "Response ID", response.user.id);
     });
   }, []);
 

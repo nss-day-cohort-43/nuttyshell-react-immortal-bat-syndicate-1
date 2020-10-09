@@ -30,11 +30,9 @@ export const EventForm = () => {
       getEventById(eventId)
       .then((event) => {
         setEvent(event);
-        console.log("event returned",event)
         setIsLoading(false);
       });
     } else {
-        console.log("No ID")
       setIsLoading(false);
     }
   }, []);
@@ -43,7 +41,6 @@ export const EventForm = () => {
     setIsLoading(true);
     if (eventId) {
       //PUT - update
-      console.log("Updating Event")
       updateEvent({
         id: event.id,
         name: event.name,
@@ -54,7 +51,6 @@ export const EventForm = () => {
         zip: event.zip,
       }).then(() => history.push(`/events/detail/${event.id}`));
     } else {
-        console.log("Adding Event")
       //POST - add
       saveEvent({
         name: event.name,
