@@ -12,7 +12,10 @@ export const ArticleForm = (props => {
     const posterId = useRef(null)
     const synopsis = useRef(null)
     const url = useRef(null)
+    
+    const history = useHistory();
 
+    
     // useEffect(() => {
     //     getArticle().then(getLocations)
     //  }, [])
@@ -20,13 +23,13 @@ export const ArticleForm = (props => {
 
     const contructNewArticle = () => {
         saveArticle({
-            userId: posterId.current.value,
+            userId: parseInt(localStorage.getItem("nutty_customer")),
             title: title.current.value,
             date: new Date,
             synopsis: synopsis.current.value,
             url: url.current.value
-        })
-    }
+        }).then(() => history.push("/articles"))
+        }
 
     return (
         <form className="articleForm">
@@ -34,42 +37,28 @@ export const ArticleForm = (props => {
         <fieldset>
             <div className="form-group">
                 <label htmlFor="articleTitle">Article Title: </label>
-                <input type="text" id="employeeName" ref={name} required autoFocus className="form-control" placeholder="Employee name" />
+                <input type="text" id="articleTitle" ref={title} required autoFocus className="form-control" placeholder="Article title" />
+            </div>
+        </fieldset>        
+        <fieldset>
+            <div className="form-group">
+                <label htmlFor="articleSynopsis">Article Synopsis: </label>
+                <input type="text" id="articleTitle" ref={synopsis} required autoFocus className="form-control" placeholder="Article synopsis" />
             </div>
         </fieldset>
         <fieldset>
             <div className="form-group">
-                <label htmlFor="location">Assign to location: </label>
-                <select defaultValue="" name="location" ref={location} id="employeeLocation" className="form-control" >
-                    <option value="0">Select a location</option>
-                    {locations.map(e => (
-                        <option key={e.id} value={e.id}>
-                            {e.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
-        </fieldset>
-        <fieldset>
-            <div className="form-group">
-                <label htmlFor="location">Caretaker for: </label>
-                <select defaultValue="" name="animal" ref={animal} id="employeeAnimal" className="form-control" >
-                    <option value="0">Select an animal</option>
-                    {animals.map(e => (
-                        <option key={e.id} value={e.id}>
-                            {e.name}
-                        </option>
-                    ))}
-                </select>
+                <label htmlFor="articleTitle">Article URL: </label>
+                <input type="text" id="articleUrl" ref={url} required autoFocus className="form-control" placeholder="Article url" />
             </div>
         </fieldset>
         <button type="submit"
             onClick={evt => {
                 evt.preventDefault() // Prevent browser from submitting the form
-                constructNewEmployee()
+                contructNewArticle()
             }}
             className="btn btn-primary">
-            Save Employee
+            Save Article
         </button>
     </form>
     )

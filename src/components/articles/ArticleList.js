@@ -18,7 +18,7 @@ export const ArticleList = (props) => {
             {
                 articles.map(article => <Article key={article.id} article={article} />)
             }
-            <button onClick={() => props.history.push("/articles/create")}>
+            <button onClick={() => history.push("/articles/create")}>
                 Add Article
             </button>
             </div>

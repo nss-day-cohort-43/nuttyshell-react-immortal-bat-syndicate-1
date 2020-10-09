@@ -66,19 +66,12 @@
   ],
   "news": [
     {
-      "userId": 3,
-      "title": "Garlic is the worst",
-      "date": 1601421581410,
-      "synopsis": "Check ouT This recenT discovery abouT",
-      "url": "hTTps://www.quanTamagazine.org/newfound-wormhole-allows-informaTion-To-escape-black-holes-20171023/",
-      "id": 1
-    },{
-      "userId": 3,
-      "title": "Capes and you.",
-      "date": 1601421581410,
-      "synopsis": "Are capes coming back?",
-      "url": "hTTps://www.quanTamagazine.org/newfound-wormhole-allows-informaTion-To-escape-black-holes-20171023/",
-      "id": 1
+      "userId": 4,
+      "title": "About webhooks",
+      "date": "2020-10-09T19:48:57.442Z",
+      "synopsis": "an article about Webhooks in GitHub",
+      "url": "https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/about-webhooks",
+      "id": 2
     }
   ],
   "friends": [

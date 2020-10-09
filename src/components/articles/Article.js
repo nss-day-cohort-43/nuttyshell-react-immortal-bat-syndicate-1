@@ -1,24 +1,35 @@
-import React from "react"
+import React, { useContext } from "react"
 import "./Article.css"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { Container, Header } from 'semantic-ui-react'
+import { ArticleContext } from "./ArticleProvider"
 
-export const Article = ({ article }) => (
-    <Container className="article--container" >
+export const Article = ({ article }) => {
+    
+    const { deleteArticle} = useContext(ArticleContext)
+    const history = useHistory()
+    return (
+
+        <Container className="article--container" >
         <Header as='h3'>{article.title}</Header>
-        <p>Posted by: {article.user.name}</p>
+        <p>Posted by: {article.user.username}</p>
         <p>Date: {new Date(article.date).toLocaleDateString('en-US')}</p>
         <p>{article.synopsis}</p>
-                    <div class="article--actions">
+                    <div className="article--actions">
                 <a href={article.url} target="_blank">
                     Read More
                 </a>
 
-                <div class="formBtns">
-                    <button id="editArticle--${article.id}" class="editBtn">Edit</button>
-                    <button id="deleteArticle--${article.id}" class="trashBtn">🗑️</button>
+                <div className="formBtns">
+                    <button id="editArticle--${article.id}" className="editBtn">Edit</button>
+                    <button id="deleteArticle--${article.id}" className="trashBtn" onClick={
+                        () => {
+                            deleteArticle(article.id)
+                            .then(() => {
+                                history.push("/articles")
+                            })}}>🗑️</button>
                 </div>
-            </div>
+        </div>
     </Container>
-
-)
+    )
+}
