@@ -27,7 +27,7 @@ export const TaskForm = () => {
      return (
          <section className="taskForm">
              <form onSubmit={handleSubmit}>
-                 <label htmlFor="task">Task: </label>
+                <label htmlFor="task">Task: </label>
                 <input type="text" name="task" ref={task} required />
                 <label htmlFor="date">Date to be Completed: </label>
                 <input type="date" name="date" ref={date} min={new Date(Date.now() - 18000000).toISOString().split("T")[0]} required />

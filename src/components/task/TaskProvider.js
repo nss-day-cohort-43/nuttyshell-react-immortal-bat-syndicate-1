@@ -31,7 +31,7 @@ export const TaskProvider = (props) => {
     const removeTask = id => {
         return fetch(`http://localhost:8088/tasks/${id}`, {
             method: "DELETE"
-        })
+        }).then(() => getTasksByUserId(localStorage.getItem("nutty_customer")))
     }
 
     const completeTask = task => {
@@ -41,7 +41,7 @@ export const TaskProvider = (props) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(task)
-        })
+        }).then(() => getTasksByUserId(localStorage.getItem("nutty_customer")))
     }
 
     return (
