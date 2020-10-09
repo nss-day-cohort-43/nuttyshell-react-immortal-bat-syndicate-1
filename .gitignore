@@ -23,8 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # from previous gitignores
-package-lock.json
-dist/
 database.json
-.vscode
 Settings.js
