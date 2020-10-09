@@ -12,8 +12,12 @@ export const ApplicationViews = (props) => {
             </Route>
 
             <ArticleProvider>
-                <Route exact path="/articles">
-                    <ArticleList />
+                <Route exact path="/articles"render={props => 
+                    <ArticleList {...props} /> } >
+                </Route>
+
+                <Route exact path="/articles/create">
+                    <ArticleForm />
                 </Route>
             </ArticleProvider>
         </>

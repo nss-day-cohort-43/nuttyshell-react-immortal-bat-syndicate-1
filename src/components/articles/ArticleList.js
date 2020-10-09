@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react"
 import { ArticleContext } from "./ArticleProvider"
-import { Article } from "./Article"
+import { Article } from "./Article.js"
 import "./Article.css"
 import { useHistory } from "react-router-dom"
 
-export const ArticleList = () => {
+export const ArticleList = (props) => {
     const { articles, getArticles } = useContext(ArticleContext)
-
+    const history = useHistory()
 
     useEffect(() => {
         console.log("ArticleList: Initial render before data")
@@ -14,10 +14,13 @@ export const ArticleList = () => {
     }, [])
 
     return articles ? (
-        <div className="articles">
-        {
-            articles.map(article => <Article key={article.id} article={article} />)
-        }
-        </div>
+            <div className="articles">
+            {
+                articles.map(article => <Article key={article.id} article={article} />)
+            }
+            <button onClick={() => props.history.push("/articles/create")}>
+                Add Article
+            </button>
+            </div>
     ) : null
 }
