@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
 import "./Article.css"
-import { Link, useHistory } from "react-router-dom"
 import { Container, Header } from 'semantic-ui-react'
 import { ArticleContext } from "./ArticleProvider"
 
@@ -21,7 +20,6 @@ export const Article = ({ article }) => {
                 </a>
 
                 <div className="formBtns">
-                    <button id="editArticle--${article.id}" className="editBtn">Edit</button>
                     <button id="deleteArticle--${article.id}" className="trashBtn" onClick={
                         () => {
                             deleteArticle(article.id)
