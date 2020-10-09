@@ -1,5 +1,5 @@
 import React, { useState, createContext } from "react";
-import api from "../Settings.js";
+import api from "../../Settings.js";
 
 export const EventContext = createContext();
 
@@ -15,7 +15,7 @@ export const EventProvider = (props) => {
 
   //saves event to API and then triggers state change event
   const saveEvent = (eventObj) => {
-    fetch("http://localhost:8088/events", {
+    return fetch("http://localhost:8088/events", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,14 +26,14 @@ export const EventProvider = (props) => {
 
   //deletes event from API and then triggers state change event
   const deleteEvent = (eventId) => {
-    fetch(`http://localhost:8088/events/${eventId}`, {
+    return fetch(`http://localhost:8088/events/${eventId}`, {
       method: "DELETE",
     }).then(setEvents);
   };
 
   //updates the specific event called upon and then triggers the state change event
   const updateEvent = (eventObj) => {
-    fetch(`http://localhost:8088/events/${eventObj.id}`, {
+    return fetch(`http://localhost:8088/events/${eventObj.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -41,9 +41,21 @@ export const EventProvider = (props) => {
       body: JSON.stringify(eventObj),
     }).then(setEvents);
   };
+
+  const getEventById = (id) => {
+   return fetch(`http://localhost:8088/events/${id}?_expand=user`)
+    .then((res) => res.json())
+  };
   return (
     <EventContext.Provider
-      value={{ events, getEvents, saveEvent, deleteEvent, updateEvent }}
+      value={{
+        events,
+        getEvents,
+        saveEvent,
+        deleteEvent,
+        updateEvent,
+        getEventById,
+      }}
     >
       {props.children}
     </EventContext.Provider>

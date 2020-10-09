@@ -8,7 +8,8 @@ import "./Event.css"
 
 
 export const EventList = _ => {
-    const {events, getEvents } = useContext(EventContext)
+    console.log("Event List proc")
+    const { events, getEvents } = useContext(EventContext)
 
     useEffect(() => {
         getEvents()
