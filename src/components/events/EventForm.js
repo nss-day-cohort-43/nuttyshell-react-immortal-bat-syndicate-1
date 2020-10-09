@@ -67,9 +67,12 @@ export const EventForm = () => {
       }).then(() => history.push("/events"));
     }
   };
-
+const handleSubmit = e => {
+    e.preventDefault()
+    constructEventObject()
+}
   return (
-    <form className="eventForm">
+    <form className="eventForm" onSubmit={handleSubmit}>
       <h2 className="eventForm__title">
         {eventId ? "Edit Event" : "Add Event"}
       </h2>
@@ -169,10 +172,7 @@ export const EventForm = () => {
           />
         </div>
       </fieldset>
-      <button className="btn btn-primary" disabled={isLoading} onClick={e => {
-          e.preventDefault()
-          constructEventObject()
-      }}>{eventId ? "Save Event" : "Add Event"}</button>
+      <button type="submit" className="btn btn-primary" disabled={isLoading}>{eventId ? "Save Event" : "Add Event"}</button>
     </form>
   );
 };
