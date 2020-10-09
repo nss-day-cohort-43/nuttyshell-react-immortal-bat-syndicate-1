@@ -7,7 +7,7 @@ import { ArticleContext } from "./ArticleProvider"
 export const Article = ({ article }) => {
     
     const { deleteArticle} = useContext(ArticleContext)
-    const history = useHistory()
+
     return (
 
         <Container className="article--container" >
@@ -25,9 +25,7 @@ export const Article = ({ article }) => {
                     <button id="deleteArticle--${article.id}" className="trashBtn" onClick={
                         () => {
                             deleteArticle(article.id)
-                            .then(() => {
-                                history.push("/articles")
-                            })}}>🗑️</button>
+                        }}>🗑️</button>
                 </div>
         </div>
     </Container>

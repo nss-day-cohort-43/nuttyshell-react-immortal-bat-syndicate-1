@@ -66,12 +66,12 @@
   ],
   "news": [
     {
-      "userId": 4,
+      "userId": 1,
       "title": "About webhooks",
-      "date": "2020-10-09T19:48:57.442Z",
-      "synopsis": "an article about Webhooks in GitHub",
+      "date": "2020-10-09T20:27:32.305Z",
+      "synopsis": "https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/about-webhooks",
       "url": "https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/about-webhooks",
-      "id": 2
+      "id": 1
     }
   ],
   "friends": [
