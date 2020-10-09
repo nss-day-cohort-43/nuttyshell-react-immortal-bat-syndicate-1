@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { ArticleContext } from "./ArticleProvider"
-import { ArticleCard } from "./ArticleCard"
+import { Article } from "./Article"
 import "./Article.css"
 import { useHistory } from "react-router-dom"
 
@@ -10,14 +10,14 @@ export const ArticleList = () => {
 
     useEffect(() => {
         console.log("ArticleList: Initial render before data")
-        getArticles()
+        getArticles().then(console.log)
     }, [])
 
-    return (
+    return articles ? (
         <div className="articles">
         {
-            articles.map(loc => <Article key={loc.id} location={loc} />)
+            articles.map(article => <Article key={article.id} article={article} />)
         }
         </div>
-    )
+    ) : null
 }

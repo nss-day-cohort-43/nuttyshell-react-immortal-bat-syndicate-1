@@ -1,7 +1,7 @@
 import React from "react"
-import "./Animal.css"
+import "./Article.css"
 import { Link } from "react-router-dom"
-import { Container } from 'semantic-ui-react'
+import { Container, Header } from 'semantic-ui-react'
 
 export const Article = ({ article }) => (
     <Container className="article--container" >

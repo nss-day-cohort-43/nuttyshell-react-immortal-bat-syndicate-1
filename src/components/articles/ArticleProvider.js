@@ -8,6 +8,7 @@ export const ArticleProvider = (props) => {
     const getArticles = () => {
         return fetch('http://localhost:8088/news?_expand=user')
         .then(response => response.json())
+        .then(setArticles)
     }
     
     // adds new articles to database
@@ -22,7 +23,7 @@ export const ArticleProvider = (props) => {
     }
     
     // allows user to edit their articles
-    export const editArticle = artObj => {
+    const editArticle = artObj => {
         fetch(`http://localhost:8088/news/${artObj.id}`, {
             method: 'PUT',
             headers: {
@@ -33,13 +34,13 @@ export const ArticleProvider = (props) => {
     }
     
     // removes article from database
-    export const deleteArticle = articleId => {
+    const deleteArticle = articleId => {
         return fetch(`http://localhost:8088/news/${articleId}`, {
             method: 'DELETE'
         })
     }
 
-    export const getArticleById = (id) => {
+    const getArticleById = (id) => {
         return fetch('http://localhost:8088/news/${articleId}?_expand=users')
             .then(res => res.json())
     }
