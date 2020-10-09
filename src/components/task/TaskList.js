@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import { TaskContext } from "./TaskProvider"
 import { TaskCard } from "./TaskCard"
 import "./Task.css"
@@ -8,10 +8,9 @@ export const TaskList = () => {
     const { tasks, getTasksByUserId } = useContext(TaskContext)
 
     const history = useHistory()
-    const userId = localStorage.getItem("nutty_customer")
     
     useEffect(() => {
-            getTasksByUserId(userId)
+            getTasksByUserId(localStorage.getItem("nutty_customer"))
     }, [])
 
     //Prevents completed task from showing up on the DOM
