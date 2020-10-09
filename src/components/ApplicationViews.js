@@ -1,6 +1,8 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import { Home } from "./Home"
+import { ChatProvider } from "../components/chat/ChatProvider"
+import { ChatList } from "../components/chat/ChatList"
 
 export const ApplicationViews = (props) => {
     return (
@@ -8,6 +10,12 @@ export const ApplicationViews = (props) => {
             <Route exact path="/">
                 <Home />
             </Route>
+
+            <ChatProvider>
+                <Route exact path="/messages">
+                    <ChatList />
+                </Route>
+            </ChatProvider>
         </>
     )
 }

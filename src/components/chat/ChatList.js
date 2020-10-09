@@ -1,0 +1,25 @@
+import React, { useContext, useEffect } from "react"
+import { ChatContext } from "./ChatProvider"
+import { ChatCard } from "./ChatCard"
+import 'semantic-ui-css/semantic.min.css'
+import "./Chat.css"
+
+export const ChatList = () => {
+    const { messages, getMessages } = useContext(ChatContext)
+
+    useEffect(() => {
+        getMessages()
+    }, [])
+
+    return (
+        <>
+            <div className="messages">
+                {
+                    messages.map(message => {
+                        return <ChatCard key={message.id} message={message} />
+                    })
+                }
+            </div>
+        </>
+    )
+}
