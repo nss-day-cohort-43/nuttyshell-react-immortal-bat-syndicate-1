@@ -4,7 +4,7 @@ import { EventContext } from "./EventProvider";
 import "./Event.css";
 
 export const EventDetail = (_) => {
-  const { events, getEventById } = useContext(EventContext);
+  const { events, getEventById, deleteEvent } = useContext(EventContext);
   const [event, setEvent] = useState({});
   const user = parseInt(localStorage.getItem("nutty_customer"))
   const [owned, setOwned] = useState(false);
@@ -29,8 +29,15 @@ export const EventDetail = (_) => {
         <div>Date: {event.date}</div>
         <div>
           Location: {event.address} {event.city}, {event.state} {event.zip}{" "}
-        </div>
-        <div>{owned ? "Edit" : ""}</div>
+        </div><p></p>
+        <div><button disabled={!owned} onClick={() => {
+            history.push(`/events/edit/${event.id}`)
+        }}>Edit</button><span> </span><button disabled={!owned} onClick={() => {
+            deleteEvent(event.id)
+            .then(_ => { 
+                history.push(`/events`) 
+            })
+        }}>Delete</button></div>
       </section>
     </section>
   );

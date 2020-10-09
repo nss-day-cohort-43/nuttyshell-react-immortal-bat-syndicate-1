@@ -34,7 +34,7 @@ export const EventProvider = (props) => {
   //updates the specific event called upon and then triggers the state change event
   const updateEvent = (eventObj) => {
     return fetch(`http://localhost:8088/events/${eventObj.id}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
