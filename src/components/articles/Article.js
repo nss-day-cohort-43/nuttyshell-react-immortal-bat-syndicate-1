@@ -2,11 +2,12 @@ import React, { useContext } from "react"
 import "./Article.css"
 import { Button, Container, Header, Icon } from 'semantic-ui-react'
 import { ArticleContext } from "./ArticleProvider"
+import { useHistory } from "react-router-dom"
 
 export const Article = ({ article }) => {
     //usecontext hook allows the use of functins formt he articleProvider
     const { deleteArticle} = useContext(ArticleContext)
-
+    const history = useHistory()
     //returns an article in semantic Ui elements
     return (
         <Container className="article--container" >
@@ -22,10 +23,15 @@ export const Article = ({ article }) => {
                 <div className="formBtns">
                     {article.user.id === parseInt(localStorage.getItem("nutty_customer")) ? 
 
-                    <Button icon id="deleteArticle--${article.id}" className="trashBtn" onClick={
-                        () => {
-                            deleteArticle(article.id)
-                        }}><Icon name='trash alternate outline' /></Button>
+                    <>
+                        <Button icon id="deleteArticle--${article.id}" className="trashBtn" onClick={
+                            () => {
+                                deleteArticle(article.id)
+                            }}><Icon name='trash alternate outline' /></Button>
+                        <Button icon onClick={() => {
+                            history.push(`/articles/edit/${article.id}`)
+                            }}><Icon name='edit outline' /></Button>
+                    </>
                     : null
 
 

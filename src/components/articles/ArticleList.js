@@ -3,6 +3,7 @@ import { ArticleContext } from "./ArticleProvider"
 import { Article } from "./Article.js"
 import "./Article.css"
 import { useHistory } from "react-router-dom"
+import { Button, Icon } from "semantic-ui-react"
 
 export const ArticleList = (props) => {
     const { articles, getArticles } = useContext(ArticleContext)
@@ -17,9 +18,9 @@ export const ArticleList = (props) => {
             {
                 articles.map(article => <Article key={article.id} article={article} />)
             }
-            <button onClick={() => history.push("/articles/create")}>
-                Add Article
-            </button>
+            <Button icon onClick={() => history.push("/articles/create")}>
+                <Icon name='add circle' /> 
+            </Button >
             </div>
     ) : null
 }

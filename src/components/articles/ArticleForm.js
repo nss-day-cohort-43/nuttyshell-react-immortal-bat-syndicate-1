@@ -5,7 +5,7 @@ import "./Article.css"
 import { ArticleContext } from "./ArticleProvider";
 
 export const ArticleForm = () => {
-    const { saveArticle, update } = useContext(ArticleContext)
+    const { saveArticle, editArticle, getArticleById } = useContext(ArticleContext)
 
     const title = useRef(null)
     const synopsis = useRef(null)
