@@ -11,9 +11,9 @@
 # production
 /build
 
-# api
-database.json
 Settings.js
+database.json
+package-lock.json
 
 # misc
 .DS_Store
