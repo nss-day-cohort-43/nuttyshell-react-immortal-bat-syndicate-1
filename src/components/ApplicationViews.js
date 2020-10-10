@@ -5,6 +5,9 @@ import { EventProvider } from "./events/EventProvider";
 import { EventDetail } from "./events/EventDetail"
 import { Home } from "./Home";
 import { EventForm } from "./events/EventForm";
+import { ArticleProvider } from "./articles/ArticleProvider";
+import { ArticleList } from "./articles/ArticleList"
+import { ArticleForm } from "./articles/ArticleForm"
 
 export const ApplicationViews = (props) => {
   return (

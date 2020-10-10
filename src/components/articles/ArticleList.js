@@ -9,8 +9,7 @@ export const ArticleList = (props) => {
     const history = useHistory()
 
     useEffect(() => {
-        console.log("ArticleList: Initial render before data")
-        getArticles().then(console.log)
+        getArticles()
     }, [])
 
     return articles ? (

@@ -1,14 +1,14 @@
 import React, { useContext } from "react"
 import "./Article.css"
-import { Container, Header } from 'semantic-ui-react'
+import { Button, Container, Header, Icon } from 'semantic-ui-react'
 import { ArticleContext } from "./ArticleProvider"
 
 export const Article = ({ article }) => {
-    
+    //usecontext hook allows the use of functins formt he articleProvider
     const { deleteArticle} = useContext(ArticleContext)
 
+    //returns an article in semantic Ui elements
     return (
-
         <Container className="article--container" >
         <Header as='h3'>{article.title}</Header>
         <p>Posted by: {article.user.username}</p>
@@ -20,10 +20,16 @@ export const Article = ({ article }) => {
                 </a>
 
                 <div className="formBtns">
-                    <button id="deleteArticle--${article.id}" className="trashBtn" onClick={
+                    {article.user.id === parseInt(localStorage.getItem("nutty_customer")) ? 
+
+                    <Button icon id="deleteArticle--${article.id}" className="trashBtn" onClick={
                         () => {
                             deleteArticle(article.id)
-                        }}>🗑️</button>
+                        }}><Icon name='trash alternate outline' /></Button>
+                    : null
+
+
+                    }
                 </div>
         </div>
     </Container>
