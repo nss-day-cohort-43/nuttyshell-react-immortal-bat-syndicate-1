@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from "react"
 import { useHistory, } from 'react-router-dom';
+import { Button, Form, Header } from "semantic-ui-react";
 import "./Article.css"
 import { ArticleContext } from "./ArticleProvider";
 
 export const ArticleForm = () => {
-    const { saveArticle } = useContext(ArticleContext)
+    const { saveArticle, update } = useContext(ArticleContext)
 
     const title = useRef(null)
     const synopsis = useRef(null)
@@ -23,12 +24,44 @@ export const ArticleForm = () => {
         }
 
     return (
-        <form className="articleForm" onSubmit={ e => {
+        // <form className="articleForm" onSubmit={ e => {
+        //     e.preventDefault() // Prevent browser from submitting the form
+        //     contructNewArticle()
+        // }}>
+        <Form className="articleForm" onSubmit={ e => {
             e.preventDefault() // Prevent browser from submitting the form
             contructNewArticle()
         }}>
-        <h2 className="articleForm__title">New Article</h2>
-        <fieldset>
+            <Header as='h2' className="articleForm__title">New Article</Header>
+            <Form.Input
+                error={{ content: 'Please enter a title for your article', pointing: 'below' }}
+                required
+                fluid
+                label='articleTitle'
+                placeholder='Article Title'
+                id='articleTitle'
+                ref={title}
+            />
+            <Form.Input
+                error={{ content: 'Please enter a synopsis for your article', pointing: 'below' }}
+                required
+                fluid
+                label='Article Synopsis'
+                placeholder='Article Synopsis'
+                id='articleSynopsis'
+                ref={synopsis}
+            />
+            <Form.Input
+                error={{ content: 'Please enter a url for your article', pointing: 'below' }}
+                required
+                fluid
+                label='articleUrl'
+                placeholder='Article URL'
+                id='articleUrl'
+                ref={url}
+            />
+
+        {/* <fieldset>
             <div className="form-group">
                 <label htmlFor="articleTitle">Article Title: </label>
                 <input type="text" id="articleTitle" ref={title} required autoFocus className="form-control" placeholder="Article title" />
@@ -45,8 +78,9 @@ export const ArticleForm = () => {
                 <label htmlFor="articleTitle">Article URL: </label>
                 <input type="text" id="articleUrl" ref={url} required autoFocus className="form-control" placeholder="Article url" />
             </div>
-        </fieldset>
-        <button type="submit" className="btn btn-primary">Save Article</button>
-    </form>
+        </fieldset> */}
+        <Button type="submit" className="btn btn-primary">Save Article</Button>
+
+    </Form>
     )
 }
