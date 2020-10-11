@@ -69,9 +69,8 @@ export const ArticleForm = () => {
         }}>
             <Header as='h2' className="articleForm__title">New Article</Header>
             <Form.Input
-                // error={{ content: 'Please enter a title for your article', pointing: 'below' }}
-                // required
-                label='articleTitle'
+                required
+                label='Article Title'
                 placeholder='Article Title'
                 id='articleTitle'
                 name="title"
@@ -79,7 +78,6 @@ export const ArticleForm = () => {
                 defaultValue={article.title}
             />
             <Form.Input
-                error={{ content: 'Please enter a synopsis for your article', pointing: 'below' }}
                 required
                 label='Article Synopsis'
                 placeholder='Article Synopsis'
@@ -89,9 +87,8 @@ export const ArticleForm = () => {
                 defaultValue={article.synopsis}
             />
             <Form.Input
-                error={{ content: 'Please enter a url for your article', pointing: 'below' }}
                 required
-                label='articleUrl'
+                label='Article URL'
                 placeholder='Article URL'
                 id='articleUrl'
                 name="url"
