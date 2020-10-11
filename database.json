@@ -71,16 +71,38 @@
       "date": "2020-10-10T20:29:42.694Z",
       "synopsis": "What is Debouncing",
       "url": "https://medium.com/@jamischarles/what-is-debouncing-2505c0648ff1",
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "title": "What is Debouncing",
+      "date": "2020-10-10T20:29:42.694Z",
+      "synopsis": "What is Debouncing",
+      "url": "https://medium.com/@jamischarles/what-is-debouncing-2505c0648ff1",
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "title": "What is Debouncing",
+      "date": "2020-10-10T20:29:42.694Z",
+      "synopsis": "What is Debouncing",
+      "url": "https://medium.com/@jamischarles/what-is-debouncing-2505c0648ff1",
       "id": 3
     },
     {
+      "id": 4,
       "userId": 1,
-      "date": "2020-10-11T02:04:46.916Z",
-      "id": 4
+      "title": "What is Debouncing?!?",
+      "date": "2020-10-11T18:59:08.685Z",
+      "synopsis": "What is Debouncing",
+      "url": "https://medium.com/@jamischarles/what-is-debouncing-2505c0648ff1"
     },
     {
       "userId": 1,
+      "title": "What is Debouncing",
       "date": "2020-10-11T02:05:01.486Z",
+      "synopsis": "What is Debouncing",
+      "url": "https://medium.com/@jamischarles/what-is-debouncing-2505c0648ff1",
       "id": 5
     }
   ],

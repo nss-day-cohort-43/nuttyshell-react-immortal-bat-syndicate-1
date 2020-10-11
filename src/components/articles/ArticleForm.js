@@ -12,23 +12,27 @@ export const ArticleForm = () => {
     const { articleId } = useParams()
 
     const history = useHistory();
-    console.log(articleId)
+
     const handleControlledInputChange = (event) => {
         const newArticle = { ...article }
-        newArticle[event.target.name] = event.target.defaultValue
+        newArticle[event.target.name] = event.target.value
         setArticle(newArticle)
     }
 
     useEffect(() => {
+        let mounted = true;
         if (articleId){
             getArticleById(articleId)
             .then(article => {
+                if(mounted){
                 setArticle(article)
                 setIsLoading(false)
+                }
             })
         } else {
             setIsLoading(false)
         }
+        return () => mounted = false
     }, [])
 
     const contructNewArticle = () => {
@@ -42,7 +46,7 @@ export const ArticleForm = () => {
                 synopsis: article.synopsis,
                 url: article.url,
             })
-                .then(() => history.push(`/articles/detail/${article.id}`))
+                .then(() => history.push(`/articles`))
         } else {
             saveArticle({
                 userId: parseInt(localStorage.getItem("nutty_customer")),
@@ -56,20 +60,21 @@ export const ArticleForm = () => {
     }
 
     return (
+        <>
         <Form className="articleForm" onSubmit={ e => {
             e.preventDefault() // Prevent browser from submitting the form
             contructNewArticle()
         }}>
             <Header as='h2' className="articleForm__title">New Article</Header>
             <Form.Input
-                error={{ content: 'Please enter a title for your article', pointing: 'below' }}
-                required
+                // error={{ content: 'Please enter a title for your article', pointing: 'below' }}
+                // required
                 label='articleTitle'
                 placeholder='Article Title'
                 id='articleTitle'
                 name="title"
                 onChange={handleControlledInputChange} 
-                defaultValue={article.name}
+                defaultValue={article.title}
             />
             <Form.Input
                 error={{ content: 'Please enter a synopsis for your article', pointing: 'below' }}
@@ -91,12 +96,18 @@ export const ArticleForm = () => {
                 onChange={handleControlledInputChange} 
                 defaultValue={article.url}
             />
-        <Button type="submit" disabled={isLoading}
-            className="btn btn-primary">{ articleId ? <>Save Article</> : <>Add Animal</> }
-        </Button>
-        <Button type="button" className="btn btn-primary" onClick={ history.push(`/articles`) }>
-            Cancel
-        </Button>
+        <Button 
+            type="submit" 
+            disabled={isLoading}
+            className="btn btn-primary">
+                {/* { articleId ? <>Save Article</> : <>Add Animal</> } */}
+                save </Button>
     </Form>
+        {/* <Button 
+            type="button" 
+            className="btn btn-primary" 
+            onClick={ history.push(`/articles`) }>                 
+        Cancel </Button> */}
+    </>
     )
 }

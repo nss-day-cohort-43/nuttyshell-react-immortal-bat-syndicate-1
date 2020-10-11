@@ -19,7 +19,7 @@ export const ArticleList = (props) => {
                 articles.map(article => <Article key={article.id} article={article} />)
             }
             <Button icon onClick={() => history.push("/articles/create")}>
-                <Icon name='add circle' /> 
+                Add <Icon name='add circle' /> 
             </Button >
             </div>
     ) : null

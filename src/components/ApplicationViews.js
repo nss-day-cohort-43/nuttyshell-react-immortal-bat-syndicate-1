@@ -49,7 +49,7 @@ export const ApplicationViews = (props) => {
         </ArticleProvider>
 
         <ArticleProvider>
-            <Route path="/articles/edit/:articleId(\d+)">
+            <Route exact path="/articles/edit/:articleId(\d+)">
                 <ArticleForm />
             </Route>
         </ArticleProvider>

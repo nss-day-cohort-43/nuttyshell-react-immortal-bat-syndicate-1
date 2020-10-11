@@ -24,13 +24,14 @@ export const Article = ({ article }) => {
                     {article.user.id === parseInt(localStorage.getItem("nutty_customer")) ? 
 
                     <>
+                
                         <Button icon id="deleteArticle--${article.id}" className="trashBtn" onClick={
                             () => {
                                 deleteArticle(article.id)
-                            }}><Icon name='trash alternate outline' /></Button>
+                            }}>delete<Icon name='trash alternate outline' /></Button>
                         <Button icon onClick={() => {
-                            history.push(`/articles/edit/${article.id}`)
-                            }}><Icon name='edit outline' /></Button>
+                            history.push(`/articles/edit/${article?.id}`)
+                            }}>edit<Icon name='edit outline' /></Button>
                     </>
                     : null }
                 </div>
