@@ -18,7 +18,7 @@ export const ArticleList = (props) => {
     return articles ? (
             <div className="articles">
             {
-                articles.map(article => <Article key={article.id} article={article} />)
+                articles.reverse().map(article => <Article key={article.id} article={article} />)
             }
             <Button icon onClick={() => history.push("/articles/create")}>
                 Add <Icon name='add circle' /> 

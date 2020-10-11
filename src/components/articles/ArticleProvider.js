@@ -9,6 +9,7 @@ export const ArticleProvider = (props) => {
     const getArticles = () => {
         return fetch('http://localhost:8088/news?_expand=user')
         .then(response => response.json())
+        .then(res=> res.reverse())
         .then(setArticles)
     }
     
