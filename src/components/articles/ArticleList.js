@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import { ArticleContext } from "./ArticleProvider"
 import { Article } from "./Article.js"
 import "./Article.css"

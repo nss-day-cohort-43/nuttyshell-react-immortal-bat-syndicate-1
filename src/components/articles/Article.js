@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom"
 
 export const Article = ({ article }) => {
     //usecontext hook allows the use of functins formt he articleProvider
-    const { deleteArticle} = useContext(ArticleContext)
+    const { deleteArticle } = useContext(ArticleContext)
     const history = useHistory()
     //returns an article in semantic Ui elements
     return (
@@ -32,10 +32,7 @@ export const Article = ({ article }) => {
                             history.push(`/articles/edit/${article.id}`)
                             }}><Icon name='edit outline' /></Button>
                     </>
-                    : null
-
-
-                    }
+                    : null }
                 </div>
         </div>
     </Container>

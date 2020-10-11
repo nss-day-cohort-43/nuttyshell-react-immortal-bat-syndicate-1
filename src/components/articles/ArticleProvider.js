@@ -24,7 +24,7 @@ export const ArticleProvider = (props) => {
     
     // allows user to edit their articles
     const editArticle = artObj => {
-        fetch(`http://localhost:8088/news/${artObj.id}`, {
+        return fetch(`http://localhost:8088/news/${artObj.id}`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json"
@@ -41,13 +41,13 @@ export const ArticleProvider = (props) => {
     }
 
     const getArticleById = (id) => {
-        return fetch('http://localhost:8088/news/${articleId}?_expand=users')
+        return fetch(`http://localhost:8088/news/${id}?_expand=user`)
             .then(res => res.json())
     }
 
     return (
         <ArticleContext.Provider value={{
-            articles, getArticles, saveArticle, deleteArticle, editArticle, getArticles
+            articles, getArticles, saveArticle, deleteArticle, editArticle, getArticleById
         }}>
             {props.children}
         </ArticleContext.Provider>

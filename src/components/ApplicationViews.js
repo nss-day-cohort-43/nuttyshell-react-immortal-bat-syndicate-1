@@ -36,15 +36,19 @@ export const ApplicationViews = (props) => {
           </Route>
       </EventProvider>
 
-      <ArticleProvider>
+        <ArticleProvider>
             <Route exact path="/articles"> 
                 <ArticleList /> 
             </Route>
+        </ArticleProvider>
 
+        <ArticleProvider>
             <Route exact path="/articles/create">
                 <ArticleForm />
             </Route>
+        </ArticleProvider>
 
+        <ArticleProvider>
             <Route path="/articles/edit/:articleId(\d+)">
                 <ArticleForm />
             </Route>
