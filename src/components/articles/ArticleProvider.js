@@ -2,6 +2,7 @@ import React, { useState, createContext } from "react"
 
 export const ArticleContext = createContext()
 
+//sets up all the fetch functions I'll need for the module
 export const ArticleProvider = (props) => {
     const [articles, setArticles] = useState([])
 

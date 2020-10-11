@@ -12,7 +12,7 @@ export const ArticleForm = () => {
     const { articleId } = useParams()
 
     const history = useHistory();
-
+//this is passed into onChange in the form fields, it updates state with the new value in the field
     const handleControlledInputChange = (event) => {
         const newArticle = { ...article }
         newArticle[event.target.name] = event.target.value
@@ -35,6 +35,7 @@ export const ArticleForm = () => {
         return () => mounted = false
     }, [])
 
+    //either creates the article object then saves a new or an edited article object
     const contructNewArticle = () => {
         setIsLoading(true);
         if ( articleId ) {
@@ -58,7 +59,8 @@ export const ArticleForm = () => {
                 .then(() => history.push(`/articles`))
         }
     }
-
+//adds the form that the user can use to add or edit articles, if its an edit, 
+//the fields will be preloaded with the article to edit
     return (
         <>
         <Form className="articleForm" onSubmit={ e => {
@@ -103,11 +105,6 @@ export const ArticleForm = () => {
                 {/* { articleId ? <>Save Article</> : <>Add Animal</> } */}
                 save </Button>
     </Form>
-        {/* <Button 
-            type="button" 
-            className="btn btn-primary" 
-            onClick={ history.push(`/articles`) }>                 
-        Cancel </Button> */}
     </>
     )
 }
