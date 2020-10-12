@@ -1,5 +1,23 @@
+.messages--window {
+    overflow: hidden;
+}
+
+.messages--container {
+    height: 500px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid #d1d1d1;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
 .message--container {
     margin-bottom: 25px;
+}
+
+.message--container:last-child {
+    margin-bottom: 0;
 }
 
 .message--notFriend {

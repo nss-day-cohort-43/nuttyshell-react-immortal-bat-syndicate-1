@@ -7,12 +7,13 @@ export const ChatCard = ({ message }) => {
     const { deleteMessage } = useContext(ChatContext)
     const history = useHistory()
 
-    if (message.userId === parseInt(localStorage.getItem("nutty_customer"))) {
+    let currentUser = parseInt(localStorage.getItem("nutty_customer"))
 
+    if (message.userId === currentUser) {
         // renders chat bubble for current user
         return (
             <Container className="message--container">
-                <Message className="message" floating style={{ backgroundColor: "#f7f7f7" }}>
+                <Message className="message" floating style={{ backgroundColor: "#fff" }}>
                     <Header as="h3" className="message--currentUser">{message.user.username}</Header>
 
                     <p className="message--content">{message.message}</p>
@@ -36,7 +37,6 @@ export const ChatCard = ({ message }) => {
             </Container>
         )
     } else {
-
         // renders chat bubble for global, non-friend users
         return (
             <Container className="message--container">

@@ -18,15 +18,17 @@ export const ChatList = () => {
             <Container>
                 <Header as='h2'><Icon name="chat" />Messages</Header>
 
-                <section className="messages--container">
-                    <div className="messages">
-                        {
-                            messages.map(message => {
-                                return <ChatCard key={message.id} message={message} />
-                            })
-                        }
-                    </div>
-                </section>
+                <div className="messages-window">
+                    <section className="messages--container">
+                        <div className="messages">
+                            {
+                                messages.map(message => {
+                                    return <ChatCard key={message.id} message={message} />
+                                })
+                            }
+                        </div>
+                    </section>
+                </div>
 
                 <Button primary onClick={() => { history.push("/messages/new") }}>
                     <Icon name="plus circle" /> New Message
