@@ -29,6 +29,7 @@ export const ArticleForm = () => {
         } else {
             setIsLoading(false)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     //either creates the article object then saves a new or an edited article object

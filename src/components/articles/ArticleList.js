@@ -11,7 +11,7 @@ export const ArticleList = (props) => {
 
     useEffect(() => {
         getArticles()
-    }, [])
+    }, [getArticles])
     return (
             <div className="articles">
             <Button onClick={() => history.push("/articles/create")}>

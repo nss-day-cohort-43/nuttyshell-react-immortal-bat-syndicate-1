@@ -16,7 +16,7 @@ export const Article = ({ article }) => {
         <p>Date: {new Date(article.date).toLocaleDateString('en-US')}</p>
         <p>{article.synopsis}</p>
                     <div className="article--actions">
-                <a href={article.url} target="_blank">
+                <a href={article.url}>
                     Read More
                 </a>
 
@@ -24,7 +24,7 @@ export const Article = ({ article }) => {
                     {/* if the article was posted by the current user it renders buttons for edit or delete */}
                     {article.user.id === parseInt(localStorage.getItem("nutty_customer")) ? 
                     <>
-                         <Button icon id="deleteArticle--${article.id}" className="trashBtn" onClick={
+                         <Button icon className="trashBtn" onClick={
                              () => {
                                  deleteArticle(article.id)
                              }}><Icon name='trash alternate outline' /></Button>
