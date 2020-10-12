@@ -1,14 +1,7 @@
-.messageListHeader {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
 .message--container {
-    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
-.message--poster {
+.message--notFriend {
     cursor: pointer;
 }

@@ -16,13 +16,7 @@ export const ChatList = () => {
     return (
         <>
             <Container>
-                <div className="messageListHeader">
-                    <Header as='h2'><Icon name="chat" />Messages</Header>
-
-                    <Button primary onClick={() => { history.push("/messages/new") }}>
-                        <Icon name="plus circle" /> New Message
-                </Button>
-                </div>
+                <Header as='h2'><Icon name="chat" />Messages</Header>
 
                 <section className="messages--container">
                     <div className="messages">
@@ -33,6 +27,10 @@ export const ChatList = () => {
                         }
                     </div>
                 </section>
+
+                <Button primary onClick={() => { history.push("/messages/new") }}>
+                    <Icon name="plus circle" /> New Message
+                </Button>
             </Container>
         </>
     )
