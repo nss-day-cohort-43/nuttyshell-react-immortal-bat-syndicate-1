@@ -73,7 +73,7 @@ export const ChatForm = (props) => {
                     />
 
                     <Button.Group>
-                        <Button animated="fade">
+                        <Button animated="vertical">
                             <Button.Content visible>Cancel</Button.Content>
                             <Button.Content hidden onClick={
                                 () => history.push('/messages')
@@ -84,7 +84,7 @@ export const ChatForm = (props) => {
 
                         <Button.Or />
 
-                        <Button positive animated="fade">
+                        <Button positive animated="vertical">
                             <Button.Content visible>
                                 {messageId ? "Edit" : "Send"}
                             </Button.Content>

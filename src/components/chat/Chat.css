@@ -1,13 +1,12 @@
-.messages--container {
-    overflow: hidden;
-}
-
-.messages {
-    overflow-y: scroll;
+.messageListHeader {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: baseline;
 }
 
 .message--container {
-    margin-bottom: 25px;
+    margin-top: 25px;
 }
 
 .message--poster {
