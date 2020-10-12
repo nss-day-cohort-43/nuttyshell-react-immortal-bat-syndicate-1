@@ -1,232 +1,224 @@
 {
   "users": [
     {
-      "id": 1,
-      "username": "STeve",
-      "email": "me@me.com",
-      "zip": 37080
-    },
-    {
-      "id": 2,
-      "username": "Jeff",
-      "email": "Jeff@jeffityjeff.com",
-      "zip": 37080
-    },
-    {
-      "id": 3,
-      "username": "Sue",
-      "email": "sue_1982317@aol.com",
-      "zip": 37080
-    },
-    {
-      "username": "joe",
-      "email": "joe@joe.com",
-      "id": 4,
-      "zip": 37080
-    }
-  ],
-  "messages": [
-    {
-      "sendingUserId": 3,
-      "message": "the count is such a terrible stereotype",
-      "date": "Tue Sep 29 2020 19:16:05 GMT-0500 (Central Daylight Time)",
+      "username": "Timmy1",
+      "email": "Timmy@mail.com",
+      "zip": 37388,
       "id": 1
     },
     {
-      "sendingUserId": 3,
-      "message": "mwahhhahaha",
-      "date": "Tue Sep 29 2020 19:16:53 GMT-0500 (Central Daylight Time)",
+      "username": "jr4",
+      "email": "johnr@mail.com",
+      "zip": 37211,
       "id": 2
     },
     {
-      "sendingUserId": 4,
-      "message": "velcome",
-      "date": "Wed Sep 30 2020 09:16:16 GMT-0500 (Central Daylight Time)",
+      "username": "Toddbeaman",
+      "email": "Todd@mail.com",
+      "zip": 60605,
       "id": 3
     },
     {
-      "sendingUserId": 4,
-      "message": "my familiar is so annoying",
-      "date": "Wed Sep 30 2020 09:16:35 GMT-0500 (Central Daylight Time)",
+      "username": "banana",
+      "email": "banana@mail.com",
+      "zip": 77573,
       "id": 4
     },
     {
-      "sendingUserId": 3,
-      "message": "i know right... getting thirsty?",
-      "date": "Wed Sep 30 2020 09:16:36 GMT-0500 (Central Daylight Time)",
+      "username": "Morgan",
+      "email": "morgan@mail.com",
+      "zip": 37214,
       "id": 5
     },
     {
-      "sendingUserId": 4,
-      "message": "@STeve: hey STeve! what's it been 500 years?",
-      "date": "Wed Sep 30 2020 09:19:12 GMT-0500 (Central Daylight Time)",
-      "userId": 1,
+      "username": "Not_right",
+      "email": "noTrighT@mail.com",
       "id": 6
     }
   ],
   "news": [
     {
+      "userId": 3,
+      "title": "Homepage",
+      "date": "2020-09-23",
+      "synopsis": "Crazy search bar",
+      "url": "https://www.bing.com",
+      "id": 1
+    },
+    {
+      "userId": 3,
+      "title": "Second Best",
+      "date": "2020-09-24",
+      "synopsis": "Mediocre search bar",
+      "url": "https://www.yahoo.com",
+      "id": 2
+    },
+    {
+      "title": "Vampires",
+      "date": 1601068586830,
+      "synopsis": "Article about vampires",
+      "url": "http://www.google.com",
+      "userId": 5,
+      "id": 3
+    },
+    {
+      "userId": 4,
+      "title": "There's Garlic Everywhere and it Hates Me!",
+      "date": 1601405763598,
+      "synopsis": "Talks about the hardships of being a vampire in a garlicky world",
+      "url": "hTTps://www.google.com",
+      "id": 4
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
       "userId": 2,
-      "title": "What is Debouncing",
-      "date": "2020-10-10T20:29:42.694Z",
-      "synopsis": "What is Debouncing",
-      "url": "https://medium.com/@jamischarles/what-is-debouncing-2505c0648ff1",
+      "name": "Garlic Sucks",
+      "date": "2020-09-15",
+      "address": "Place",
+      "city": "Nashville",
+      "state": "TN",
+      "zip": 37214
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "name": "Halloween Party",
+      "date": "2020-10-31",
+      "address": "Some place",
+      "city": "Nashville",
+      "state": "TN",
+      "zip": 37211
+    },
+    {
+      "id": 3,
+      "userId": 5,
+      "name": "Blood Bash",
+      "date": "2020-10-09",
+      "address": "Other place",
+      "city": "Nashville",
+      "state": "TN",
+      "zip": 37211
+    },
+    {
+      "id": 10,
+      "userId": 5,
+      "name": "Deader",
+      "date": "2020-09-29",
+      "address": "1320 Lincoya Bay Dr",
+      "city": "Nashville",
+      "state": "TN",
+      "zip": 37214
+    },
+    {
+      "userId": 4,
+      "name": "Start of October",
+      "date": "2020-10-01",
+      "address": "Burton's Place",
+      "city": "Denton",
+      "state": "TX",
+      "zip": 76203,
+      "id": 11
+    }
+  ],
+  "tasks": [
+    {
+      "userId": 2,
+      "task": "Sweeping",
+      "date": "2020-10-09",
+      "completed": false,
       "id": 1
     },
     {
       "userId": 2,
-      "title": "What is Debouncing",
-      "date": "2020-10-10T20:29:42.694Z",
-      "synopsis": "What is Debouncing",
-      "url": "https://medium.com/@jamischarles/what-is-debouncing-2505c0648ff1",
+      "task": "Dusting",
+      "date": "2020-10-01",
+      "completed": false,
       "id": 2
     },
     {
-      "userId": 2,
-      "title": "What is Debouncing",
-      "date": "2020-10-11T20:29:42.694Z",
-      "synopsis": "What is Debouncing",
-      "url": "https://medium.com/@jamischarles/what-is-debouncing-2505c0648ff1",
+      "userId": 1,
+      "task": "Partying",
+      "date": "2020-10-31",
+      "completed": false,
       "id": 3
     },
     {
-      "id": 4,
-      "userId": 1,
-      "title": "What is Debouncing?!?",
-      "date": "2020-10-12T18:59:08.685Z",
-      "synopsis": "What is Debouncing",
-      "url": "https://medium.com/@jamischarles/what-is-debouncing-2505c0648ff1"
+      "userId": 2,
+      "task": "Fight",
+      "date": "2020-09-25",
+      "completed": true,
+      "id": 4
     },
     {
-      "userId": 1,
-      "title": "What is Debouncing",
-      "date": "2020-10-13T02:05:01.486Z",
-      "synopsis": "What is Debouncing",
-      "url": "https://medium.com/@jamischarles/what-is-debouncing-2505c0648ff1",
+      "task": "Battle",
+      "date": "2020-10-29",
+      "userId": 4,
+      "completed": false,
       "id": 5
     }
   ],
   "friends": [
     {
       "activeUserId": 4,
-      "userId": 1,
-      "id": 7
+      "userId": 5,
+      "id": 9
     },
     {
-      "activeUserId": 4,
-      "userId": 2,
+      "activeUserId": 6,
+      "userId": 4,
       "id": 10
     },
     {
-      "userId": 3,
+      "userId": 6,
       "activeUserId": 4,
-      "id": 13
-    },
-    {
-      "activeUserId": 3,
-      "userId": 2,
-      "id": 14
-    },
-    {
-      "userId": 3,
-      "activeUserId": 3,
-      "id": 16
+      "id": 11
     }
   ],
-  "tasks": [
+  "messages": [
     {
-      "id": 1,
-      "userId": 1,
-      "task": "Take out garbage",
-      "complete": false,
-      "targetDate": "12-12-2020"
-    },
-    {
-      "id": 2,
-      "userId": 3,
-      "task": "Take out garbage",
-      "complete": false,
-      "targetDate": "12-20-2020"
-    },
-    {
-      "id": 3,
-      "userId": 2,
-      "task": "Take out garbage",
-      "complete": false,
-      "targetDate": "12-29-2020"
-    },
-    {
-      "id": 4,
-      "userId": 4,
-      "task": "Take out garbage",
-      "complete": false,
-      "targetDate": "12-29-2020"
-    },
-    {
-      "userId": "4",
-      "task": "make a task",
-      "date": "2020-10-01",
-      "completed": true,
-      "id": 5
-    },
-    {
-      "userId": 3,
-      "task": "some sTuff",
-      "date": "2020-09-30",
-      "completed": false,
+      "sendingUserId": 3,
+      "message": "Hey now",
+      "date": "Sun Sep 27 2020 11:34:51 GMT-0500 (Central Daylight Time)",
       "id": 6
-    }
-  ],
-  "events": [
-    {
-      "id": 2,
-      "name": "party1",
-      "date": "12-12-2020",
-      "address": "213123 blarg st.",
-      "city": "Lousiville",
-      "state": "KY",
-      "zip": 40018,
-      "userId": 1
     },
     {
-      "id": 1,
-      "name": "party2",
-      "date": "12-12-2020",
-      "address": "213123 blarg st.",
-      "city": "Lousiville",
-      "state": "KY",
-      "zip": 40018,
-      "userId": 2
+      "sendingUserId": 4,
+      "message": "WhaT's up",
+      "date": "Tue Sep 29 2020 11:34:59 GMT-0500 (Central Daylight Time)",
+      "id": 7
     },
     {
-      "userId": 2,
-      "name": "huge parTy",
-      "date": "2020-09-29",
-      "address": "awqe",
-      "city": "nashville",
-      "state": "TN",
-      "zip": 37206,
-      "id": 3
+      "sendingUserId": 4,
+      "message": "Fancy panTs",
+      "date": "Tue Sep 29 2020 11:38:06 GMT-0500 (Central Daylight Time)",
+      "id": 8
     },
     {
-      "userId": 2,
-      "name": "even bigger parTy",
-      "date": "2020-10-01",
-      "address": "342 rgdfg sT",
-      "city": "nashville",
-      "state": "TN",
-      "zip": 37206,
-      "id": 4
+      "sendingUserId": 4,
+      "message": "Lol",
+      "date": "Tue Sep 29 2020 20:45:57 GMT-0500 (Central Daylight Time)",
+      "id": 9
     },
     {
-      "userId": 3,
-      "name": "huge parTy",
-      "date": "2020-10-01",
-      "address": "awqe",
-      "city": "nasThville",
-      "state": "TN",
-      "zip": 37206,
-      "id": 5
+      "sendingUserId": 4,
+      "message": "@Morgan: Happy BirThday!",
+      "date": "Tue Sep 29 2020 20:52:18 GMT-0500 (Central Daylight Time)",
+      "userId": 5,
+      "id": 10
+    },
+    {
+      "sendingUserId": 6,
+      "message": "WhaT's up everyone",
+      "date": "Tue Sep 29 2020 20:58:38 GMT-0500 (Central Daylight Time)",
+      "id": 19
+    },
+    {
+      "sendingUserId": 6,
+      "message": "Hey now",
+      "date": "Wed Sep 30 2020 09:08:09 GMT-0500 (Central Daylight Time)",
+      "id": 20
     }
   ]
 }
