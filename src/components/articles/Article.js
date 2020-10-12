@@ -5,7 +5,7 @@ import { ArticleContext } from "./ArticleProvider"
 import { useHistory } from "react-router-dom"
 
 export const Article = ({ article }) => {
-    //useContext hook allows the use of functins formt he articleProvider
+    //useContext hook allows the use of functions form the articleProvider
     const { deleteArticle } = useContext(ArticleContext)
     const history = useHistory()
     //returns an article in semantic Ui elements
