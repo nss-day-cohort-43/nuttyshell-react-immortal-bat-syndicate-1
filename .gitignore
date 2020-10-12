@@ -11,9 +11,9 @@
 # production
 /build
 
-# api
-database.json
 Settings.js
+database.json
+package-lock.json
 
 # misc
 .DS_Store
@@ -29,3 +29,9 @@ yarn-error.log*
 # from previous gitignores
 database.json
 Settings.js
+package-lock.json
+dist/
+.DS_Store
+.vscode
+package.json
+testcode.js
