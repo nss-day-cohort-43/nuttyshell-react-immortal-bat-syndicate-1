@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import { TaskContext } from "./TaskProvider"
 import { useHistory, useParams } from "react-router-dom"
+import { Button, Input, Label, Form } from "semantic-ui-react"
 
 //renders a form to create a new task
 export const TaskForm = () => {
@@ -61,22 +62,22 @@ export const TaskForm = () => {
 
     return (
         <section className="taskForm">
-            <form onSubmit={event => {
+            <Form onSubmit={event => {
                 //prevents submission of form until all fields filled out, then creates a new task
                 event.preventDefault()
                 constructTaskObject()
             }}>
-                <label htmlFor="task">Task: </label>
-                <input defaultValue={task.task} type="text" name="task" onChange={handleControlledInputChange} required />
-                <label htmlFor="date">Date to be Completed: </label>
+                <Label htmlFor="task">Task: </Label>
+                <Input defaultValue={task.task} type="text" name="task" placeholder="Enter task..." onChange={handleControlledInputChange} required />
+                <Label htmlFor="date">Date to be Completed: </Label>
                 {/* prevents user from selecting a past date for completion goal */}
-                <input defaultValue={task.date} type="date" name="date" onChange={handleControlledInputChange} min={new Date(Date.now() - 18000000).toISOString().split("T")[0]} required />
-                <button type="submit" disabled={isLoading}>Save Task</button>
-                <button type="button" onClick={() => {
+                <Input defaultValue={task.date} type="date" name="date" onChange={handleControlledInputChange} min={new Date(Date.now() - 18000000).toISOString().split("T")[0]} required />
+                <Button type="submit" disabled={isLoading}>Save Task</Button>
+                <Button type="button" onClick={() => {
                     //takes user back to tasks list
                     history.push("/tasks")
-                }}>Cancel</button>
-            </form>
+                }}>Cancel</Button>
+            </Form>
         </section>
     )
 }
