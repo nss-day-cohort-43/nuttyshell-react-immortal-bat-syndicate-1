@@ -5,7 +5,7 @@ import { ArticleContext } from "./ArticleProvider"
 import { useHistory } from "react-router-dom"
 
 export const Article = ({ article }) => {
-    //usecontext hook allows the use of functins formt he articleProvider
+    //useContext hook allows the use of functins formt he articleProvider
     const { deleteArticle } = useContext(ArticleContext)
     const history = useHistory()
     //returns an article in semantic Ui elements
@@ -24,13 +24,13 @@ export const Article = ({ article }) => {
                     {/* if the article was posted by the current user it renders buttons for edit or delete */}
                     {article.user.id === parseInt(localStorage.getItem("nutty_customer")) ? 
                     <>
-                        <Button icon id="deleteArticle--${article.id}" className="trashBtn" onClick={
-                            () => {
-                                deleteArticle(article.id)
-                            }}>delete<Icon name='trash alternate outline' /></Button>
-                        <Button icon onClick={() => {
-                            history.push(`/articles/edit/${article?.id}`)
-                            }}>edit<Icon name='edit outline' /></Button>
+                         <Button icon id="deleteArticle--${article.id}" className="trashBtn" onClick={
+                             () => {
+                                 deleteArticle(article.id)
+                             }}><Icon name='trash alternate outline' /></Button>
+                         <Button icon onClick={() => {
+                             history.push(`/articles/edit/${article?.id}`)
+                             }}><Icon name='edit outline' /></Button>
                     </>
                     : null }
                 </div>
