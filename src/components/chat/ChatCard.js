@@ -2,8 +2,6 @@ import React, { useContext } from "react"
 import { useHistory } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
 import { Button, Container, Icon } from "semantic-ui-react"
-import 'semantic-ui-css/semantic.min.css'
-import "./Chat.css"
 
 export const ChatCard = ({ message }) => {
     const { deleteMessage } = useContext(ChatContext)
@@ -19,9 +17,15 @@ export const ChatCard = ({ message }) => {
                 <div className="messageBtns">
                     {message.userId === parseInt(localStorage.getItem("nutty_customer")) ?
                         <>
-                            <Button icon compact className="deleteBtn" onClick={
+                            <Button icon className="editBtn" onClick={
+                                () => history.push(`/messages/edit/${message.id}`)
+                            }><Icon name="edit" />
+                            </Button>
+
+                            <Button icon className="deleteBtn" onClick={
                                 () => deleteMessage(message.id)
-                            }><Icon name="delete" />
+                                    .then(() => history.push(`/messages`))
+                            }><Icon name="trash" />
                             </Button>
                         </>
                         : null}
