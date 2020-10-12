@@ -1,6 +1,9 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import { Home } from "./Home"
+import { ChatProvider } from "../components/chat/ChatProvider"
+import { ChatList } from "../components/chat/ChatList"
+import { ChatForm } from "../components/chat/ChatForm"
 import { TaskProvider } from "./task/TaskProvider"
 import { TaskList } from "./task/TaskList"
 import { TaskForm } from "./task/TaskForm"
@@ -19,6 +22,15 @@ export const ApplicationViews = (props) => {
                 <Home />
             </Route>
 
+            <ChatProvider>
+                <Route exact path="/messages">
+                    <ChatList />
+                </Route>
+
+                <Route exact path="/messages/new">
+                    <ChatForm />
+                </Route>
+            </ChatProvider>
             <TaskProvider>
                 <Route exact path="/tasks">
                     <TaskList />
@@ -48,7 +60,7 @@ export const ApplicationViews = (props) => {
                     <EventForm />
                 </Route>
             </EventProvider>
-            
+
             <EventProvider>
                 <Route exact path="/events/create">
                     <EventForm />
@@ -56,9 +68,9 @@ export const ApplicationViews = (props) => {
             </EventProvider>
 
             <ArticleProvider>
-            <Route exact path="/articles"> 
-                <ArticleList /> 
-            </Route>
+                <Route exact path="/articles">
+                    <ArticleList />
+                </Route>
             </ArticleProvider>
 
             <ArticleProvider>

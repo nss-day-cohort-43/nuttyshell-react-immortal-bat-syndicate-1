@@ -7,27 +7,27 @@ import { Register } from "./auth/Register";
 import "./Nutshell.css";
 
 export const Nutshell = () => (
-  <>
-    <Route
-      render={() => {
-        if (localStorage.getItem("nutty_customer")) {
-          return (
-            <>
-              <NavBar />
-              <ApplicationViews />
-            </>
-          );
-        } else {
-          return <Redirect to="/login" />;
-        }
-      }}
-    />
+    <>
+        <Route
+            render={() => {
+                if (localStorage.getItem("nutty_customer")) {
+                    return (
+                        <>
+                            <NavBar />
+                            <ApplicationViews />
+                        </>
+                    );
+                } else {
+                    return <Redirect to="/login" />;
+                }
+            }}
+        />
 
-    <Route path="/login">
-        <Login />
-    </Route>
-    <Route path="/register">
-        <Register />
-    </Route>
-  </>
+        <Route path="/login">
+            <Login />
+        </Route>
+        <Route path="/register">
+            <Register />
+        </Route>
+    </>
 );

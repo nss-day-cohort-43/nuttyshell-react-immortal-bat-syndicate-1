@@ -25,13 +25,13 @@ package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# from previous gitignores
 database.json
-settings.js
+Settings.js
 package-lock.json
 dist/
 .DS_Store
-database.json
 .vscode
-Settings.js
 package.json
 testcode.js
