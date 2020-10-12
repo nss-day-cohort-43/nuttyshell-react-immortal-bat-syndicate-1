@@ -26,11 +26,20 @@ export const ApplicationViews = (props) => {
                 <Route exact path="/messages">
                     <ChatList />
                 </Route>
+            </ChatProvider>
 
+            <ChatProvider>
                 <Route exact path="/messages/new">
                     <ChatForm />
                 </Route>
             </ChatProvider>
+
+            <ChatProvider>
+                <Route exact path="/messages/edit/:messageId(\d+)">
+                    <ChatForm />
+                </Route>
+            </ChatProvider>
+
             <TaskProvider>
                 <Route exact path="/tasks">
                     <TaskList />

@@ -22,6 +22,17 @@ export const ChatProvider = (props) => {
             .then(getMessages)
     }
 
+    const editMessage = messageObj => {
+        return fetch(`http://localhost:8088/messages/${messageObj.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(messageObj)
+        })
+            .then(getMessages)
+    }
+
     const deleteMessage = messageId => {
         return fetch(`http://localhost:8088/messages/${messageId}`, {
             method: "DELETE"
@@ -29,9 +40,14 @@ export const ChatProvider = (props) => {
             .then(getMessages)
     }
 
+    const getMessageById = (id) => {
+        return fetch(`http://localhost:8088/messages/${id}`)
+            .then(res => res.json())
+    }
+
     return (
         <ChatContext.Provider value={{
-            messages, getMessages, addMessage, deleteMessage
+            messages, getMessages, addMessage, editMessage, deleteMessage, getMessageById
         }}>
             {props.children}
         </ChatContext.Provider>
