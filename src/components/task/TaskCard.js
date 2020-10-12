@@ -11,7 +11,7 @@ export const TaskCard = ({ task }) => {
     return (
         <section className="task">
             <h3 className="task__name">{task.task}</h3>
-            <p>{task.date}</p>
+            <p>{new Date(task.date).toLocaleDateString("en-US")}</p>
             <label htmlFor="complete">Completed? </label>
             <input type="checkbox" onClick={() => {
                 //sets the task to complete and updates it in the database
