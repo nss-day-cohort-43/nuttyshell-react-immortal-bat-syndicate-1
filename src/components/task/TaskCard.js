@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
 import { TaskContext } from "./TaskProvider"
-import "./Task.css"
 import { useHistory } from "react-router-dom"
 
 //Sets up a card for a task

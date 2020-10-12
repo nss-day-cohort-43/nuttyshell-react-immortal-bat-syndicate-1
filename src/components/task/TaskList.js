@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { TaskContext } from "./TaskProvider"
 import { TaskCard } from "./TaskCard"
-import "./Task.css"
 import { useHistory } from "react-router-dom"
 
 export const TaskList = () => {

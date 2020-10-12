@@ -1,4 +1,5 @@
 import React, { useState, createContext } from "react"
+import "./Task.css"
 
 //Creates task context 
 export const TaskContext = createContext()
