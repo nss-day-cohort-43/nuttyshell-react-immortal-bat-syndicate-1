@@ -10,15 +10,14 @@ export const ArticleList = (props) => {
     const history = useHistory()
 
     useEffect(() => {
-        console.log("ArticleList: Initial render before data")
-        getArticles().then(console.log)
+        getArticles()
     }, [])
     return (
             <div 
             className="articles">
-            {/* <Button onClick={() => history.push("/articles/create")}>
+            <Button onClick={() => history.push("/articles/create")}>
                 Add Article
-            </Button> */}
+            </Button>
             {
                 articles?.map(article => <Article key={article.id} article={article} />)
             }

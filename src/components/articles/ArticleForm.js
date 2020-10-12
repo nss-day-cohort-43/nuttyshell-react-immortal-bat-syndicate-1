@@ -96,16 +96,16 @@ export const ArticleForm = () => {
                 defaultValue={article.url}
             />
         <Button 
-            type="button" 
-            className="btn btn-primary" 
-            onClick={ history.push(`/articles`) }>                 
-        Cancel </Button>
-        <Button 
-            type="button" 
+            type="submit" 
             disabled={isLoading}
             className="btn btn-primary">
                 { articleId ? <>Save Article</> : <>Add Article</> }
         </Button>  
+        <Button 
+            type="button" 
+            className="btn btn-primary" 
+            onClick={()=> history.push(`/articles`) }>                 
+        Cancel </Button>
     </Form>
     </>
     )
