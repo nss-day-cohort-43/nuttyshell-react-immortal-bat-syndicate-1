@@ -19,7 +19,7 @@ export const ChatCard = ({ message }) => {
                 <div className="messageBtns">
                     {message.userId === parseInt(localStorage.getItem("nutty_customer")) ?
                         <>
-                            <Button icon compact id="deleteMessage--" className="deleteBtn" onClick={
+                            <Button icon compact className="deleteBtn" onClick={
                                 () => deleteMessage(message.id)
                             }><Icon name="delete" />
                             </Button>
