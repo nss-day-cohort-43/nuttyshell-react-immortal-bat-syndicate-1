@@ -1,17 +1,11 @@
 import React, { useState, createContext } from "react"
+import "./Task.css"
 
 //Creates task context 
 export const TaskContext = createContext()
 
 export const TaskProvider = (props) => {
     const [tasks, setTasks] = useState([])
-
-    //Gets all tasks
-    const getTasks = () => {
-        return fetch("http://localhost:8088/tasks")
-            .then(res => res.json())
-            .then(setTasks)
-    }
 
     //Adds tasks to database
     const addTask = task => {
@@ -22,7 +16,7 @@ export const TaskProvider = (props) => {
             },
             body: JSON.stringify(task)
         })
-            .then(getTasks)
+            .then(getTasksByUserId)
     }
 
     //Gets tasks for the current user
@@ -50,10 +44,27 @@ export const TaskProvider = (props) => {
         }).then(() => getTasksByUserId(localStorage.getItem("nutty_customer")))
     }
 
+    //Gets single task by id
+    const getTaskById = id => {
+        return fetch(`http://localhost:8088/tasks/${id}`)
+            .then(res => res.json())
+    }
+
+    //Updates tasks in the database
+    const updateTask = task => {
+        return fetch(`http://localhost:8088/tasks/${task.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(task)
+        }).then(() => getTasksByUserId(localStorage.getItem("nutty_customer")))
+    }
+
     return (
         //Sends out provider functions so they can be called outside the component tree
         <TaskContext.Provider value={{
-            tasks, getTasks, addTask, getTasksByUserId, removeTask, completeTask
+            tasks, addTask, getTasksByUserId, removeTask, completeTask, getTaskById, updateTask
         }}>
             {props.children}
         </TaskContext.Provider>

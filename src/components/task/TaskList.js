@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react"
 import { TaskContext } from "./TaskProvider"
 import { TaskCard } from "./TaskCard"
-import "./Task.css"
 import { useHistory } from "react-router-dom"
+import { Button, Icon } from "semantic-ui-react"
 
 export const TaskList = () => {
     const { tasks, getTasksByUserId } = useContext(TaskContext)
@@ -19,10 +19,15 @@ export const TaskList = () => {
     return (	
         <>
             <h2>Tasks</h2>
-            <button type="button" onClick={() => {
+            <Button icon positive animated type="button" onClick={() => {
                 //takes user to task form
                 history.push("/tasks/create")
-            }}>New Task</button>
+            }}> 
+                <Button.Content visible>New Task</Button.Content>
+                <Button.Content hidden>
+                    <Icon name='plus circle' />
+                </Button.Content>
+            </Button>
             <div className="tasks">
                 {
                     incompleteTasks.map(task => {
