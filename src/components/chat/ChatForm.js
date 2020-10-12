@@ -15,7 +15,7 @@ export const ChatForm = (props) => {
 
     const constructNewMessage = () => {
         addMessage({
-            sendingUserId: parseInt(localStorage.getItem("nutty_customer")),
+            userId: parseInt(localStorage.getItem("nutty_customer")),
             message: message.content,
             date: new Date().toLocaleString("en-US")
         })
