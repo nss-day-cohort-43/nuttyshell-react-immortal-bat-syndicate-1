@@ -32,16 +32,11 @@ export const ChatForm = (props) => {
         <Form className="messageForm" onSubmit={handleSubmit}>
             <h2 className="messageForm--title">New Message</h2>
 
-            <fieldset>
-                <div className="form-group">
-                    <TextArea id="messageContent" ref={content} className="form-control"
-                        placeholder="Enter your message here..." autoFocus required style={{ minHeight: 100 }} />
-                </div>
-            </fieldset>
+            <Form.TextArea placeholder='Send a message..' />
 
             <Button type="submit" primary compact required className="btn btn-primary">
                 Send
             </Button>
-        </Form>
+        </Form >
     )
 }
