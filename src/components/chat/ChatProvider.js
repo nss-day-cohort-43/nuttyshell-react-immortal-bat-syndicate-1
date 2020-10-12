@@ -22,9 +22,16 @@ export const ChatProvider = (props) => {
             .then(getMessages)
     }
 
+    const deleteMessage = messageId => {
+        return fetch(`http://localhost:8088/messages/${messageId}`, {
+            method: "DELETE"
+        })
+            .then(getMessages)
+    }
+
     return (
         <ChatContext.Provider value={{
-            messages, getMessages, addMessage
+            messages, getMessages, addMessage, deleteMessage
         }}>
             {props.children}
         </ChatContext.Provider>

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
 import { ChatCard } from "./ChatCard"
-import { Button } from "semantic-ui-react"
+import { Button, Container } from "semantic-ui-react"
 import 'semantic-ui-css/semantic.min.css'
 import "./Chat.css"
 
@@ -17,17 +17,17 @@ export const ChatList = () => {
 
     return (
         <>
-            <div className="messages">
-                {
-                    messages.map(message => {
-                        return <ChatCard key={message.id} message={message} />
-                    })
-                }
-            </div>
+            <Container>
+                <div className="messages">
+                    {
+                        messages.map(message => {
+                            return <ChatCard key={message.id} message={message} />
+                        })
+                    }
+                </div>
 
-            <Button primary compact onClick={() => { history.push("messages/new") }}>
-                +
-            </Button>
+                <Button primary compact onClick={() => { history.push("messages/new") }}>+</Button>
+            </Container>
         </>
     )
 }

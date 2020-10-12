@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
-import { Button, Form } from "semantic-ui-react"
+import { Button, Container, Form } from "semantic-ui-react"
 import 'semantic-ui-css/semantic.min.css'
 import "./Chat.css"
 
@@ -37,21 +37,23 @@ export const ChatForm = (props) => {
 
     return (
         <>
-            <Form className="messageForm" onSubmit={handleSubmit}>
-                <h2 className="messageForm--title">New Message</h2>
+            <Container>
+                <Form className="messageForm" onSubmit={handleSubmit}>
+                    <h2 className="messageForm--title">New Message</h2>
 
-                <Form.Input
-                    required
-                    placeholder='Send a message..'
-                    id='messageContent'
-                    name='content'
-                    onChange={handleInputChange}
-                />
+                    <Form.Input
+                        required
+                        placeholder='Send a message..'
+                        id='messageContent'
+                        name='content'
+                        onChange={handleInputChange}
+                    />
 
-                <Button type="submit" primary compact required className="btn btn-primary">
-                    Send
+                    <Button type="submit" primary compact required className="btn btn-primary">
+                        Send
             </Button>
-            </Form >
+                </Form >
+            </Container>
         </>
     )
 }
