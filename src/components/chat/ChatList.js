@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
 import { ChatCard } from "./ChatCard"
-import { Button, Container } from "semantic-ui-react"
+import { Button, Container, Icon } from "semantic-ui-react"
 import 'semantic-ui-css/semantic.min.css'
 import "./Chat.css"
 
@@ -26,7 +26,9 @@ export const ChatList = () => {
                     }
                 </div>
 
-                <Button primary compact onClick={() => { history.push("/messages/new") }}>+</Button>
+                <Button primary icon onClick={() => { history.push("/messages/new") }}>
+                    <Icon name="plus circle" />
+                </Button>
             </Container>
         </>
     )

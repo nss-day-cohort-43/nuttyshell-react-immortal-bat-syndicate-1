@@ -19,12 +19,12 @@ export const ChatCard = ({ message }) => {
                 <div className="messageBtns">
                     {message.userId === parseInt(localStorage.getItem("nutty_customer")) ?
                         <>
-                            <Button icon compact className="editBtn" onClick={
+                            <Button icon className="editBtn" onClick={
                                 () => history.push(`/messages/edit/${message.id}`)
                             }><Icon name="edit" />
                             </Button>
 
-                            <Button icon compact className="deleteBtn" onClick={
+                            <Button icon className="deleteBtn" onClick={
                                 () => deleteMessage(message.id)
                                     .then(() => history.push(`/messages`))
                             }><Icon name="delete" />

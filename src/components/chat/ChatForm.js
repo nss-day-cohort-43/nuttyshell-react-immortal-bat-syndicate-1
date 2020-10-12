@@ -70,10 +70,16 @@ export const ChatForm = (props) => {
                         defaultValue={message.message}
                     />
 
-                    <Button type="submit" primary compact required
+                    <Button type="button" icon onClick={
+                        () => history.push('/messages')
+                    }>
+                        <Icon name="cancel" />
+                    </Button>
+
+                    <Button type="submit" primary icon required
                         className="btn btn-primary"
                         disabled={isLoading}>
-                        {messageId ? <>Edit</> : <>Send</>}
+                        {messageId ? <Icon name="edit" /> : <Icon name="send" />}
                     </Button>
                 </Form >
             </Container>
