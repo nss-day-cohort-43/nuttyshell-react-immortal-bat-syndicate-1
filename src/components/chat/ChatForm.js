@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
-import { Button, Container, Form } from "semantic-ui-react"
+import { Button, Container, Icon, Form } from "semantic-ui-react"
 import 'semantic-ui-css/semantic.min.css'
 import "./Chat.css"
 
 export const ChatForm = (props) => {
-    const { addMessage, getMessageById, updateMessage } = useContext(ChatContext)
+    const { addMessage, getMessageById, editMessage } = useContext(ChatContext)
 
     const [message, setMessage] = useState({})
     const [isLoading, setIsLoading] = useState(true)
@@ -36,12 +36,12 @@ export const ChatForm = (props) => {
         setIsLoading(true)
 
         if (messageId) {
-            updateMessage({
+            editMessage({
                 userId: parseInt(localStorage.getItem("nutty_customer")),
                 message: message.content,
                 date: "edited: " + new Date().toLocaleString("en-US")
             })
-                .then(() => history.push(`/messages`))
+                .then(() => history.push("/messages"))
         } else {
             addMessage({
                 userId: parseInt(localStorage.getItem("nutty_customer")),

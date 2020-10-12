@@ -20,13 +20,13 @@ export const ChatCard = ({ message }) => {
                     {message.userId === parseInt(localStorage.getItem("nutty_customer")) ?
                         <>
                             <Button icon compact className="editBtn" onClick={
-                                history.push(`messages/edit/${message.id}`)
+                                () => history.push(`/messages/edit/${message.id}`)
                             }><Icon name="edit" />
                             </Button>
 
                             <Button icon compact className="deleteBtn" onClick={
                                 () => deleteMessage(message.id)
-                                    .then(() => history.push(`/animals`))
+                                    .then(() => history.push(`/messages`))
                             }><Icon name="delete" />
                             </Button>
                         </>

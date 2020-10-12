@@ -26,7 +26,7 @@ export const ChatList = () => {
                     }
                 </div>
 
-                <Button primary compact onClick={() => { history.push("messages/new") }}>+</Button>
+                <Button primary compact onClick={() => { history.push("/messages/new") }}>+</Button>
             </Container>
         </>
     )
