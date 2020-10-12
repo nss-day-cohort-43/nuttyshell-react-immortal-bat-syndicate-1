@@ -46,7 +46,7 @@ export const WeatherProvider = (props) => {
           }
         })
         const answer = dates2.find((date) => {
-          const [x, suff] = date.dt_txt.split(" ");
+          const x = date.dt_txt.split(" ")[0];
           if (x === compare) {
             return date;
           }
@@ -56,7 +56,6 @@ export const WeatherProvider = (props) => {
       });
     // .then(setWeather);
   };
-
   //gets weather from openweather API in imperial units at given coordinates and assigns it to the weather variable
   const getCurrentWeather = (locationObj) => {
     return fetch(
