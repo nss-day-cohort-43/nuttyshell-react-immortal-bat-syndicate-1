@@ -1,65 +1,107 @@
-import React, { useContext, useEffect, useRef, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from 'react-router-dom';
+import { Button, Form, Header } from "semantic-ui-react";
 import "./Article.css"
 import { ArticleContext } from "./ArticleProvider";
 
-export const ArticleForm = (props => {
-    const { saveArticle } = useContext(ArticleContext)
+export const ArticleForm = () => {
+    const { saveArticle, editArticle, getArticleById,  } = useContext(ArticleContext)
 
     const [ article, setArticle ] = useState({})
+    const [ isLoading, setIsLoading ] = useState(true)
+    const { articleId } = useParams()
 
-    const title = useRef(null)
-    const posterId = useRef(null)
-    const synopsis = useRef(null)
-    const url = useRef(null)
-    
     const history = useHistory();
+//this is passed into onChange in the form fields, it updates state with the new value in the field
+    const handleControlledInputChange = (event) => {
+        const newArticle = { ...article }
+        newArticle[event.target.name] = event.target.value
+        setArticle(newArticle)
+    }
 
-    
-    // useEffect(() => {
-    //     getArticle().then(getLocations)
-    //  }, [])
-
-
-    const contructNewArticle = () => {
-        saveArticle({
-            userId: parseInt(localStorage.getItem("nutty_customer")),
-            title: title.current.value,
-            date: new Date,
-            synopsis: synopsis.current.value,
-            url: url.current.value
-        }).then(() => history.push("/articles"))
+    useEffect(() => {
+        let mounted = true;
+        if (articleId){
+            getArticleById(articleId)
+            .then(article => {
+                if(mounted){
+                setArticle(article)
+                setIsLoading(false)
+                }
+            })
+        } else {
+            setIsLoading(false)
         }
+        return () => mounted = false
+    }, [])
 
+    //either creates the article object then saves a new or an edited article object
+    const contructNewArticle = () => {
+        setIsLoading(true);
+        if ( articleId ) {
+            editArticle({
+                id: article.id,
+                userId: parseInt(localStorage.getItem("nutty_customer")),
+                title: article.title,
+                date: new Date(),
+                synopsis: article.synopsis,
+                url: article.url,
+            })
+                .then(() => history.push(`/articles`))
+        } else {
+            saveArticle({
+                userId: parseInt(localStorage.getItem("nutty_customer")),
+                title: article.title,
+                date: new Date(),
+                synopsis: article.synopsis,
+                url: article.url,
+            })
+                .then(() => history.push(`/articles`))
+        }
+    }
+//adds the form that the user can use to add or edit articles, if its an edit, 
+//the fields will be preloaded with the article to edit
     return (
-        <form className="articleForm">
-        <h2 className="articleForm__title">New Article</h2>
-        <fieldset>
-            <div className="form-group">
-                <label htmlFor="articleTitle">Article Title: </label>
-                <input type="text" id="articleTitle" ref={title} required autoFocus className="form-control" placeholder="Article title" />
-            </div>
-        </fieldset>        
-        <fieldset>
-            <div className="form-group">
-                <label htmlFor="articleSynopsis">Article Synopsis: </label>
-                <input type="text" id="articleTitle" ref={synopsis} required autoFocus className="form-control" placeholder="Article synopsis" />
-            </div>
-        </fieldset>
-        <fieldset>
-            <div className="form-group">
-                <label htmlFor="articleTitle">Article URL: </label>
-                <input type="text" id="articleUrl" ref={url} required autoFocus className="form-control" placeholder="Article url" />
-            </div>
-        </fieldset>
-        <button type="submit"
-            onClick={evt => {
-                evt.preventDefault() // Prevent browser from submitting the form
-                contructNewArticle()
-            }}
+        <>
+        <Form className="articleForm" onSubmit={ e => {
+            e.preventDefault() // Prevent browser from submitting the form
+            contructNewArticle()
+        }}>
+            <Header as='h2' className="articleForm__title">New Article</Header>
+            <Form.Input
+                required
+                label='Article Title'
+                placeholder='Article Title'
+                id='articleTitle'
+                name="title"
+                onChange={handleControlledInputChange} 
+                defaultValue={article.title}
+            />
+            <Form.Input
+                required
+                label='Article Synopsis'
+                placeholder='Article Synopsis'
+                id='articleSynopsis'
+                name="synopsis"
+                onChange={handleControlledInputChange} 
+                defaultValue={article.synopsis}
+            />
+            <Form.Input
+                required
+                label='Article URL'
+                placeholder='Article URL'
+                id='articleUrl'
+                name="url"
+                onChange={handleControlledInputChange} 
+                defaultValue={article.url}
+            />
+        <Button 
+            type="submit" 
+            disabled={isLoading}
             className="btn btn-primary">
-            Save Article
-        </button>
-    </form>
+                {/* { articleId ? <>Save Article</> : <>Add Animal</> } */}
+                save </Button>
+    </Form>
+    </>
     )
-})
+}

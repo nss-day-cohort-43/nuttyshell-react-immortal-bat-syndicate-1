@@ -2,12 +2,14 @@ import React, { useState, createContext } from "react"
 
 export const ArticleContext = createContext()
 
+//sets up all the fetch functions I'll need for the module
 export const ArticleProvider = (props) => {
     const [articles, setArticles] = useState([])
 
     const getArticles = () => {
         return fetch('http://localhost:8088/news?_expand=user')
         .then(response => response.json())
+        .then(res=> res.reverse())
         .then(setArticles)
     }
     
@@ -24,7 +26,7 @@ export const ArticleProvider = (props) => {
     
     // allows user to edit their articles
     const editArticle = artObj => {
-        fetch(`http://localhost:8088/news/${artObj.id}`, {
+        return fetch(`http://localhost:8088/news/${artObj.id}`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json"
@@ -41,13 +43,13 @@ export const ArticleProvider = (props) => {
     }
 
     const getArticleById = (id) => {
-        return fetch('http://localhost:8088/news/${articleId}?_expand=users')
+        return fetch(`http://localhost:8088/news/${id}?_expand=user`)
             .then(res => res.json())
     }
 
     return (
         <ArticleContext.Provider value={{
-            articles, getArticleById, getArticles, saveArticle, editArticle, deleteArticle
+            articles, getArticles, saveArticle, deleteArticle, editArticle, getArticleById
         }}>
             {props.children}
         </ArticleContext.Provider>
