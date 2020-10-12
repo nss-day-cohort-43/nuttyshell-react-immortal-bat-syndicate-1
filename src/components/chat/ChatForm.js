@@ -37,6 +37,7 @@ export const ChatForm = (props) => {
 
         if (messageId) {
             editMessage({
+                id: messageId,
                 userId: parseInt(localStorage.getItem("nutty_customer")),
                 message: message.content,
                 date: "edited: " + new Date().toLocaleString("en-US")
@@ -59,7 +60,9 @@ export const ChatForm = (props) => {
                     evt.preventDefault()
                     constructNewMessage()
                 }}>
-                    <h2 className="messageForm--title">New Message</h2>
+                    <h2 className="messageForm--title">
+                        {messageId ? "Edit Message" : "New Message"}
+                    </h2>
 
                     <Form.Input
                         required

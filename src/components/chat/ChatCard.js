@@ -27,7 +27,7 @@ export const ChatCard = ({ message }) => {
                             <Button icon className="deleteBtn" onClick={
                                 () => deleteMessage(message.id)
                                     .then(() => history.push(`/messages`))
-                            }><Icon name="delete" />
+                            }><Icon name="trash" />
                             </Button>
                         </>
                         : null}
