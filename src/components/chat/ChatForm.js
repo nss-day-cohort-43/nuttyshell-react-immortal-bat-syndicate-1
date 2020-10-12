@@ -64,6 +64,7 @@ export const ChatForm = (props) => {
 
                     <Form.Input
                         required
+                        type="text"
                         placeholder='Send a message..'
                         id='messageContent'
                         name='content'
@@ -71,16 +72,24 @@ export const ChatForm = (props) => {
                         defaultValue={message.message}
                     />
 
-                    <Button type="button" icon onClick={
-                        () => history.push('/messages')
-                    }>
-                        <Icon name="cancel" />
+                    <Button animated="fade">
+                        <Button.Content visible>Cancel</Button.Content>
+                        <Button.Content hidden type="button" onClick={
+                            () => history.push('/messages')
+                        }>
+                            <Icon name="cancel" />
+                        </Button.Content>
                     </Button>
 
-                    <Button type="submit" primary icon required
-                        className="btn btn-primary"
-                        disabled={isLoading}>
-                        {messageId ? <Icon name="edit" /> : <Icon name="send" />}
+                    <Button primary animated="fade">
+                        <Button.Content visible>
+                            {messageId ? "Edit" : "Send"}
+                        </Button.Content>
+                        <Button.Content type="submit" hidden
+                            className="btn btn-primary"
+                            disabled={isLoading}>
+                            {messageId ? <Icon name="edit" /> : <Icon name="send" />}
+                        </Button.Content>
                     </Button>
                 </Form >
             </Container>
