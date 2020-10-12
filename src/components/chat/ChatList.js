@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
 import { ChatCard } from "./ChatCard"
-import { Button, Container, Icon } from "semantic-ui-react"
+import { Button, Container, Header, Icon } from "semantic-ui-react"
 
 export const ChatList = () => {
     const { messages, getMessages } = useContext(ChatContext)
@@ -16,6 +16,8 @@ export const ChatList = () => {
     return (
         <>
             <Container>
+                <Header as='h2'>Messages</Header>
+
                 <div className="messages">
                     {
                         messages.map(message => {

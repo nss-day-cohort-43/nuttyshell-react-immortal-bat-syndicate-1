@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
-import { Button, Container, Icon, Form } from "semantic-ui-react"
+import { Button, Container, Header, Icon, Form } from "semantic-ui-react"
 
 export const ChatForm = (props) => {
     const { addMessage, getMessageById, editMessage } = useContext(ChatContext)
@@ -58,9 +58,9 @@ export const ChatForm = (props) => {
                     evt.preventDefault()
                     constructNewMessage()
                 }}>
-                    <h2 className="messageForm--title">
+                    <Header as='h2' className="messageForm--title">
                         {messageId ? "Edit Message" : "New Message"}
-                    </h2>
+                    </Header>
 
                     <Form.Input
                         required
@@ -74,7 +74,7 @@ export const ChatForm = (props) => {
 
                     <Button animated="fade">
                         <Button.Content visible>Cancel</Button.Content>
-                        <Button.Content hidden type="button" onClick={
+                        <Button.Content hidden onClick={
                             () => history.push('/messages')
                         }>
                             <Icon name="cancel" />
