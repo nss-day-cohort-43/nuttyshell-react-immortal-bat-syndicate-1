@@ -1,4 +1,5 @@
 import React, { useState, createContext } from "react"
+import "./Chat.css"
 
 export const ChatContext = createContext()
 

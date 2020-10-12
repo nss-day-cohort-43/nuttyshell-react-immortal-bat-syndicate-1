@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
 import { Button, Container, Icon, Form } from "semantic-ui-react"
-import 'semantic-ui-css/semantic.min.css'
-import "./Chat.css"
 
 export const ChatForm = (props) => {
     const { addMessage, getMessageById, editMessage } = useContext(ChatContext)

@@ -3,8 +3,6 @@ import { useHistory } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
 import { ChatCard } from "./ChatCard"
 import { Button, Container, Icon } from "semantic-ui-react"
-import 'semantic-ui-css/semantic.min.css'
-import "./Chat.css"
 
 export const ChatList = () => {
     const { messages, getMessages } = useContext(ChatContext)
