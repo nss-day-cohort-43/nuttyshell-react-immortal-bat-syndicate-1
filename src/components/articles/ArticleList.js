@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react"
+import React, { useContext, useEffect } from "react"
 import { ArticleContext } from "./ArticleProvider"
 import { Article } from "./Article.js"
 import "./Article.css"
@@ -13,8 +13,7 @@ export const ArticleList = (props) => {
         getArticles()
     }, [])
     return (
-            <div 
-            className="articles">
+            <div className="articles">
             <Button onClick={() => history.push("/articles/create")}>
                 Add Article
             </Button>

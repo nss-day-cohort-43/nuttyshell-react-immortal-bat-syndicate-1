@@ -1,4 +1,4 @@
-import React, { createRef, useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from 'react-router-dom';
 import { Button, Form, Header } from "semantic-ui-react";
 import "./Article.css"
