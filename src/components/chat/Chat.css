@@ -1,3 +1,15 @@
+.messages--container {
+    overflow: hidden;
+}
+
+.messages {
+    overflow-y: scroll;
+}
+
+.message--container {
+    margin-bottom: 25px;
+}
+
 .message--poster {
     cursor: pointer;
 }

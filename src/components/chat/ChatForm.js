@@ -72,25 +72,29 @@ export const ChatForm = (props) => {
                         defaultValue={message.message}
                     />
 
-                    <Button animated="fade">
-                        <Button.Content visible>Cancel</Button.Content>
-                        <Button.Content hidden onClick={
-                            () => history.push('/messages')
-                        }>
-                            <Icon name="cancel" />
-                        </Button.Content>
-                    </Button>
+                    <Button.Group>
+                        <Button animated="fade">
+                            <Button.Content visible>Cancel</Button.Content>
+                            <Button.Content hidden onClick={
+                                () => history.push('/messages')
+                            }>
+                                <Icon name="cancel" />
+                            </Button.Content>
+                        </Button>
 
-                    <Button primary animated="fade">
-                        <Button.Content visible>
-                            {messageId ? "Edit" : "Send"}
-                        </Button.Content>
-                        <Button.Content type="submit" hidden
-                            className="btn btn-primary"
-                            disabled={isLoading}>
-                            {messageId ? <Icon name="edit" /> : <Icon name="send" />}
-                        </Button.Content>
-                    </Button>
+                        <Button.Or />
+
+                        <Button positive animated="fade">
+                            <Button.Content visible>
+                                {messageId ? "Edit" : "Send"}
+                            </Button.Content>
+                            <Button.Content type="submit" hidden
+                                className="btn btn-primary"
+                                disabled={isLoading}>
+                                {messageId ? <Icon name="edit" /> : <Icon name="send" />}
+                            </Button.Content>
+                        </Button>
+                    </Button.Group>
                 </Form >
             </Container>
         </>

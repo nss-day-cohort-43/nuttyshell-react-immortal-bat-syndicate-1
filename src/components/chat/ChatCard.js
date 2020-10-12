@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { useHistory } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
-import { Button, Container, Header, Icon, Modal } from "semantic-ui-react"
+import { Button, Container, Header, Icon, Message, Modal } from "semantic-ui-react"
 
 export const ChatCard = ({ message }) => {
     const { deleteMessage } = useContext(ChatContext)
@@ -9,7 +9,7 @@ export const ChatCard = ({ message }) => {
 
     return (
         <Container className="message--container">
-            <section className="message">
+            <Message className="message" floating>
                 <Modal
                     trigger={<Header as="h3" className="message--poster">{message.user.username}</Header>}
                     header="Test"
@@ -38,7 +38,7 @@ export const ChatCard = ({ message }) => {
                         </>
                         : null}
                 </div>
-            </section>
+            </Message>
         </Container>
     )
 }
