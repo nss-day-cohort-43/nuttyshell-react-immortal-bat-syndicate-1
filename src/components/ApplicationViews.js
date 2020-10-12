@@ -11,6 +11,7 @@ import { EventForm } from "./events/EventForm";
 import { ArticleProvider } from "./articles/ArticleProvider";
 import { ArticleList } from "./articles/ArticleList"
 import { ArticleForm } from "./articles/ArticleForm"
+import { WeatherProvider } from "./weather/WeatherProvider"
 
 export const ApplicationViews = (props) => {
     return (
@@ -38,9 +39,11 @@ export const ApplicationViews = (props) => {
             </EventProvider>
 
             <EventProvider>
+              <WeatherProvider>
                 <Route exact path="/events/detail/:eventId(\d+)">
                     <EventDetail />
                 </Route>
+                </WeatherProvider>
             </EventProvider>
 
             <EventProvider>

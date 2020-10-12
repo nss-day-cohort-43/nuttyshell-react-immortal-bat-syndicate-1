@@ -24,6 +24,7 @@ export const EventList = _ => {
         }}>Add Event</button>
         <div className="events">
             {events.map(event => {
+                
                 return (
                     <EventCard 
                     key={event.id}

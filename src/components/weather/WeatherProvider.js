@@ -1,17 +1,60 @@
 import React, { useState, createContext } from "react";
-import api from "../Settings.js";
+import api from "../../Settings.js";
 
 export const WeatherContext = createContext();
 
 export const WeatherProvider = (props) => {
   const [weather, setWeather] = useState([]);
 
-  const getWeather = (object) => {
+  const getWeatherTemp = (object) => {
     return fetch(
       `https://api.openweathermap.org/data/2.5/forecast?zip=${object.zip},us&units=imperial&appid=${api.weatherKey}`
     )
       .then((response) => response.json())
-      .then(setWeather);
+      .then((res) => {
+        let compare = object.date;
+        let dates = res.list
+        let dates2 = dates.filter(date => {
+          const [x,suff] = date.dt_txt.split(" ")
+          if (suff === "15:00:00") { 
+            return date 
+          }
+        })
+        const answer = dates2.find((date) => {
+          const [x, suff] = date.dt_txt.split(" ");
+          if (x === compare) {
+            return date;
+          }
+        });
+        if (answer) { return answer.main }
+        else { return dates[0].main }
+      });
+    // .then(setWeather);
+  };
+  const getWeatherPop = (object) => {
+    return fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?zip=${object.zip},us&units=imperial&appid=${api.weatherKey}`
+    )
+      .then((response) => response.json())
+      .then((res) => {
+        let compare = object.date;
+        let dates = res.list
+        let dates2 = dates.filter(date => {
+          const [x,suff] = date.dt_txt.split(" ")
+          if (suff === "15:00:00") { 
+            return date 
+          }
+        })
+        const answer = dates2.find((date) => {
+          const [x, suff] = date.dt_txt.split(" ");
+          if (x === compare) {
+            return date;
+          }
+        });
+        if (answer) { return answer }
+        else { return dates[0] }
+      });
+    // .then(setWeather);
   };
 
   //gets weather from openweather API in imperial units at given coordinates and assigns it to the weather variable
@@ -27,7 +70,8 @@ export const WeatherProvider = (props) => {
       value={{
         weather,
         getCurrentWeather,
-        getWeather,
+        getWeatherTemp,
+        getWeatherPop,
       }}
     >
       {props.children}

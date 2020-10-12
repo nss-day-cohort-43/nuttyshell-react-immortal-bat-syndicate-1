@@ -8,7 +8,7 @@ export const EventProvider = (props) => {
 
   //gets events from API
   const getEvents = () => {
-    return fetch("http://localhost:8088/events?_expand=user")
+    return fetch("http://localhost:8088/events?_sort=date&order=desc&_expand=user")
       .then((response) => response.json())
       .then(setEvents);
   };
