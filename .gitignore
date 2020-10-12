@@ -25,10 +25,5 @@ package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-Settings.js
-package-lock.json
-dist/
-.DS_Store
 .vscode
 testcode.js

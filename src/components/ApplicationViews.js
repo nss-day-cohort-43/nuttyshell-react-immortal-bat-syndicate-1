@@ -52,6 +52,12 @@ export const ApplicationViews = (props) => {
                 </Route>
             </TaskProvider>
 
+            <TaskProvider>
+                <Route exact path="/tasks/edit/:taskId(\d+)">
+                    <TaskForm />
+                </Route>
+            </TaskProvider>
+
             <EventProvider>
                 <Route exact path="/events">
                     <EventList />
