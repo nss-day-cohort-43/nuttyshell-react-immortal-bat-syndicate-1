@@ -1,10 +1,12 @@
 import React, { useContext } from "react"
 import { TaskContext } from "./TaskProvider"
 import "./Task.css"
+import { useHistory } from "react-router-dom"
 
 //Sets up a card for a task
 export const TaskCard = ({ task }) => {
     const { removeTask, completeTask } = useContext(TaskContext)
+    const history = useHistory()
 
     return (
         <section className="task">
@@ -20,6 +22,10 @@ export const TaskCard = ({ task }) => {
                 //deletes task from the database
                 removeTask(task.id)
             }}>Delete</button>
+            <button onClick={() => {
+                //Takes user to form to edit task
+                history.push(`/tasks/edit/${task.id}`)
+            }}>Edit</button>
         </section>  
     )
 }

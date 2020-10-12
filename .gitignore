@@ -26,8 +26,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 dist/
-.DS_Store
 .vscode
-Settings.js
 package.json
 testcode.js
