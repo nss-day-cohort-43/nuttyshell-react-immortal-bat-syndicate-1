@@ -1,5 +1,5 @@
 import React from "react"
-import { Route } from "react-router-dom"
+import { Route, Router } from "react-router-dom"
 import { Home } from "./Home"
 import { ChatProvider } from "../components/chat/ChatProvider"
 import { ChatList } from "../components/chat/ChatList"
@@ -14,6 +14,9 @@ import { EventForm } from "./events/EventForm";
 import { ArticleProvider } from "./articles/ArticleProvider";
 import { ArticleList } from "./articles/ArticleList"
 import { ArticleForm } from "./articles/ArticleForm"
+import { FriendProvider } from "./friend/FriendProvider"
+import { FriendList } from "./friend/FriendsList"
+import { UserProvider } from "./user/UserProvider"
 
 export const ApplicationViews = (props) => {
     return (
@@ -48,6 +51,12 @@ export const ApplicationViews = (props) => {
 
             <TaskProvider>
                 <Route exact path="/tasks/create">
+                    <TaskForm />
+                </Route>
+            </TaskProvider>
+
+            <TaskProvider>
+                <Route exact path="/tasks/edit/:taskId(\d+)">
                     <TaskForm />
                 </Route>
             </TaskProvider>
@@ -93,6 +102,14 @@ export const ApplicationViews = (props) => {
                     <ArticleForm />
                 </Route>
             </ArticleProvider>
+
+            <FriendProvider>
+                <UserProvider>
+                    <Route exact path="/friends">
+                        <FriendList />
+                    </Route>
+                </UserProvider>
+            </FriendProvider>
         </>
     )
 }

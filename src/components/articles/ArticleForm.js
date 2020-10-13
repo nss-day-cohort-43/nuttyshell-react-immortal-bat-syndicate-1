@@ -59,14 +59,14 @@ export const ArticleForm = () => {
                 .then(() => history.push(`/articles`))
         }
     }
-//adds the form that the user can use to add or edit articles, if its an edit, 
-//the fields will be preloaded with the article to edit
+    //adds the form that the user can use to add or edit articles, if its an edit, 
+    //the fields will be preloaded with the article to edit
     return (
         <>
-        <Form className="articleForm" onSubmit={ e => {
+        <Form className="articleForm" 
+            onSubmit={ e => {
             e.preventDefault() // Prevent browser from submitting the form
-            contructNewArticle()
-        }}>
+            contructNewArticle() }}>
             <Header as='h2' className="articleForm__title">New Article</Header>
             <Form.Input
                 required
@@ -99,8 +99,13 @@ export const ArticleForm = () => {
             type="submit" 
             disabled={isLoading}
             className="btn btn-primary">
-                {/* { articleId ? <>Save Article</> : <>Add Animal</> } */}
-                save </Button>
+                { articleId ? <>Save Article</> : <>Add Article</> }
+        </Button>  
+        <Button 
+            type="button" 
+            className="btn btn-primary" 
+            onClick={()=> history.push(`/articles`) }>                 
+        Cancel </Button>
     </Form>
     </>
     )
