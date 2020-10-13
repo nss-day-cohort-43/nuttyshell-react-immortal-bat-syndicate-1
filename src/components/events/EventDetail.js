@@ -14,13 +14,14 @@ export const EventDetail = (_) => {
   const user = parseInt(localStorage.getItem("nutty_customer"));
   const [owned, setOwned] = useState(false);
   const history = useHistory();
+  var options = {timezone: 'UTC'}
 
   const { eventId } = useParams();
 
   useEffect(() => {
     getEventById(eventId).then((response) => {
       setEvent(response);
-      if (user === response.user.id) {
+      if (user === response?.user.id) {
         setOwned(true);
       }
     });
@@ -44,7 +45,7 @@ export const EventDetail = (_) => {
     <section className="events">
       <section className="event">
         <h3 className="event__name">{event.name}</h3>
-        <div>Date: {new Date(event.date).toLocaleDateString("en-US")}</div>
+        <div>Date: {new Date(`${event.date}T07:00:00Z`).toDateString("en-US")}</div>
         <div>
           Location: {event.address} {event.city}, {event.state} {event.zip}{" "}
         </div>

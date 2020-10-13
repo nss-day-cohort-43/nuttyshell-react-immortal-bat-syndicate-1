@@ -8,7 +8,7 @@ export const EventCard = ({ event}) => {
       <h3 className="event__name">
         <Link to={`/events/detail/${event.id}`}> {event.name}</Link>
       </h3>
-      <div>Date: {new Date(event.date).toLocaleDateString("en-US")}</div>
+      <div>Date: {new Date(`${event.date}T07:00:00Z`).toDateString("en-US")}</div>
     </section>
   );
 };
@@ -18,7 +18,7 @@ export const UpcomingEventCard = ({ event}) => {
         <h2 className="event__name">
           <Link to={`/events/detail/${event.id}`}> {event.name}</Link>
         </h2>
-        <div>Date: {new Date(event.date).toLocaleDateString("en-US")}</div>
+        <div>Date: {new Date(`${event.date}T07:00:00Z`).toDateString("en-US")}</div>
       </section>
     );
   };

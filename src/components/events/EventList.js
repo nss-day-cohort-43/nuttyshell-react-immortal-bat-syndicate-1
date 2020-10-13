@@ -10,7 +10,7 @@ export const EventList = (_) => {
 
   useEffect(() => {
     getEvents()
-  }, [getEvents]);
+  }, []);
 
   const filteredEvents = events.filter(event => { 
     return event.date >= new Date().toISOString().split("T")[0]
