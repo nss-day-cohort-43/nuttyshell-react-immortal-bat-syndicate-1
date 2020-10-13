@@ -5,12 +5,13 @@ import { Button, Container, Header, Icon, Message, Modal } from "semantic-ui-rea
 
 export const ChatCard = ({ message }) => {
     const { deleteMessage } = useContext(ChatContext)
+
+    const currentUser = parseInt(localStorage.getItem("nutty_customer"))
+
     const history = useHistory()
 
-    let currentUser = parseInt(localStorage.getItem("nutty_customer"))
-
     if (message.userId === currentUser) {
-        // renders chat bubble for current user
+        // renders chat bubbles for current user
         return (
             <Container className="message--container">
                 <Message className="message" floating style={{ backgroundColor: "#fff" }}>
@@ -37,7 +38,7 @@ export const ChatCard = ({ message }) => {
             </Container>
         )
     } else {
-        // renders chat bubble for global, non-friend users
+        // renders global chat bubbles
         return (
             <Container className="message--container">
                 <Message className="message" floating style={{ backgroundColor: "lightgreen" }}>

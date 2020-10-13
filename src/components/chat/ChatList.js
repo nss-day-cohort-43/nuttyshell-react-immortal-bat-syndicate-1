@@ -1,11 +1,15 @@
-import React, { useContext, useEffect, useRef } from "react"
+import React, { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
+import { UserContext } from "../user/UserProvider"
+import { FriendContext } from "../friend/FriendProvider"
 import { ChatContext } from "./ChatProvider"
 import { ChatCard } from "./ChatCard"
 import { Button, Container, Header, Icon } from "semantic-ui-react"
 
 export const ChatList = () => {
     const { messages, getMessages } = useContext(ChatContext)
+    const { users, getUsers } = useContext(UserContext)
+    const { friends, getFriends } = useContext(FriendContext)
 
     useEffect(() => {
         getMessages()
@@ -16,7 +20,7 @@ export const ChatList = () => {
     return (
         <>
             <Container>
-                <Header as='h2'><Icon name="chat" />Messages</Header>
+                <Header as='h2'><Icon name="comments" />Messages</Header>
 
                 <div className="messages--window">
                     <section className="messages--container">
