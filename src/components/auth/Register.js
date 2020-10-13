@@ -5,23 +5,31 @@ import "./Login.css"
 export const Register = (props) => {
     const firstName = useRef()
     const lastName = useRef()
+    const username = useRef()
     const email = useRef()
+    let emailExist = false
     const conflictDialog = useRef()
     const history = useHistory()
 
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?email=${email.current.value}`)
             .then(res => res.json())
-            .then(user => user.length)
+            .then(user => user.length ? emailExist = true : emailExist = false)
+            .then(existingNameCheck)
+    }
+
+    const existingNameCheck = () => {
+        return fetch(`http://localhost:8088/users`)
+            .then(res => res.json())
+            .then(users => users.find(user => user.username.toUpperCase() === username.current.value.toUpperCase()))
     }
 
     const handleRegister = (e) => {
         e.preventDefault()
 
-
         existingUserCheck()
             .then((userExists) => {
-                if (!userExists) {
+                if (!userExists && !emailExist) {
                     fetch("http://localhost:8088/users", {
                         method: "POST",
                         headers: {
@@ -30,6 +38,7 @@ export const Register = (props) => {
                         body: JSON.stringify({
                             email: email.current.value,
                             name: `${firstName.current.value} ${lastName.current.value}`,
+                            username: username.current.value
                         })
                     })
                         .then(_ => _.json())
@@ -51,7 +60,7 @@ export const Register = (props) => {
         <main style={{ textAlign: "center" }}>
 
             <dialog className="dialog dialog--password" ref={conflictDialog}>
-                <div>Account with that email address already exists</div>
+                <div>Account with that email address or username already exists</div>
                 <button className="button--close" onClick={e => conflictDialog.current.close()}>Close</button>
             </dialog>
 
@@ -64,6 +73,10 @@ export const Register = (props) => {
                 <fieldset>
                     <label htmlFor="lastName"> Last Name </label>
                     <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="username"> Username </label>
+                    <input ref={username} type="text" name="username" className="form-control" placeholder="Username" required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="inputEmail"> Email address </label>
