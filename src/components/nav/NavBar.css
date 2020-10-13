@@ -2,6 +2,15 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
+    align-items: center;
+    color: white;
+    background-color: #111;
+    height: 50px;
+    margin: 0 0 25px 0;
+}
+
+.navbar a {
+    color: white;
 }
 
 .navbar__item {
