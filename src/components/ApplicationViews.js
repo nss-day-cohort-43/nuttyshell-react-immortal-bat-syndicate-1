@@ -20,105 +20,105 @@ import { FriendList } from "./friend/FriendsList";
 import { UserProvider } from "./user/UserProvider";
 
 export const ApplicationViews = (props) => {
-  return (
-    <>
-      <WeatherProvider>
-        <Route exact path="/">
-          <Home />
-        </Route>
-      </WeatherProvider>
+    return (
+        <>
+            <WeatherProvider>
+                <Route exact path="/">
+                    <Home />
+                </Route>
+            </WeatherProvider>
 
-      <TaskProvider>
-        <Route exact path="/tasks">
-          <TaskList />
-        </Route>
-      </TaskProvider>
+            <TaskProvider>
+                <Route exact path="/tasks">
+                    <TaskList />
+                </Route>
+            </TaskProvider>
 
-      <TaskProvider>
-        <Route exact path="/tasks/create">
-          <TaskForm />
-        </Route>
-      </TaskProvider>
+            <TaskProvider>
+                <Route exact path="/tasks/create">
+                    <TaskForm />
+                </Route>
+            </TaskProvider>
 
-      <TaskProvider>
-        <Route exact path="/tasks/edit/:taskId(\d+)">
-          <TaskForm />
-        </Route>
-      </TaskProvider>
-      
-      <UserProvider>
-        <FriendProvider>
-          <ChatProvider>
-            <Route exact path="/messages">
-              <ChatList />
-            </Route>
-          </ChatProvider>
+            <TaskProvider>
+                <Route exact path="/tasks/edit/:taskId(\d+)">
+                    <TaskForm />
+                </Route>
+            </TaskProvider>
 
-          <ChatProvider>
-            <Route exact path="/messages/new">
-              <ChatForm />
-            </Route>
-          </ChatProvider>
+            <UserProvider>
+                <FriendProvider>
+                    <ChatProvider>
+                        <Route exact path="/messages">
+                            <ChatList />
+                        </Route>
+                    </ChatProvider>
 
-          <ChatProvider>
-            <Route exact path="/messages/edit/:messageId(\d+)">
-              <ChatForm />
-            </Route>
-          </ChatProvider>
-        </FriendProvider>
-      </UserProvider>
+                    <ChatProvider>
+                        <Route exact path="/messages/new">
+                            <ChatForm />
+                        </Route>
+                    </ChatProvider>
 
-      <EventProvider>
-        <Route exact path="/events">
-          <EventList />
-        </Route>
-      </EventProvider>
+                    <ChatProvider>
+                        <Route exact path="/messages/edit/:messageId(\d+)">
+                            <ChatForm />
+                        </Route>
+                    </ChatProvider>
+                </FriendProvider>
+            </UserProvider>
 
-      <EventProvider>
-        <WeatherProvider>
-          <Route exact path="/events/detail/:eventId(\d+)">
-            <EventDetail />
-          </Route>
-        </WeatherProvider>
-      </EventProvider>
+            <EventProvider>
+                <Route exact path="/events">
+                    <EventList />
+                </Route>
+            </EventProvider>
 
-      <EventProvider>
-        <Route path="/events/edit/:eventId(\d+)">
-          <EventForm />
-        </Route>
-      </EventProvider>
+            <EventProvider>
+                <WeatherProvider>
+                    <Route exact path="/events/detail/:eventId(\d+)">
+                        <EventDetail />
+                    </Route>
+                </WeatherProvider>
+            </EventProvider>
 
-      <EventProvider>
-        <Route exact path="/events/create">
-          <EventForm />
-        </Route>
-      </EventProvider>
+            <EventProvider>
+                <Route path="/events/edit/:eventId(\d+)">
+                    <EventForm />
+                </Route>
+            </EventProvider>
 
-      <ArticleProvider>
-        <Route exact path="/articles">
-          <ArticleList />
-        </Route>
-      </ArticleProvider>
+            <EventProvider>
+                <Route exact path="/events/create">
+                    <EventForm />
+                </Route>
+            </EventProvider>
 
-      <ArticleProvider>
-        <Route exact path="/articles/create">
-          <ArticleForm />
-        </Route>
-      </ArticleProvider>
+            <ArticleProvider>
+                <Route exact path="/articles">
+                    <ArticleList />
+                </Route>
+            </ArticleProvider>
 
-      <ArticleProvider>
-        <Route exact path="/articles/edit/:articleId(\d+)">
-          <ArticleForm />
-        </Route>
-      </ArticleProvider>
+            <ArticleProvider>
+                <Route exact path="/articles/create">
+                    <ArticleForm />
+                </Route>
+            </ArticleProvider>
 
-      <FriendProvider>
-        <UserProvider>
-          <Route exact path="/friends">
-            <FriendList />
-          </Route>
-        </UserProvider>
-      </FriendProvider>
-    </>
-  );
+            <ArticleProvider>
+                <Route exact path="/articles/edit/:articleId(\d+)">
+                    <ArticleForm />
+                </Route>
+            </ArticleProvider>
+
+            <FriendProvider>
+                <UserProvider>
+                    <Route exact path="/friends">
+                        <FriendList />
+                    </Route>
+                </UserProvider>
+            </FriendProvider>
+        </>
+    );
 };

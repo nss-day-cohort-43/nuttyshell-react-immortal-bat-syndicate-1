@@ -5,7 +5,6 @@ import { NavBar } from "./nav/NavBar";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 import "./Nutshell.css";
-import { NavProvider } from "./nav/NavProvider";
 
 export const Nutshell = () => (
   <>
@@ -14,10 +13,8 @@ export const Nutshell = () => (
         if (localStorage.getItem("nutty_user")) {
           return (
             <>
-              <NavProvider>
-                <NavBar />
-                <ApplicationViews />
-              </NavProvider>
+              <NavBar />
+              <ApplicationViews />
             </>
           );
         } else {
