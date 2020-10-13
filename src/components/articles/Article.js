@@ -22,7 +22,7 @@ export const Article = ({ article }) => {
             Posted by: {article.user.id === parseInt(localStorage.getItem("nutty_customer"))  
             ? `${article.user.username}(you)` :
             <Button size='mini' className="addButton"
-                onClick={AddFriend(article.user.username)}
+                onClick={()=> AddFriend(article.user.username)}
                 >
                 <Icon name="user"></Icon>
                 {article.user.username}

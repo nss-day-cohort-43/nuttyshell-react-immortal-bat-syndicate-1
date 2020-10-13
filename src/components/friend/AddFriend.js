@@ -9,10 +9,10 @@ export const AddFriend = (clickedUser) => {
     const { users, getUsers } = useContext(UserContext)
 
     // const [open, setOpen] = useState(false)
-
     // const friendName = useRef("")
     // console.log("addfriend")
     //Gets friends and users on load
+
     useEffect(() => {
         getFriends().then(getUsers)
     }, [])
@@ -20,7 +20,6 @@ export const AddFriend = (clickedUser) => {
     const friendCheck = name => {
     //Checks if the user exists
         const foundFriend = users.find(user => user.username.toUpperCase() === name.toUpperCase())
-        
         //Checks if the friendship already exists and is not the user
         if (foundFriend && foundFriend.id !== parseInt(localStorage.getItem("nutty_customer"))) {
             const friendshipExist = friends.find(friend => {
@@ -54,8 +53,7 @@ export const AddFriend = (clickedUser) => {
         }
     }
 
-    //returns only the friendships where the activeUserId matches the current users
-    const filteredFriends = friends.filter(friend => friend.activeUserId === parseInt(localStorage.getItem("nutty_customer")))
+    friendCheck(clickedUser)
 
     // return (
     //     <>
@@ -64,7 +62,6 @@ export const AddFriend = (clickedUser) => {
     //             onClose={() => setOpen(false)}
     //             onOpen={() => setOpen(true)}
     //             open={open}
-                
     //         >
     //             <Modal.Content>
     //                 <Input type="text" ref={friendName} defaultValue={clickedUser ? clickedUser : null} placeholder="Friend's name..." />
