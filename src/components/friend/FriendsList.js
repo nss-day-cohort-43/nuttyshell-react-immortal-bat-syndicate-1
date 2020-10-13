@@ -5,7 +5,7 @@ import { UserContext } from "../user/UserProvider"
 import { Button, Modal, Input } from "semantic-ui-react"
 import "./Friend.css"
 
-export const FriendList = (clickedUser = null) => {
+export const FriendList = () => {
     const { friends, getFriends, addFriend } = useContext(FriendContext)
     const { users, getUsers } = useContext(UserContext)
 
@@ -68,7 +68,7 @@ export const FriendList = (clickedUser = null) => {
                 trigger={<Button>Add Friend</Button>}
             >
                 <Modal.Content>
-                    <Input type="text" ref={friendName} defaultValue={clickedUser ? clickedUser : null} placeholder="Friend's name..." />
+                    <Input type="text" ref={friendName} placeholder="Friend's name..." />
                 </Modal.Content>
                 <Modal.Actions>
                     <Button

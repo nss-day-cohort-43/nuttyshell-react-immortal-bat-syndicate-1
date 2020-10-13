@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState, useRef } from "react"
 import { FriendContext } from "./FriendProvider"
-import { FriendCard } from "./FriendCard"
 import { UserContext } from "../user/UserProvider"
 import { Button, Modal, Input } from "semantic-ui-react"
 import "./Friend.css"
 
-export const FriendList = (clickedUser = null) => {
+export const AddFriend = (clickedUser) => {
     const { friends, getFriends, addFriend } = useContext(FriendContext)
     const { users, getUsers } = useContext(UserContext)
 
@@ -59,13 +58,12 @@ export const FriendList = (clickedUser = null) => {
 
     return (
         <>
-            <h2>Friends</h2>
             <Modal
                 basic
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
                 open={open}
-                trigger={<Button>Add Friend</Button>}
+                trigger={ <Button className="addFriend"></Button> }
             >
                 <Modal.Content>
                     <Input type="text" ref={friendName} defaultValue={clickedUser ? clickedUser : null} placeholder="Friend's name..." />
@@ -87,13 +85,6 @@ export const FriendList = (clickedUser = null) => {
                     </Button>
                 </Modal.Actions>
             </Modal>
-            <div className="friends">
-				{
-				    filteredFriends.map(friend => {
-					    return <FriendCard key={friend.id} friend={friend} />
-				    })
-				}
-			</div>
         </>
     )
 }
