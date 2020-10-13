@@ -45,9 +45,20 @@ export const ChatProvider = (props) => {
             .then(res => res.json())
     }
 
+    const getUserById = id => {
+        return fetch(`http://localhost:8088/users/${id}`)
+            .then(res => res.json)
+    }
+
+    const getUserByName = username => {
+        return fetch(`http://localhost:8088/users/${username}`)
+            .then(res => res.json)
+    }
+
     return (
         <ChatContext.Provider value={{
-            messages, getMessages, addMessage, editMessage, deleteMessage, getMessageById
+            messages, getMessages, addMessage, editMessage, deleteMessage, getMessageById,
+            getUserById, getUserByName
         }}>
             {props.children}
         </ChatContext.Provider>

@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState, useRef } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
-import { UserContext } from "../user/UserProvider"
-import { FriendContext } from "../friend/FriendProvider"
 import { ChatContext } from "./ChatProvider"
+import { FriendContext } from "../friend/FriendProvider"
 import { Button, Container, Header, Icon, Form } from "semantic-ui-react"
 
 export const ChatForm = (props) => {
-    const { addMessage, getMessageById, editMessage, findUserById, findUserByName } = useContext(ChatContext)
-    const { users, getUsers } = useContext(UserContext)
+    const { addMessage, getMessageById, editMessage, getUserById, getUserByName } = useContext(ChatContext)
     const { friends, getFriends } = useContext(FriendContext)
 
     const [message, setMessage] = useState({})
@@ -23,15 +21,17 @@ export const ChatForm = (props) => {
     }
 
     useEffect(() => {
-        if (messageId) {
-            getMessageById(messageId)
-                .then(message => {
-                    setMessage(message)
-                    setIsLoading(false)
-                })
-        } else {
-            setIsLoading(false)
-        }
+        getFriends().then(() => {
+            if (messageId) {
+                getMessageById(messageId)
+                    .then(message => {
+                        setMessage(message)
+                        setIsLoading(false)
+                    })
+            } else {
+                setIsLoading(false)
+            }
+        })
     }, [])
 
     const constructNewMessage = () => {
@@ -45,6 +45,10 @@ export const ChatForm = (props) => {
                 date: "edited: " + new Date().toLocaleString("en-US")
             })
                 .then(() => history.push("/messages"))
+        } else if (message.content.startsWith(`@`)) {
+            const privMes = message.content.split(' ')[0]
+            const userName = privMes.slice(1)
+
         } else {
             addMessage({
                 userId: parseInt(localStorage.getItem("nutty_customer")),
@@ -54,8 +58,6 @@ export const ChatForm = (props) => {
                 .then(() => history.push("/messages"))
         }
     }
-
-    const privateHook = useRef(null)
 
     return (
         <>
@@ -76,7 +78,6 @@ export const ChatForm = (props) => {
                         name='content'
                         onChange={handleInputChange}
                         defaultValue={message.message}
-                        ref={privateHook}
                     />
 
                     <Button.Group>

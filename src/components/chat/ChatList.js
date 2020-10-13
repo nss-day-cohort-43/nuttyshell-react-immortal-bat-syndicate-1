@@ -1,7 +1,5 @@
 import React, { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
-import { UserContext } from "../user/UserProvider"
-import { FriendContext } from "../friend/FriendProvider"
 import { ChatContext } from "./ChatProvider"
 import { ChatCard } from "./ChatCard"
 import { Button, Container, Header, Icon } from "semantic-ui-react"
@@ -9,8 +7,6 @@ import { useInterval } from "../useInterval"
 
 export const ChatList = () => {
     const { messages, getMessages } = useContext(ChatContext)
-    const { users, getUsers } = useContext(UserContext)
-    const { friends, getFriends } = useContext(FriendContext)
 
     useInterval(getMessages, 3000)
 
