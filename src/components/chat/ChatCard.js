@@ -17,17 +17,11 @@ export const ChatCard = ({ message }) => {
                 <Message className="message" floating style={{ backgroundColor: "#fff" }}>
                     <Header as="h3" className="message--currentUser">{message.user.username}</Header>
 
-<<<<<<< HEAD
-                <div className="messageBtns">
-                    {message.userId === parseInt(localStorage.getItem("nutty_user")) ?
-                        <>
-=======
                     <p className="message--content">{message.message}</p>
                     <p className="message--date" style={{ fontSize: "x-small" }}>{message.date}</p>
 
                     <div className="messageBtns">
                         <Button.Group>
->>>>>>> main
                             <Button icon className="editBtn" onClick={
                                 () => history.push(`/messages/edit/${message.id}`)
                             }><Icon name="edit" />
