@@ -69,14 +69,6 @@ export const ApplicationViews = (props) => {
           <EventList />
         </Route>
       </EventProvider>
-
-      <EventProvider>
-        <WeatherProvider>
-          <Route exact path="/">
-            <Home />
-          </Route>
-        </WeatherProvider>
-      </EventProvider>
       
       <UserProvider>
         <FriendProvider>
