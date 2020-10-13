@@ -57,12 +57,14 @@ export const ChatForm = (props) => {
                 return currentFriend.user.username.toLowerCase() === userName.toLowerCase()
             })
 
+            console.log(targetFriend)
+
             if (targetFriend) {
                 addMessage({
                     userId: parseInt(localStorage.getItem("nutty_customer")),
                     message: message.content,
                     date: new Date().toLocaleString("en-US"),
-                    targetId: targetFriend.id
+                    targetId: targetFriend.userId
                 })
                     .then(() => history.push("/messages"))
             } else {
