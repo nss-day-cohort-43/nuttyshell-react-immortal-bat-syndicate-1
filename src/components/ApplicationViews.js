@@ -72,6 +72,60 @@ export const ApplicationViews = (props) => {
 
       <EventProvider>
         <WeatherProvider>
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </WeatherProvider>
+      </EventProvider>
+      
+      <UserProvider>
+        <FriendProvider>
+          <ChatProvider>
+            <Route exact path="/messages">
+              <ChatList />
+            </Route>
+          </ChatProvider>
+
+          <ChatProvider>
+            <Route exact path="/messages/new">
+              <ChatForm />
+            </Route>
+          </ChatProvider>
+
+          <ChatProvider>
+            <Route exact path="/messages/edit/:messageId(\d+)">
+              <ChatForm />
+            </Route>
+          </ChatProvider>
+        </FriendProvider>
+      </UserProvider>
+
+      <TaskProvider>
+        <Route exact path="/tasks">
+          <TaskList />
+        </Route>
+      </TaskProvider>
+
+      <TaskProvider>
+        <Route exact path="/tasks/create">
+          <TaskForm />
+        </Route>
+      </TaskProvider>
+
+      <TaskProvider>
+        <Route exact path="/tasks/edit/:taskId(\d+)">
+          <TaskForm />
+        </Route>
+      </TaskProvider>
+
+      <EventProvider>
+        <Route exact path="/events">
+          <EventList />
+        </Route>
+      </EventProvider>
+
+      <EventProvider>
+        <WeatherProvider>
           <Route exact path="/events/detail/:eventId(\d+)">
             <EventDetail />
           </Route>
