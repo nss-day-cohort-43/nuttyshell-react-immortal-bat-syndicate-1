@@ -47,7 +47,7 @@ export const FriendList = () => {
                 })
                 return foundFriend
             }
-        } else if (foundFriend.id === parseInt(localStorage.getItem("nutty_customer"))) {
+        } else if (foundFriend?.id === parseInt(localStorage.getItem("nutty_customer"))) {
             alert("Can't add yourself as a friend")
         } else {
             alert("User does not exist!")
