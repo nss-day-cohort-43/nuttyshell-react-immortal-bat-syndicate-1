@@ -1,19 +1,49 @@
+.navbar__container {
+    background-color: #111;
+}
+
 .navbar {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     color: white;
-    background-color: #111;
-    height: 50px;
-    margin: 0 0 25px 0;
+    height: 75px;
+    padding: 0;
+    margin: 0 auto 25px auto;
+    max-width: 1100px;
 }
 
 .navbar a {
     color: white;
 }
 
+.navbar a:hover {
+    color: lightgreen;
+}
+
+.navbar__logo {
+    height: 40px;
+}
+
 .navbar__item {
-    flex-basis: 20%;
     list-style-type: none;
+}
+
+.logout {
+    background-color: lightgreen;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.logout:hover {
+    background-color: rgba(144, 238, 144, .75);
+}
+
+.logout a {
+    color: #111;
+}
+
+.logout a:hover {
+    color: #111;
 }
