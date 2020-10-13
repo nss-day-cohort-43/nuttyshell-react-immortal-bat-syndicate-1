@@ -5,7 +5,6 @@ import "./Weather.css"
 export const WeatherCard = ( {weather, temp} ) => {
     
     let date = weather.dt_txt
-    console.log(weather,temp)
          return (
         <>
       <section className="Weather">
