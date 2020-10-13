@@ -37,7 +37,7 @@
 }
 
 .logout:hover {
-    background-color: rgba(144, 238, 144, .75);
+    box-shadow: 0 0 10px 2px lightgreen;
 }
 
 .logout a {
