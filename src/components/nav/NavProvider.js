@@ -15,7 +15,6 @@ export const NavProvider = (props) => {
       .then((response) => response.json())
       .then(res => {
         setUsers(res)
-        console.log(res)
         return res
       });
   };
