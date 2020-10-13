@@ -28,24 +28,6 @@ export const ApplicationViews = (props) => {
         </Route>
       </WeatherProvider>
 
-      <ChatProvider>
-        <Route exact path="/messages">
-          <ChatList />
-        </Route>
-      </ChatProvider>
-
-      <ChatProvider>
-        <Route exact path="/messages/new">
-          <ChatForm />
-        </Route>
-      </ChatProvider>
-
-      <ChatProvider>
-        <Route exact path="/messages/edit/:messageId(\d+)">
-          <ChatForm />
-        </Route>
-      </ChatProvider>
-
       <TaskProvider>
         <Route exact path="/tasks">
           <TaskList />
@@ -63,12 +45,6 @@ export const ApplicationViews = (props) => {
           <TaskForm />
         </Route>
       </TaskProvider>
-
-      <EventProvider>
-        <Route exact path="/events">
-          <EventList />
-        </Route>
-      </EventProvider>
       
       <UserProvider>
         <FriendProvider>
@@ -91,24 +67,6 @@ export const ApplicationViews = (props) => {
           </ChatProvider>
         </FriendProvider>
       </UserProvider>
-
-      <TaskProvider>
-        <Route exact path="/tasks">
-          <TaskList />
-        </Route>
-      </TaskProvider>
-
-      <TaskProvider>
-        <Route exact path="/tasks/create">
-          <TaskForm />
-        </Route>
-      </TaskProvider>
-
-      <TaskProvider>
-        <Route exact path="/tasks/edit/:taskId(\d+)">
-          <TaskForm />
-        </Route>
-      </TaskProvider>
 
       <EventProvider>
         <Route exact path="/events">
