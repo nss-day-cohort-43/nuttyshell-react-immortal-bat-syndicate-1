@@ -61,8 +61,8 @@ fieldset {
 .container--login {
     text-align: center;
     background-color: rgba(255, 255, 255, .75);
-    padding: 25px;
-    border-radius: 10px;
+    padding: 50px;
+    border-radius: 25px;
 }
 
 .form--login {
@@ -72,6 +72,15 @@ fieldset {
     min-width: 25rem;
     background-blend-mode: overlay;
     background-repeat: no-repeat;
+}
+
+.form--login h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form--login h2 {
+    margin-top: 25px;
 }
 
 .button--close {

@@ -1,6 +1,7 @@
 import React, { useRef } from "react"
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"
+import { Button, Divider } from "semantic-ui-react"
 import logo from "../../img/ibs-logo_words.png"
 import video from "../../video/ibs-video.mp4"
 import "./Login.css"
@@ -43,6 +44,9 @@ export const Login = props => {
                     <form className="form--login" onSubmit={handleLogin}>
                         <img src={logo} alt="IBS logo" />
                         <h1>Immortal Bat Syndicate</h1>
+
+                        <Divider />
+
                         <h2>Please sign in</h2>
                         <fieldset>
                             <label htmlFor="inputEmail"> Email address </label>
@@ -53,9 +57,9 @@ export const Login = props => {
                                 required autoFocus />
                         </fieldset>
                         <fieldset>
-                            <button type="submit">
+                            <Button primary type="submit">
                                 Sign in
-                        </button>
+                        </Button>
                         </fieldset>
                     </form>
                 </section>
