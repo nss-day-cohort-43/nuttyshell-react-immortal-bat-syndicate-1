@@ -22,9 +22,11 @@ import { UserProvider } from "./user/UserProvider"
 export const ApplicationViews = (props) => {
     return (
         <>
+        <WeatherProvider>
             <Route exact path="/">
                 <Home />
             </Route>
+            </WeatherProvider>
 
             <UserProvider>
                 <FriendProvider>

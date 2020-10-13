@@ -1,14 +1,15 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
 import { ChatCard } from "./ChatCard"
-import { Button, Container, Header, Icon } from "semantic-ui-react"
+import { Button, Checkbox, Container, Header, Icon } from "semantic-ui-react"
 import { useInterval } from "../useInterval"
 
 export const ChatList = () => {
     const { messages, getMessages } = useContext(ChatContext)
+    const [update, setUpdate] = useState(false)
 
-    useInterval(getMessages, 3000)
+    useInterval(getMessages, update ? 3000 : null)
 
     useEffect(() => {
         getMessages()
@@ -19,7 +20,13 @@ export const ChatList = () => {
     return (
         <>
             <Container>
-                <Header as='h2'><Icon name="comments" />Messages</Header>
+                <div className="messages--header">
+                    <Header as='h2'><Icon name="comments" />Messages</Header>
+                    <Checkbox toggle
+                        onChange={() => setUpdate(!update)}
+                        label={update ? "Disable real-time updates" : "Allow real-time updates"}
+                    />
+                </div>
 
                 <div className="messages--window">
                     <section className="messages--container">
