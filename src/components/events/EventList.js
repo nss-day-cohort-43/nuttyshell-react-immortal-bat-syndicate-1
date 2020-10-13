@@ -1,13 +1,18 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { EventCard, UpcomingEventCard } from "./EventCard";
 import { EventContext } from "./EventProvider";
+import { useInterval } from "../useInterval"
+import { Checkbox } from "semantic-ui-react"
 import "./Event.css";
 
 export const EventList = (_) => {
   const { events, getEvents } = useContext(EventContext);
+  const [ update, setUpdate ] = useState(false)
   //   const [first, setFirst] = useState("true");
 
+  useInterval(getEvents, update ? 3000 : null)
+  
   useEffect(() => {
     getEvents()
   }, []);
@@ -20,6 +25,10 @@ export const EventList = (_) => {
   return (
     <>
       <h2>Events</h2>
+      <Checkbox toggle 
+          onChange={() => setUpdate(!update)}
+          label={ update ? "Disable real-time updates" : "Allow real-time updates"}
+      /><br />
       <button
         onClick={() => {
           history.push("events/create");
