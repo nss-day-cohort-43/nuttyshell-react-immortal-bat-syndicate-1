@@ -17,8 +17,8 @@ export const Article = ({ article }) => {
         <p>
             Posted by: {article.user.id === parseInt(localStorage.getItem("nutty_customer"))  
             ? `${article.user.username}(you)` :
-            <Button className={article.user.id}
-                onClick={e=> FriendList(e.target.className)}
+            <Button size='mini' className={article.user.id}
+                // onClick={e=> FriendList(e.target.className)}
             >
                 <Icon name="user"></Icon>
                 {article.user.username}
