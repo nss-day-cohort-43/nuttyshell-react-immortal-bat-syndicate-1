@@ -8,7 +8,7 @@ import { useInterval } from "../useInterval"
 
 export const ArticleList = (props) => {
     const { articles, getArticles } = useContext(ArticleContext)
-    const [ update, setUpdate ] = useState(false)
+    const [update, setUpdate] = useState(false)
     const history = useHistory()
 
     useInterval(getArticles, update ? 3000 : null)
@@ -18,17 +18,23 @@ export const ArticleList = (props) => {
     }, [])
     return (
         <>
-            <Checkbox toggle 
-                onChange={() => setUpdate(!update)}
-                label={ update ? "Disable real-time updates" : "Allow real-time updates"}
-            />
-            <div className="articles">
-            <Button onClick={() => history.push("/articles/create")}>
-                Add Article
-            </Button>
-            {
-                articles?.map(article => <Article key={article.id} article={article} />)
-            }
+            <div className="articlesContainer">
+                <div className="articlesHeader">
+                    <Button onClick={() => history.push("/articles/create")}>
+                        Add Article
+                    </Button>
+
+                    <Checkbox toggle
+                        onChange={() => setUpdate(!update)}
+                        label={update ? "Disable real-time updates" : "Allow real-time updates"}
+                    />
+                </div>
+
+                <div className="articles">
+                    {
+                        articles?.map(article => <Article key={article.id} article={article} />)
+                    }
+                </div>
             </div>
         </>
     )
