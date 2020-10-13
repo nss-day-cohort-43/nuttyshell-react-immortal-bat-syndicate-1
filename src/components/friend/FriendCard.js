@@ -11,7 +11,7 @@ export const FriendCard = ({ friend }) => {
             <Button icon negative type="button" onClick={() => {
                 //returns the inverse of the friendship
                 const foundFriendship = friends.find(friendship => {
-                    return (friendship.activeUserId === friend.userId && friendship.userId === parseInt(localStorage.getItem("nutty_customer")))
+                    return (friendship.activeUserId === friend.userId && friendship.userId === parseInt(localStorage.getItem("nutty_user")))
                 })
                 //removes both friendship ids from the database
                 removeFriend(friend.id)
