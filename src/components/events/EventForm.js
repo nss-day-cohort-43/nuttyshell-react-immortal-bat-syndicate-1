@@ -115,7 +115,7 @@ const handleSubmit = e => {
             className="form-control"
             placeholder="Event Address"
             onChange={handleControlledInputChange}
-            defaultValue={event.date}
+            defaultValue={event.address}
           />
         </div>
       </fieldset>
