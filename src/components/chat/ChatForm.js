@@ -4,7 +4,7 @@ import { ChatContext } from "./ChatProvider"
 import { Button, Container, Header, Icon, Form } from "semantic-ui-react"
 
 export const ChatForm = (props) => {
-    const { addMessage, getMessageById, editMessage } = useContext(ChatContext)
+    const { addMessage, getMessageById, editMessage, findUserById, findUserByName } = useContext(ChatContext)
 
     const [message, setMessage] = useState({})
     const [isLoading, setIsLoading] = useState(true)
