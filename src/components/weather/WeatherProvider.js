@@ -62,7 +62,11 @@ export const WeatherProvider = (props) => {
       `https://api.openweathermap.org/data/2.5/forecast?lat=${x}&lon=${y}&units=imperial&cnt=8&appid=${api.weatherKey}`
     )
       .then((response) => response.json())
-      .then(res => res.list[0])
+      .then(res =>{ 
+      let answer = res.list[0]
+        answer.found = true 
+        return answer
+      })
       // .then(setWeather);
   };
   return (
