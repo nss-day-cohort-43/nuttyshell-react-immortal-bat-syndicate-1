@@ -46,8 +46,28 @@ export const ChatForm = (props) => {
             })
                 .then(() => history.push("/messages"))
         } else if (message.content.startsWith(`@`)) {
-            const privMes = message.content.split(' ')[0]
-            const userName = privMes.slice(1)
+            let privMes = message.content.split(' ')[0]
+            let userName = privMes.slice(1)
+
+            let currentFriends = friends.filter(friend => {
+                return friend.activeUserId === parseInt(localStorage.getItem("nutty_customer"))
+            })
+
+            let targetFriend = currentFriends.find(currentFriend => {
+                return currentFriend.user.username.toLowerCase() === userName.toLowerCase()
+            })
+
+            if (targetFriend) {
+                addMessage({
+                    userId: parseInt(localStorage.getItem("nutty_customer")),
+                    message: message.content,
+                    date: new Date().toLocaleString("en-US"),
+                    targetId: targetFriend.id
+                })
+                    .then(() => history.push("/messages"))
+            } else {
+                window.alert("Check the username after '@'...")
+            }
 
         } else {
             addMessage({
