@@ -7,8 +7,10 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css'
 
 ReactDOM.render(
-  <Router>
-    <Nutshell />
-  </Router>,
+  <React.StrictMode>
+    <Router>
+      <Nutshell />
+    </Router>
+  </React.StrictMode>,
   document.getElementById('root')
 );

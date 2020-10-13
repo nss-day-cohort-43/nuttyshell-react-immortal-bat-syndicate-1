@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
-import { Button, Container, Icon, Form } from "semantic-ui-react"
+import { FriendContext } from "../friend/FriendProvider"
+import { Button, Container, Header, Icon, Form } from "semantic-ui-react"
 
 export const ChatForm = (props) => {
     const { addMessage, getMessageById, editMessage } = useContext(ChatContext)
+    const { friends, getFriends } = useContext(FriendContext)
 
     const [message, setMessage] = useState({})
     const [isLoading, setIsLoading] = useState(true)
@@ -19,15 +21,17 @@ export const ChatForm = (props) => {
     }
 
     useEffect(() => {
-        if (messageId) {
-            getMessageById(messageId)
-                .then(message => {
-                    setMessage(message)
-                    setIsLoading(false)
-                })
-        } else {
-            setIsLoading(false)
-        }
+        getFriends().then(() => {
+            if (messageId) {
+                getMessageById(messageId)
+                    .then(message => {
+                        setMessage(message)
+                        setIsLoading(false)
+                    })
+            } else {
+                setIsLoading(false)
+            }
+        })
     }, [])
 
     const constructNewMessage = () => {
@@ -41,6 +45,30 @@ export const ChatForm = (props) => {
                 date: "edited: " + new Date().toLocaleString("en-US")
             })
                 .then(() => history.push("/messages"))
+        } else if (message.content.startsWith(`@`)) {
+            let privMes = message.content.split(' ')[0]
+            let userName = privMes.slice(1)
+
+            let currentFriends = friends.filter(friend => {
+                return friend.activeUserId === parseInt(localStorage.getItem("nutty_customer"))
+            })
+
+            let targetFriend = currentFriends.find(currentFriend => {
+                return currentFriend.user.username.toLowerCase() === userName.toLowerCase()
+            })
+
+            if (targetFriend) {
+                addMessage({
+                    userId: parseInt(localStorage.getItem("nutty_customer")),
+                    message: message.content,
+                    date: new Date().toLocaleString("en-US"),
+                    targetId: targetFriend.userId
+                })
+                    .then(() => history.push("/messages"))
+            } else {
+                window.alert("Check the username after '@'...")
+            }
+
         } else {
             addMessage({
                 userId: parseInt(localStorage.getItem("nutty_customer")),
@@ -58,12 +86,13 @@ export const ChatForm = (props) => {
                     evt.preventDefault()
                     constructNewMessage()
                 }}>
-                    <h2 className="messageForm--title">
+                    <Header as='h2' className="messageForm--title">
                         {messageId ? "Edit Message" : "New Message"}
-                    </h2>
+                    </Header>
 
                     <Form.Input
                         required
+                        type="text"
                         placeholder='Send a message..'
                         id='messageContent'
                         name='content'
@@ -71,17 +100,29 @@ export const ChatForm = (props) => {
                         defaultValue={message.message}
                     />
 
-                    <Button type="button" icon onClick={
-                        () => history.push('/messages')
-                    }>
-                        <Icon name="cancel" />
-                    </Button>
+                    <Button.Group>
+                        <Button animated="vertical">
+                            <Button.Content visible>Cancel</Button.Content>
+                            <Button.Content hidden onClick={
+                                () => history.push('/messages')
+                            }>
+                                <Icon name="cancel" />
+                            </Button.Content>
+                        </Button>
 
-                    <Button type="submit" primary icon required
-                        className="btn btn-primary"
-                        disabled={isLoading}>
-                        {messageId ? <Icon name="edit" /> : <Icon name="send" />}
-                    </Button>
+                        <Button.Or />
+
+                        <Button positive animated="vertical">
+                            <Button.Content visible>
+                                {messageId ? "Edit" : "Send"}
+                            </Button.Content>
+                            <Button.Content type="submit" hidden
+                                className="btn btn-primary"
+                                disabled={isLoading}>
+                                {messageId ? <Icon name="edit" /> : <Icon name="send" />}
+                            </Button.Content>
+                        </Button>
+                    </Button.Group>
                 </Form >
             </Container>
         </>
