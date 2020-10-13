@@ -1,6 +1,7 @@
 import React, { useRef } from "react"
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"
+import logo from "../../img/ibs-logo_words.png"
 import video from "../../video/ibs-video.mp4"
 import "./Login.css"
 
@@ -40,7 +41,8 @@ export const Login = props => {
 
                 <section>
                     <form className="form--login" onSubmit={handleLogin}>
-                        <h1>IBS</h1>
+                        <img src={logo} alt="IBS logo" />
+                        <h1>Immortal Bat Syndicate</h1>
                         <h2>Please sign in</h2>
                         <fieldset>
                             <label htmlFor="inputEmail"> Email address </label>
