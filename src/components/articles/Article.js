@@ -22,7 +22,7 @@ export const Article = ({ article }) => {
 
                 <div className="formBtns">
                     {/* if the article was posted by the current user it renders buttons for edit or delete */}
-                    {article.user.id === parseInt(localStorage.getItem("nutty_customer")) ? 
+                    {article.user.id === parseInt(localStorage.getItem("nutty_user")) ? 
                     <>
                          <Button icon id="deleteArticle--${article.id}" className="trashBtn" onClick={
                              () => {

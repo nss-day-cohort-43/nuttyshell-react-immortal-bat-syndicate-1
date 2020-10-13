@@ -59,7 +59,7 @@ export const EventForm = () => {
         city: event.city,
         state: event.state,
         zip: event.zip,
-        userId: parseInt(localStorage.getItem("nutty_customer"))
+        userId: parseInt(localStorage.getItem("nutty_user"))
       }).then(() => history.push("/events"));
     }
   };

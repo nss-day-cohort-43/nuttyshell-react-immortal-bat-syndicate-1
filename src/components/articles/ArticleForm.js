@@ -41,7 +41,7 @@ export const ArticleForm = () => {
         if ( articleId ) {
             editArticle({
                 id: article.id,
-                userId: parseInt(localStorage.getItem("nutty_customer")),
+                userId: parseInt(localStorage.getItem("nutty_user")),
                 title: article.title,
                 date: new Date(),
                 synopsis: article.synopsis,
@@ -50,7 +50,7 @@ export const ArticleForm = () => {
                 .then(() => history.push(`/articles`))
         } else {
             saveArticle({
-                userId: parseInt(localStorage.getItem("nutty_customer")),
+                userId: parseInt(localStorage.getItem("nutty_user")),
                 title: article.title,
                 date: new Date(),
                 synopsis: article.synopsis,

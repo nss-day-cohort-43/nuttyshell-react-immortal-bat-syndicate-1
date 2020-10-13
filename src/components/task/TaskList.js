@@ -10,7 +10,7 @@ export const TaskList = () => {
     const history = useHistory()
     
     useEffect(() => {
-            getTasksByUserId(localStorage.getItem("nutty_customer"))
+            getTasksByUserId(localStorage.getItem("nutty_user"))
     }, [])
 
     //Prevents completed task from showing up on the DOM

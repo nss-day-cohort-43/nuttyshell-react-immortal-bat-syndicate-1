@@ -26,7 +26,7 @@ export const TaskForm = () => {
 
     //Fetches all user tasks and populates forms with existing task data if it already exists
     useEffect(() => {
-        getTasksByUserId(parseInt(localStorage.getItem("nutty_customer"))).then(() => {
+        getTasksByUserId(parseInt(localStorage.getItem("nutty_user"))).then(() => {
             if (taskId){
                 getTaskById(taskId)
                 .then(task => {
@@ -46,7 +46,7 @@ export const TaskForm = () => {
             updateTask({
                 task: task.task,
                 date: task.date,
-                userId: parseInt(localStorage.getItem("nutty_customer")),
+                userId: parseInt(localStorage.getItem("nutty_user")),
                 completed: false,
                 id: task.id
             }).then(() => history.push("/tasks"))
@@ -54,7 +54,7 @@ export const TaskForm = () => {
             addTask({
                 task: task.task,
                 date: task.date,
-                userId: parseInt(localStorage.getItem("nutty_customer")),
+                userId: parseInt(localStorage.getItem("nutty_user")),
                 completed: false
             }).then(() => history.push("/tasks"))
         }
