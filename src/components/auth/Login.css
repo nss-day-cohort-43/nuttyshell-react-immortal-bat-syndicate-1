@@ -1,3 +1,20 @@
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.videoTag {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    opacity: .25;
+    z-index: -1;
+}
+
 .h1, h1 {
     font-size: 2.5rem;
 }
@@ -43,13 +60,15 @@ fieldset {
 
 .container--login {
     text-align: center;
+    background-color: white;
+    padding: 25px;
 }
 
 .form--login {
     background-position-x: right;
     z-index: 1;
-    min-height: 25rem;
-    min-width: 45rem;
+    min-height: 10rem;
+    min-width: 25rem;
     background-color: hsla(0,0%,100%,0.40);
     background-blend-mode: overlay;
     background-repeat: no-repeat;
