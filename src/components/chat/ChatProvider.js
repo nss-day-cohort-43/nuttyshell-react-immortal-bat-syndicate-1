@@ -24,7 +24,7 @@ export const ChatProvider = (props) => {
 
     const editMessage = messageObj => {
         return fetch(`http://localhost:8088/messages/${messageObj.id}`, {
-            method: "PUT",
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },

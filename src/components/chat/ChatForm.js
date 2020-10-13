@@ -5,7 +5,7 @@ import { FriendContext } from "../friend/FriendProvider"
 import { Button, Container, Header, Icon, Form } from "semantic-ui-react"
 
 export const ChatForm = (props) => {
-    const { addMessage, getMessageById, editMessage, getUserById, getUserByName } = useContext(ChatContext)
+    const { addMessage, getMessageById, editMessage } = useContext(ChatContext)
     const { friends, getFriends } = useContext(FriendContext)
 
     const [message, setMessage] = useState({})
@@ -56,8 +56,6 @@ export const ChatForm = (props) => {
             let targetFriend = currentFriends.find(currentFriend => {
                 return currentFriend.user.username.toLowerCase() === userName.toLowerCase()
             })
-
-            console.log(targetFriend)
 
             if (targetFriend) {
                 addMessage({
