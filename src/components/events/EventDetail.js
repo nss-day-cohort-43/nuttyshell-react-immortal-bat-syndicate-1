@@ -25,21 +25,21 @@ export const EventDetail = (_) => {
         setOwned(true);
       }
     });
-  }, [getEventById,eventId,user]);
+  }, []);
   useEffect(() => {
     getEventById(eventId)
       .then(getWeatherTemp)
       .then((res) => {
         setWeather(res);
       });
-  }, [getWeatherTemp,eventId,getEventById]); 
+  }, []); 
   useEffect(() => {
     getEventById(eventId)
       .then(getWeatherPop)
       .then((res) => {
         setPop(res);
       });
-  }, [getEventById,eventId,getWeatherPop]); 
+  }, []); 
 
   return (
     <section className="events">
