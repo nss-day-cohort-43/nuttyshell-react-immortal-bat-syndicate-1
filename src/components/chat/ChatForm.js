@@ -1,10 +1,14 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState, useRef } from "react"
 import { useHistory, useParams } from "react-router-dom"
+import { UserContext } from "../user/UserProvider"
+import { FriendContext } from "../friend/FriendProvider"
 import { ChatContext } from "./ChatProvider"
 import { Button, Container, Header, Icon, Form } from "semantic-ui-react"
 
 export const ChatForm = (props) => {
     const { addMessage, getMessageById, editMessage, findUserById, findUserByName } = useContext(ChatContext)
+    const { users, getUsers } = useContext(UserContext)
+    const { friends, getFriends } = useContext(FriendContext)
 
     const [message, setMessage] = useState({})
     const [isLoading, setIsLoading] = useState(true)
@@ -51,6 +55,8 @@ export const ChatForm = (props) => {
         }
     }
 
+    const privateHook = useRef(null)
+
     return (
         <>
             <Container>
@@ -70,6 +76,7 @@ export const ChatForm = (props) => {
                         name='content'
                         onChange={handleInputChange}
                         defaultValue={message.message}
+                        ref={privateHook}
                     />
 
                     <Button.Group>
