@@ -1,5 +1,4 @@
 import React, { useState, createContext } from "react";
-import api from "../../Settings.js";
 
 export const EventContext = createContext();
 
@@ -8,9 +7,14 @@ export const EventProvider = (props) => {
 
   //gets events from API
   const getEvents = () => {
-    return fetch("http://localhost:8088/events?_sort=date&order=desc&_expand=user")
+    return fetch(
+      "http://localhost:8088/events?_sort=date&order=desc&_expand=user"
+    )
       .then((response) => response.json())
-      .then(setEvents);
+      .then(res => {
+        setEvents(res)
+        return res
+      });
   };
 
   //saves event to API and then triggers state change event
@@ -41,10 +45,10 @@ export const EventProvider = (props) => {
       body: JSON.stringify(eventObj),
     }).then(setEvents);
   };
-
   const getEventById = (id) => {
-   return fetch(`http://localhost:8088/events/${id}?_expand=user`)
-    .then((res) => res.json())
+    return fetch(
+      `http://localhost:8088/events/${id}?_expand=user`
+    ).then((res) => res.json());
   };
   return (
     <EventContext.Provider

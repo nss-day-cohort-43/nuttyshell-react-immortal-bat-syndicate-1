@@ -15,16 +15,12 @@ export const WeatherProvider = (props) => {
         let compare = object.date;
         let dates = res.list
         let dates2 = dates.filter(date => {
-          const [x,suff] = date.dt_txt.split(" ")
-          if (suff === "15:00:00") { 
-            return date 
-          }
+          const suff = date.dt_txt.split(" ")[1]
+          return suff === "15:00:00"
         })
         const answer = dates2.find((date) => {
-          const [x, suff] = date.dt_txt.split(" ");
-          if (x === compare) {
-            return date;
-          }
+          const x = date.dt_txt.split(" ")[0];
+          return x === compare
         });
         if (answer) { return answer.main }
         else { return dates[0].main }
@@ -40,20 +36,24 @@ export const WeatherProvider = (props) => {
         let compare = object.date;
         let dates = res.list
         let dates2 = dates.filter(date => {
-          const [x,suff] = date.dt_txt.split(" ")
-          if (suff === "15:00:00") { 
-            return date 
-          }
+          const suff = date.dt_txt.split(" ")[1]
+          return suff === "21:00:00"
         })
         const answer = dates2.find((date) => {
           const x = date.dt_txt.split(" ")[0];
-          if (x === compare) {
-            return date;
-          }
+          return x === compare
         });
-        if (answer) { return answer }
-        else { return dates[0] }
-      });
+        if (answer) { 
+        let answer2 = answer
+        answer2.found = true
+          return answer2 
+        }
+        else { 
+          let answer = dates[0]
+          answer.found = false
+        return answer
+        }
+        });
     // .then(setWeather);
   };
   //gets weather from openweather API in imperial units at given coordinates and assigns it to the weather variable

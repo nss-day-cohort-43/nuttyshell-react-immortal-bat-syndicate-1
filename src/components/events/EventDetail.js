@@ -6,7 +6,7 @@ import { WeatherCard } from "../weather/WeatherCard";
 import { WeatherContext } from "../weather/WeatherProvider";
 
 export const EventDetail = (_) => {
-  const { events, getEventById, deleteEvent } = useContext(EventContext);
+  const { getEventById, deleteEvent } = useContext(EventContext);
   const { getWeatherTemp, getWeatherPop } = useContext(WeatherContext);
   const [weather, setWeather] = useState({});
   const [pop, setPop] = useState({});
@@ -24,27 +24,27 @@ export const EventDetail = (_) => {
         setOwned(true);
       }
     });
-  }, []);
+  }, [getEventById,eventId,user]);
   useEffect(() => {
     getEventById(eventId)
       .then(getWeatherTemp)
       .then((res) => {
         setWeather(res);
       });
-  }, []); 
+  }, [getWeatherTemp,eventId,getEventById]); 
   useEffect(() => {
     getEventById(eventId)
       .then(getWeatherPop)
       .then((res) => {
         setPop(res);
       });
-  }, []); 
+  }, [getEventById,eventId,getWeatherPop]); 
 
   return (
     <section className="events">
       <section className="event">
         <h3 className="event__name">{event.name}</h3>
-        <div>Date: {event.date}</div>
+        <div>Date: {new Date(event.date).toLocaleDateString("en-US")}</div>
         <div>
           Location: {event.address} {event.city}, {event.state} {event.zip}{" "}
         </div>

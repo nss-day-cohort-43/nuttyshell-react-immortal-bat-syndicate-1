@@ -35,7 +35,7 @@ export const EventForm = () => {
     } else {
       setIsLoading(false);
     }
-  }, []);
+  }, [eventId, getEventById]);
 
   const constructEventObject = () => {
     setIsLoading(true);
