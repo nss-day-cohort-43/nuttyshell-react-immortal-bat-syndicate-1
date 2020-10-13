@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 import { useHistory } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
 import { ChatCard } from "./ChatCard"
@@ -18,7 +18,7 @@ export const ChatList = () => {
             <Container>
                 <Header as='h2'><Icon name="chat" />Messages</Header>
 
-                <div className="messages-window">
+                <div className="messages--window">
                     <section className="messages--container">
                         <div className="messages">
                             {
