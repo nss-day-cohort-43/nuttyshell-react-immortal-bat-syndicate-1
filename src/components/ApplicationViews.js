@@ -14,6 +14,7 @@ import { EventForm } from "./events/EventForm";
 import { ArticleProvider } from "./articles/ArticleProvider";
 import { ArticleList } from "./articles/ArticleList"
 import { ArticleForm } from "./articles/ArticleForm"
+import { WeatherProvider } from "./weather/WeatherProvider"
 import { FriendProvider } from "./friend/FriendProvider"
 import { FriendList } from "./friend/FriendsList"
 import { UserProvider } from "./user/UserProvider"
@@ -72,9 +73,11 @@ export const ApplicationViews = (props) => {
             </EventProvider>
 
             <EventProvider>
+              <WeatherProvider>
                 <Route exact path="/events/detail/:eventId(\d+)">
                     <EventDetail />
                 </Route>
+                </WeatherProvider>
             </EventProvider>
 
             <EventProvider>
