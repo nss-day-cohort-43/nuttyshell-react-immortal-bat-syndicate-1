@@ -50,7 +50,7 @@ export const ChatForm = (props) => {
             let userName = privMes.slice(1)
 
             let currentFriends = friends.filter(friend => {
-                return friend.activeUserId === parseInt(localStorage.getItem("nutty_customer"))
+                return friend.activeUserId === parseInt(localStorage.getItem("nutty_user"))
             })
 
             let targetFriend = currentFriends.find(currentFriend => {
@@ -59,7 +59,7 @@ export const ChatForm = (props) => {
 
             if (targetFriend) {
                 addMessage({
-                    userId: parseInt(localStorage.getItem("nutty_customer")),
+                    userId: parseInt(localStorage.getItem("nutty_user")),
                     message: message.content,
                     date: new Date().toLocaleString("en-US"),
                     targetId: targetFriend.userId
