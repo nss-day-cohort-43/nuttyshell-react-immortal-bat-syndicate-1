@@ -3,7 +3,7 @@ import { ArticleContext } from "./ArticleProvider"
 import { Article } from "./Article.js"
 import "./Article.css"
 import { useHistory } from "react-router-dom"
-import { Button, Checkbox } from "semantic-ui-react"
+import { Button, Checkbox, Divider } from "semantic-ui-react"
 import { useInterval } from "../useInterval"
 
 export const ArticleList = (props) => {
@@ -29,6 +29,8 @@ export const ArticleList = (props) => {
                         label={update ? "Disable real-time updates" : "Allow real-time updates"}
                     />
                 </div>
+
+                <Divider />
 
                 <div className="articles">
                     {
