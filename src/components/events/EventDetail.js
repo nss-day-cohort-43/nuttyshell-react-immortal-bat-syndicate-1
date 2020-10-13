@@ -11,7 +11,7 @@ export const EventDetail = (_) => {
   const [weather, setWeather] = useState({});
   const [pop, setPop] = useState({});
   const [event, setEvent] = useState({});
-  const user = parseInt(localStorage.getItem("nutty_customer"));
+  const user = parseInt(localStorage.getItem("nutty_user"));
   const [owned, setOwned] = useState(false);
   const history = useHistory();
   var options = {timezone: 'UTC'}

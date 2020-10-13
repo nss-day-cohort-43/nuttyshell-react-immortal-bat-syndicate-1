@@ -36,14 +36,14 @@ export const ChatForm = (props) => {
         if (messageId) {
             editMessage({
                 id: messageId,
-                userId: parseInt(localStorage.getItem("nutty_customer")),
+                userId: parseInt(localStorage.getItem("nutty_user")),
                 message: message.content,
                 date: "edited: " + new Date().toLocaleString("en-US")
             })
                 .then(() => history.push("/messages"))
         } else {
             addMessage({
-                userId: parseInt(localStorage.getItem("nutty_customer")),
+                userId: parseInt(localStorage.getItem("nutty_user")),
                 message: message.content,
                 date: new Date().toLocaleString("en-US")
             })

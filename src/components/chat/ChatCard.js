@@ -15,7 +15,7 @@ export const ChatCard = ({ message }) => {
                 <p className="message--date">{message.date}</p>
 
                 <div className="messageBtns">
-                    {message.userId === parseInt(localStorage.getItem("nutty_customer")) ?
+                    {message.userId === parseInt(localStorage.getItem("nutty_user")) ?
                         <>
                             <Button icon className="editBtn" onClick={
                                 () => history.push(`/messages/edit/${message.id}`)

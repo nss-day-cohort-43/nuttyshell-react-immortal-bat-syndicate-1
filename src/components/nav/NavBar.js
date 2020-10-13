@@ -1,9 +1,20 @@
-import React from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import "./NavBar.css"
+import { NavContext } from "./NavProvider";
 
 export const NavBar = (props) => {
+    const { getUserById } = useContext(NavContext);
+    const [user, setUser] = useState({})
+    
+    useEffect(() => {
+        getUserById(parseInt(localStorage.getItem("nutty_user"))).then(res =>{ 
+            setUser(res) 
+        })
+    },[])
+
     return (
+<>        Welcome, {user.username}
         <ul className="navbar">
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/">IBS</Link>
@@ -25,10 +36,10 @@ export const NavBar = (props) => {
             </li>
             <li className="navbar__item active">
                 <Link className="navbar__link" onClick={() => {
-                    localStorage.removeItem("nutty_customer")
+                    localStorage.removeItem("nutty_user")
                 }}
                     to="/login">Logout</Link>
             </li>
         </ul>
-    )
+</>    )
 }
