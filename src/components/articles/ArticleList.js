@@ -20,7 +20,7 @@ export const ArticleList = (props) => {
         <>
             <div className="articlesContainer">
                 <div className="articlesHeader">
-                    <Button onClick={() => history.push("/articles/create")}>
+                    <Button primary onClick={() => history.push("/articles/create")}>
                         Add Article
                     </Button>
 

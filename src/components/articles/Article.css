@@ -10,10 +10,6 @@
     margin-bottom: 25px;
 }
 
-.article--container {
-    margin-bottom: 50px;
-}
-
 .article--container:last-child {
     margin-bottom: 0;
 }
