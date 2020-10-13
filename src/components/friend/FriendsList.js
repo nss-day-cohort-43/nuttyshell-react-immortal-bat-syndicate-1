@@ -13,14 +13,16 @@ export const FriendList = () => {
 
     const friendName = useRef("")
 
-    // Empty dependency array - useEffect only runs after first render
+    //Gets friends and users on load
     useEffect(() => {
         getFriends().then(getUsers)
     }, [])
 
     const friendCheck = name => {
+    //Checks if the user exists
         const foundFriend = users.find(user => user.username.toUpperCase() === name.toUpperCase())
         
+        //Checks if the friendship already exists and is not the user
         if (foundFriend && foundFriend.id !== parseInt(localStorage.getItem("nutty_customer"))) {
             const friendshipExist = friends.find(friend => {
                 if (friend.activeUserId === parseInt(localStorage.getItem("nutty_customer")) 
@@ -34,6 +36,7 @@ export const FriendList = () => {
             if (friendshipExist) {
                 alert("You are already friends!")
             } else {
+                //When everything checks out, creates new friendship
                 addFriend({
                     activeUserId: parseInt(localStorage.getItem("nutty_customer")),
                     userId: foundFriend.id
@@ -51,6 +54,7 @@ export const FriendList = () => {
         }
     }
 
+    //returns only the friendships where the activeUserId matches the current users
     const filteredFriends = friends.filter(friend => friend.activeUserId === parseInt(localStorage.getItem("nutty_customer")))
 
     return (
@@ -71,6 +75,8 @@ export const FriendList = () => {
                     content="Add Friend"
                     labelPosition='right'
                     onClick={() => {
+                        /* Checks if the current friend exists and is not the user. 
+                        Only closes the modal if the friendship checks out */
                         const friendExist = friendCheck(friendName.current.inputRef.current.value)
                         friendExist ? setOpen(false) : setOpen(true)
                     }}

@@ -9,9 +9,11 @@ export const FriendCard = ({ friend }) => {
         <section className="friend">
             <h3 className="friend__name">{ friend.user.username }</h3>
             <Button icon negative type="button" onClick={() => {
+                //returns the inverse of the friendship
                 const foundFriendship = friends.find(friendship => {
                     return (friendship.activeUserId === friend.userId && friendship.userId === parseInt(localStorage.getItem("nutty_customer")))
                 })
+                //removes both friendship ids from the database
                 removeFriend(friend.id)
                 removeFriend(foundFriendship.id)
             }}><Icon name="trash" /></Button>
