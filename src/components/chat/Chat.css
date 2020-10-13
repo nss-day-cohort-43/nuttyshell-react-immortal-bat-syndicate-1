@@ -10,14 +10,12 @@
     background-color: #f5f5f5;
     border-radius: 5px;
     overflow-y: auto;
+    display: flex;
+    flex-flow: column-reverse nowrap;
 }
 
 .message--container {
-    margin-bottom: 25px;
-}
-
-.message--container:last-child {
-    margin-bottom: 0;
+    margin-top: 25px;
 }
 
 .message--notFriend {
