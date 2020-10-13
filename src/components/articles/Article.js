@@ -3,6 +3,7 @@ import "./Article.css"
 import { Button, Container, Header, Icon } from 'semantic-ui-react'
 import { ArticleContext } from "./ArticleProvider"
 import { useHistory } from "react-router-dom"
+import { FriendList } from "../friend/FriendsList"
 
 export const Article = ({ article }) => {
     //useContext hook allows the use of functions form the articleProvider
@@ -10,9 +11,21 @@ export const Article = ({ article }) => {
     const history = useHistory()
     //returns an article in semantic Ui elements
     return (
+       
         <Container className="article--container" >
         <Header as='h3'>{article.title}</Header>
-        <p>Posted by: {article.user.username}</p>
+        <p>
+            Posted by: {article.user.id === parseInt(localStorage.getItem("nutty_customer"))  
+            ? `${article.user.username}(you)` :
+            <Button className={article.user.id}
+                onClick={e=> FriendList(e.target.className)}
+            >
+                <Icon name="user"></Icon>
+                {article.user.username}
+            </Button>
+            }
+        </p>
+        <p className={article.user.id} onClick={e => console.log(e.target) }>Posted by: {article.user.username}</p>
         <p>Date: {new Date(article.date).toLocaleDateString('en-US')}</p>
         <p>{article.synopsis}</p>
                     <div className="article--actions">
@@ -36,5 +49,9 @@ export const Article = ({ article }) => {
                 </div>
         </div>
     </Container>
+    
     )
 }
+
+
+// FriendList(e.target.value)
