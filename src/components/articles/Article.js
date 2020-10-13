@@ -10,9 +10,9 @@ export const Article = ({ article }) => {
     const { deleteArticle } = useContext(ArticleContext)
     const history = useHistory()
     
-    const [ userTarget, setUserTarget ] = useState()
+    // const [ userTarget, setUserTarget ] = useState()
 
-    AddFriend(userTarget)
+    // AddFriend(userTarget)
 
     //returns an article in semantic Ui elements
     return (
@@ -22,7 +22,7 @@ export const Article = ({ article }) => {
             Posted by: {article.user.id === parseInt(localStorage.getItem("nutty_customer"))  
             ? `${article.user.username}(you)` :
             <Button size='mini' className="addButton"
-                onClick={setUserTarget(article.user.username)}
+                onClick={AddFriend(article.user.username)}
                 >
                 <Icon name="user"></Icon>
                 {article.user.username}

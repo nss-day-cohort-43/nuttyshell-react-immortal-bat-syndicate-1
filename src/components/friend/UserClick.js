@@ -1,18 +1,10 @@
-import React, { useState } from "react"
-
-useState
-state = {
-    show: false
-  };
-
-  showModal = e => {
-    this.setState({
-      show: true
-    });
-  };
+import React, { useState, useContext } from "react"
 
 
-  <button  onClick={e => {
-    this.showModal();
-}}
-> show Modal </button>
+export const addfriend = (id) => {
+    const { friends, getFriends, addFriend } = useContext(FriendContext)
+    const { users, getUsers } = useContext(UserContext)
+
+        addFriend
+
+} 

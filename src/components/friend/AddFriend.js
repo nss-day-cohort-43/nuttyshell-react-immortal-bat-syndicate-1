@@ -8,10 +8,10 @@ export const AddFriend = (clickedUser) => {
     const { friends, getFriends, addFriend } = useContext(FriendContext)
     const { users, getUsers } = useContext(UserContext)
 
-    const [open, setOpen] = useState(false)
+    // const [open, setOpen] = useState(false)
 
-    const friendName = useRef("")
-
+    // const friendName = useRef("")
+    // console.log("addfriend")
     //Gets friends and users on load
     useEffect(() => {
         getFriends().then(getUsers)
@@ -44,6 +44,7 @@ export const AddFriend = (clickedUser) => {
                     activeUserId: foundFriend.id,
                     userId: parseInt(localStorage.getItem("nutty_customer"))
                 })
+                alert(`You added ${foundFriend.username}!`)
                 return foundFriend
             }
         } else if (foundFriend?.id === parseInt(localStorage.getItem("nutty_customer"))) {
@@ -56,35 +57,35 @@ export const AddFriend = (clickedUser) => {
     //returns only the friendships where the activeUserId matches the current users
     const filteredFriends = friends.filter(friend => friend.activeUserId === parseInt(localStorage.getItem("nutty_customer")))
 
-    return (
-        <>
-            <Modal
-                basic
-                onClose={() => setOpen(false)}
-                onOpen={() => setOpen(true)}
-                open={open}
-                trigger={ <Button className="addFriend"></Button> }
-            >
-                <Modal.Content>
-                    <Input type="text" ref={friendName} defaultValue={clickedUser ? clickedUser : null} placeholder="Friend's name..." />
-                </Modal.Content>
-                <Modal.Actions>
-                    <Button
-                    content="Add Friend"
-                    labelPosition='right'
-                    onClick={() => {
-                        /* Checks if the current friend exists and is not the user. 
-                        Only closes the modal if the friendship checks out */
-                        const friendExist = friendCheck(friendName.current.inputRef.current.value)
-                        friendExist ? setOpen(false) : setOpen(true)
-                    }}
-                    positive
-                    />
-                    <Button color='black' onClick={() => setOpen(false)}>
-                        Cancel
-                    </Button>
-                </Modal.Actions>
-            </Modal>
-        </>
-    )
+    // return (
+    //     <>
+    //         <Modal
+    //             basic
+    //             onClose={() => setOpen(false)}
+    //             onOpen={() => setOpen(true)}
+    //             open={open}
+                
+    //         >
+    //             <Modal.Content>
+    //                 <Input type="text" ref={friendName} defaultValue={clickedUser ? clickedUser : null} placeholder="Friend's name..." />
+    //             </Modal.Content>
+    //             <Modal.Actions>
+    //                 <Button
+    //                 content="Add Friend"
+    //                 labelPosition='right'
+    //                 onClick={() => {
+    //                     /* Checks if the current friend exists and is not the user. 
+    //                     Only closes the modal if the friendship checks out */
+    //                     const friendExist = friendCheck(friendName.current.inputRef.current.value)
+    //                     friendExist ? setOpen(false) : setOpen(true)
+    //                 }}
+    //                 positive
+    //                 />
+    //                 <Button color='black' onClick={() => setOpen(false)}>
+    //                     Cancel
+    //                 </Button>
+    //             </Modal.Actions>
+    //         </Modal>
+    //     </>
+    // )
 }
