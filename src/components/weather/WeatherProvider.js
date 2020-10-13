@@ -57,12 +57,14 @@ export const WeatherProvider = (props) => {
     // .then(setWeather);
   };
   //gets weather from openweather API in imperial units at given coordinates and assigns it to the weather variable
-  const getCurrentWeather = (locationObj) => {
+  const getCurrentWeather = (x=100,y=100) => {
+    console.log(x,y)
     return fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${locationObj.coords.latitude}&lon=${locationObj.coords.longitude}&units=imperial&cnt=8&appid=${api.weatherKey}`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${x}&lon=${y}&units=imperial&cnt=8&appid=${api.weatherKey}`
     )
       .then((response) => response.json())
-      .then(setWeather);
+      .then(res => res.list[0])
+      // .then(setWeather);
   };
   return (
     <WeatherContext.Provider
