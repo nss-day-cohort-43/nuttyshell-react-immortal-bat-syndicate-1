@@ -6,7 +6,7 @@ import { Button, Container, Header, Icon, Message, Modal } from "semantic-ui-rea
 export const ChatCard = ({ message }) => {
     const { deleteMessage } = useContext(ChatContext)
 
-    const currentUser = parseInt(localStorage.getItem("nutty_customer"))
+    const currentUser = parseInt(localStorage.getItem("nutty_user"))
 
     const history = useHistory()
 

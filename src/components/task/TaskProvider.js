@@ -30,7 +30,7 @@ export const TaskProvider = (props) => {
     const removeTask = id => {
         return fetch(`http://localhost:8088/tasks/${id}`, {
             method: "DELETE"
-        }).then(() => getTasksByUserId(localStorage.getItem("nutty_customer")))
+        }).then(() => getTasksByUserId(localStorage.getItem("nutty_user")))
     }
 
     //Changes task to complete in database
@@ -41,7 +41,7 @@ export const TaskProvider = (props) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(task)
-        }).then(() => getTasksByUserId(localStorage.getItem("nutty_customer")))
+        }).then(() => getTasksByUserId(localStorage.getItem("nutty_user")))
     }
 
     //Gets single task by id
@@ -58,7 +58,7 @@ export const TaskProvider = (props) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(task)
-        }).then(() => getTasksByUserId(localStorage.getItem("nutty_customer")))
+        }).then(() => getTasksByUserId(localStorage.getItem("nutty_user")))
     }
 
     return (

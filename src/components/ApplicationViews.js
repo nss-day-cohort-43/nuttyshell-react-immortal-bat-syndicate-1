@@ -1,32 +1,50 @@
-import React from "react"
-import { Route, Router } from "react-router-dom"
-import { Home } from "./Home"
-import { ChatProvider } from "../components/chat/ChatProvider"
-import { ChatList } from "../components/chat/ChatList"
-import { ChatForm } from "../components/chat/ChatForm"
-import { TaskProvider } from "./task/TaskProvider"
-import { TaskList } from "./task/TaskList"
-import { TaskForm } from "./task/TaskForm"
+import React from "react";
+import { Route, Router } from "react-router-dom";
+import { Home } from "./Home";
+import { ChatProvider } from "../components/chat/ChatProvider";
+import { ChatList } from "../components/chat/ChatList";
+import { ChatForm } from "../components/chat/ChatForm";
+import { TaskProvider } from "./task/TaskProvider";
+import { TaskList } from "./task/TaskList";
+import { TaskForm } from "./task/TaskForm";
 import { EventList } from "./events/EventList";
 import { EventProvider } from "./events/EventProvider";
-import { EventDetail } from "./events/EventDetail"
+import { EventDetail } from "./events/EventDetail";
 import { EventForm } from "./events/EventForm";
 import { ArticleProvider } from "./articles/ArticleProvider";
-import { ArticleList } from "./articles/ArticleList"
-import { ArticleForm } from "./articles/ArticleForm"
-import { WeatherProvider } from "./weather/WeatherProvider"
-import { FriendProvider } from "./friend/FriendProvider"
-import { FriendList } from "./friend/FriendsList"
-import { UserProvider } from "./user/UserProvider"
+import { ArticleList } from "./articles/ArticleList";
+import { ArticleForm } from "./articles/ArticleForm";
+import { WeatherProvider } from "./weather/WeatherProvider";
+import { FriendProvider } from "./friend/FriendProvider";
+import { FriendList } from "./friend/FriendsList";
+import { UserProvider } from "./user/UserProvider";
 
 export const ApplicationViews = (props) => {
     return (
         <>
-        <WeatherProvider>
-            <Route exact path="/">
-                <Home />
-            </Route>
+            <WeatherProvider>
+                <Route exact path="/">
+                    <Home />
+                </Route>
             </WeatherProvider>
+
+            <TaskProvider>
+                <Route exact path="/tasks">
+                    <TaskList />
+                </Route>
+            </TaskProvider>
+
+            <TaskProvider>
+                <Route exact path="/tasks/create">
+                    <TaskForm />
+                </Route>
+            </TaskProvider>
+
+            <TaskProvider>
+                <Route exact path="/tasks/edit/:taskId(\d+)">
+                    <TaskForm />
+                </Route>
+            </TaskProvider>
 
             <UserProvider>
                 <FriendProvider>
@@ -50,24 +68,6 @@ export const ApplicationViews = (props) => {
                 </FriendProvider>
             </UserProvider>
 
-            <TaskProvider>
-                <Route exact path="/tasks">
-                    <TaskList />
-                </Route>
-            </TaskProvider>
-
-            <TaskProvider>
-                <Route exact path="/tasks/create">
-                    <TaskForm />
-                </Route>
-            </TaskProvider>
-
-            <TaskProvider>
-                <Route exact path="/tasks/edit/:taskId(\d+)">
-                    <TaskForm />
-                </Route>
-            </TaskProvider>
-
             <EventProvider>
                 <Route exact path="/events">
                     <EventList />
@@ -75,10 +75,10 @@ export const ApplicationViews = (props) => {
             </EventProvider>
 
             <EventProvider>
-              <WeatherProvider>
-                <Route exact path="/events/detail/:eventId(\d+)">
-                    <EventDetail />
-                </Route>
+                <WeatherProvider>
+                    <Route exact path="/events/detail/:eventId(\d+)">
+                        <EventDetail />
+                    </Route>
                 </WeatherProvider>
             </EventProvider>
 
@@ -124,7 +124,5 @@ export const ApplicationViews = (props) => {
                 </UserProvider>
             </FriendProvider>
         </>
-    )
-}
-
-
+    );
+};
