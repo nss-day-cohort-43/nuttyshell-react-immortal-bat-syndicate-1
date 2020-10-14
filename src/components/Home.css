@@ -1,5 +1,4 @@
 .homeContainer {
-    width: 100vw;
     height: 100vh;
     background-image: url("../img/ballpark.jpg");
     background-repeat: no-repeat;
@@ -10,7 +9,7 @@
 }
 
 .homeInfo {
-    background-color: rgba(255, 255, 255, .85);
+    background-color: rgba(255, 255, 255, .9);
     padding: 50px;
     border-radius: 25px;
 }

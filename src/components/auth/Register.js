@@ -74,26 +74,33 @@ export const Register = (props) => {
                             <label htmlFor="firstName"> First Name </label>
                             <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
                         </fieldset>
+
                         <fieldset>
                             <label htmlFor="lastName"> Last Name </label>
                             <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
                         </fieldset>
+
                         <fieldset>
                             <label htmlFor="username"> Username </label>
                             <input ref={username} type="text" name="username" className="form-control" placeholder="Username" required />
                         </fieldset>
+
                         <fieldset>
                             <label htmlFor="inputEmail"> Email address </label>
                             <input ref={email} type="email" name="email" className="form-control" placeholder="Email address" required />
                         </fieldset>
-                        <fieldset>
-                            <Button primary type="submit"> Sign in </Button>
-                        </fieldset>
-                        <fieldset>
-                            <Button type="button" onClick={() => {
-                                history.push("/login")
-                            }}> Cancel </Button>
-                        </fieldset>
+
+                        <div className="registerBtns">
+                            <fieldset>
+                                <Button primary type="submit"> Sign in </Button>
+                            </fieldset>
+
+                            <fieldset>
+                                <Button type="button" onClick={() => {
+                                    history.push("/login")
+                                }}> Cancel </Button>
+                            </fieldset>
+                        </div>
                     </form>
                 </main>
 

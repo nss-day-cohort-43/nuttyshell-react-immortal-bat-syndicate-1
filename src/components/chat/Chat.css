@@ -2,6 +2,10 @@
     overflow: hidden;
 }
 
+.messageForm {
+    margin-top: 25px;
+}
+
 .messages--header {
     display: flex;
     flex-flow: row nowrap;

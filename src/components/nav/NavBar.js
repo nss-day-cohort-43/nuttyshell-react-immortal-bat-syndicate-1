@@ -13,19 +13,19 @@ export const NavBar = (props) => {
                         <Image src={logo} alt="IBS logo" className="navbar__logo" />
                     </Link>
                 </li>
-                <li className="navbar__item active" activeClassName="navbar__item--active">
+                <li className="navbar__item active">
                     <Link className="navbar__link" to="/events"><Icon name="calendar alternate" />Events</Link>
                 </li>
-                <li className="navbar__item active" activeClassName="navbar__item--active">
+                <li className="navbar__item active">
                     <Link className="navbar__link" to="/articles"><Icon name="newspaper" />Articles</Link>
                 </li>
-                <li className="navbar__item active" activeClassName="navbar__item--active">
+                <li className="navbar__item active">
                     <Link className="navbar__link" to="/friends"><Icon name="address book" />Friends</Link>
                 </li>
-                <li className="navbar__item active" activeClassName="navbar__item--active">
+                <li className="navbar__item active">
                     <Link className="navbar__link" to="/tasks"><Icon name="list alternate" />Tasks</Link>
                 </li>
-                <li className="navbar__item active" activeClassName="navbar__item--active">
+                <li className="navbar__item active">
                     <Link className="navbar__link" to="/messages"><Icon name="comments" />Messages</Link>
                 </li>
                 <li className="navbar__item active logout">
