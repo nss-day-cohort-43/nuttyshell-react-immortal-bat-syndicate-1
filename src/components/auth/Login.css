@@ -63,6 +63,11 @@ fieldset {
     background-color: rgba(255, 255, 255, .75);
     padding: 50px;
     border-radius: 25px;
+    width: 500px;
+}
+
+.about {
+    text-align: justify;
 }
 
 .form--login {

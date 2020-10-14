@@ -43,8 +43,17 @@ export const Login = props => {
 
                     <section>
                         <form className="form--login" onSubmit={handleLogin}>
-                            <img src={logo} alt="IBS logo" />
+                            <img src={logo} alt="IBS logo" className="logo" />
                             <h1>Immortal Bat Syndicate</h1>
+
+                            <Divider />
+
+                            <p className="about">The Immortal Bat Syndicate is an online community
+                            for the most elite baseball fans, those who understand the un-swung legacy
+                            of the game's greatest bats.  The Immortal Bat Syndicate community is wholly
+                            owned and operated by the Immortal Bat Syndicate Trust and Charitable
+                            Foundation.  All profits from this endeavor go to fund the care and repair
+                            of the bats which have been retired or damaged on the field.</p>
 
                             <Divider />
 
