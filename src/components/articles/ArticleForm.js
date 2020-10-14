@@ -20,19 +20,15 @@ export const ArticleForm = () => {
     }
 
     useEffect(() => {
-        let mounted = true;
-        if (articleId) {
+        if (articleId){
             getArticleById(articleId)
-                .then(article => {
-                    if (mounted) {
-                        setArticle(article)
-                        setIsLoading(false)
-                    }
-                })
+            .then(article => {
+                setArticle(article)
+                setIsLoading(false)
+            })
         } else {
             setIsLoading(false)
         }
-        return () => mounted = false
     }, [])
 
     //either creates the article object then saves a new or an edited article object
