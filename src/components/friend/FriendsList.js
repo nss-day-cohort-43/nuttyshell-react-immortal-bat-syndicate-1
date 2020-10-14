@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react"
 import { FriendContext } from "./FriendProvider"
 import { FriendCard } from "./FriendCard"
 import { UserContext } from "../user/UserProvider"
-import { Button, Divider, Modal, Input } from "semantic-ui-react"
+import { Button, Divider, Modal, Input, Icon } from "semantic-ui-react"
 import "./Friend.css"
 
 export const FriendList = () => {
@@ -61,7 +61,7 @@ export const FriendList = () => {
         <>
             <div className="friendsContainer">
                 <div className="friendsHeader">
-                    <h2>Friends</h2>
+                    <h2><Icon name="address book" />Friends</h2>
                 </div>
 
                 <Divider />
