@@ -10,7 +10,6 @@ export const Article = ({ article }) => {
     //useContext hook allows the use of functions form the articleProvider
     const { deleteArticle } = useContext(ArticleContext)
 
-    // const { users, getUsers } = useContext(UserContext)
     const { friends, getFriends } = useContext(FriendContext)
     const history = useHistory()
     const [ modal, showModal ] = useState(false)
