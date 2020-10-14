@@ -67,7 +67,6 @@ export const FriendList = () => {
                 <Divider />
 
                 <Modal
-                    basic
                     onClose={() => setOpen(false)}
                     onOpen={() => setOpen(true)}
                     open={open}
@@ -78,6 +77,8 @@ export const FriendList = () => {
                     </Modal.Content>
                     <Modal.Actions>
                         <Button
+                            primary
+                            className="addBtn"
                             content="Add Friend"
                             labelPosition='right'
                             onClick={() => {
@@ -88,7 +89,7 @@ export const FriendList = () => {
                             }}
                             positive
                         />
-                        <Button color='black' onClick={() => setOpen(false)}>
+                        <Button className="cancelBtn" color='black' onClick={() => setOpen(false)}>
                             Cancel
                     </Button>
                     </Modal.Actions>
