@@ -67,31 +67,31 @@ export const FriendList = () => {
                 <Divider />
 
                 <Modal
+                    size="mini"
                     onClose={() => setOpen(false)}
                     onOpen={() => setOpen(true)}
                     open={open}
                     trigger={<Button primary style={{ marginBottom: 25 }}>Add Friend</Button>}
                 >
                     <Modal.Content>
-                        <Input type="text" ref={friendName} placeholder="Friend's name..." />
+                        <Input type="text" ref={friendName} placeholder="Friend's name..." fluid />
                     </Modal.Content>
                     <Modal.Actions>
                         <Button
                             primary
                             className="addBtn"
-                            content="Add Friend"
-                            labelPosition='right'
                             onClick={() => {
                                 /* Checks if the current friend exists and is not the user. 
                                 Only closes the modal if the friendship checks out */
                                 const friendExist = friendCheck(friendName.current.inputRef.current.value)
                                 friendExist ? setOpen(false) : setOpen(true)
                             }}
-                            positive
-                        />
-                        <Button className="cancelBtn" color='black' onClick={() => setOpen(false)}>
+                        >
+                            Add Friend
+                        </Button>
+                        <Button className="cancelBtn" onClick={() => setOpen(false)}>
                             Cancel
-                    </Button>
+                        </Button>
                     </Modal.Actions>
                 </Modal>
                 <div className="friends">
