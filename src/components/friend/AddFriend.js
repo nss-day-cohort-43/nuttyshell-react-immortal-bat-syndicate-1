@@ -10,7 +10,6 @@ export const AddFriend = ({ clickedUser, closeModal }) => {
 
     const [open, setOpen] = useState(false)
     const friendName = useRef("")
-    // console.log("addfriend")
     //Gets friends and users on load
 
     useEffect(() => {
