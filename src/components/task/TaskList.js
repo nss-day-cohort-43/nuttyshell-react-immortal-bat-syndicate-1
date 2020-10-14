@@ -19,7 +19,7 @@ export const TaskList = () => {
     return (
         <>
             <div className="taskContainer">
-                <h2>Tasks</h2>
+                <h2><Icon name="list alternate" />Tasks</h2>
                 <Button icon primary animated type="button" onClick={() => {
                     //takes user to task form
                     history.push("/tasks/create")
@@ -29,6 +29,7 @@ export const TaskList = () => {
                         <Icon name='plus circle' />
                     </Button.Content>
                 </Button>
+
                 <div className="tasks">
                     {
                         incompleteTasks.map(task => {
