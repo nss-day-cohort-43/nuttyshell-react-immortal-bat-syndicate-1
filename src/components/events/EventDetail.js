@@ -52,7 +52,7 @@ export const EventDetail = (_) => {
         </div>
         <p></p>
         <div>
-          <Button
+          <button
             icon
             hidden={!owned}
             onClick={() => {
@@ -60,9 +60,9 @@ export const EventDetail = (_) => {
             }}
           >
             <Icon name="edit" />
-          </Button>
+          </button>
           <span> </span>
-          <Button
+          <button
             icon
             color="red"
             hidden={!owned}
@@ -73,7 +73,7 @@ export const EventDetail = (_) => {
             }}
           >
             <Icon name="trash" />
-          </Button>
+          </button>
         </div>
       </section>
       <section className="event">
