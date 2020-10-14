@@ -43,7 +43,7 @@ fieldset {
 
 .form-control {
     display: block;
-    width: 94%;
+    width: 94% !important;
     height: calc(1.5em + .75rem + 2px);
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -91,4 +91,9 @@ fieldset {
 .dialog {
     min-width: 15rem;
     min-height: 5rem;
+}
+
+.registerBtns {
+    display: flex;
+    flex-flow: row wrap;
 }
