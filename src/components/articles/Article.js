@@ -25,13 +25,13 @@ export const Article = ({ article }) => {
                         {/* if the article was posted by the current user it renders buttons for edit or delete */}
                         {article.user.id === parseInt(localStorage.getItem("nutty_user")) ?
                             <>
-                                <Button icon id="deleteArticle--${article.id}" className="trashBtn" onClick={
-                                    () => {
-                                        deleteArticle(article.id)
-                                    }}><Icon name='trash alternate outline' /></Button>
                                 <Button icon onClick={() => {
                                     history.push(`/articles/edit/${article?.id}`)
                                 }}><Icon name='edit outline' /></Button>
+                                <Button color="red" icon id="deleteArticle--${article.id}" className="trashBtn" onClick={
+                                    () => {
+                                        deleteArticle(article.id)
+                                    }}><Icon name='trash alternate outline' /></Button>
                             </>
                             : null}
                     </div>
