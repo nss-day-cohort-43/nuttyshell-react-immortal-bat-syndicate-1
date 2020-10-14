@@ -9,12 +9,12 @@ export const Article = ({ article }) => {
     //useContext hook allows the use of functions form the articleProvider
     const { deleteArticle } = useContext(ArticleContext)
     const history = useHistory()
-    
+    const [modal, showModal] = useState(false)
     // const [ userTarget, setUserTarget ] = useState()
 
     // AddFriend(userTarget)
 
-    //returns an article in semantic Ui elements
+    //returns an article in semantic Ui elements, pass as a prop a function that will set modal to false line 31
     return (
         <Container className="article--container" >
         <Header as='h3'>{article.title}</Header>
@@ -22,12 +22,13 @@ export const Article = ({ article }) => {
             Posted by: {article.user.id === parseInt(localStorage.getItem("nutty_customer"))  
             ? `${article.user.username}(you)` :
             <Button size='mini' className="addButton"
-                onClick={()=> AddFriend(article.user.username)}
+                onClick={()=>showModal(true)}
                 >
                 <Icon name="user"></Icon>
                 {article.user.username}
             </Button>
             }
+            {modal ? <AddFriend clickedUser={article.user.username} closeModal={()=>showModal(false)}/> : null }
         </p>
         <p>Date: {new Date(article.date).toLocaleDateString('en-US')}</p>
         <p>{article.synopsis}</p>
@@ -44,7 +45,7 @@ export const Article = ({ article }) => {
                              () => {
                                  deleteArticle(article.id)
                              }}><Icon name='trash alternate outline' /></Button>
-                         <Button icon onClick={() => { 
+                         <Button icon onClick={() => {
                              history.push(`/articles/edit/${article?.id}`)
                              }}><Icon name='edit outline' /></Button>
                     </>
@@ -55,6 +56,3 @@ export const Article = ({ article }) => {
     
     )
 }
-
-
-// FriendList(e.target.value)
