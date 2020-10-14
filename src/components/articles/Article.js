@@ -28,7 +28,7 @@ export const Article = ({ article }) => {
     //returns an article in semantic Ui elements, pass as a prop a function that will set modal to false line 31
     return (
         <>
-            <Container className="article--container" className={currentFriends.contains(article.user.id) ? "friendArticle" : null }>
+            <Container className="article--container" className={currentFriends.includes(article.user.id) ? "friendArticle" : null }>
                 <Header as='h3'>{article.title}</Header>
                 <p>
                     Posted by: {article.user.id === parseInt(localStorage.getItem("nutty_user"))  
