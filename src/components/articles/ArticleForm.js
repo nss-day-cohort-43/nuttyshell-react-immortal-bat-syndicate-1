@@ -98,6 +98,7 @@ export const ArticleForm = () => {
                         defaultValue={article.url}
                     />
                     <Button
+                        primary
                         type="submit"
                         disabled={isLoading}
                         className="btn btn-primary">
