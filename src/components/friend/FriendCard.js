@@ -7,8 +7,8 @@ export const FriendCard = ({ friend }) => {
 
     return (
         <section className="friend">
-            <h3 className="friend__name">{ friend.user.username }</h3>
-            <Button icon negative type="button" onClick={() => {
+            <h3 className="friend__name">{friend.user.username}</h3>
+            <Button icon negative type="button" style={{ marginLeft: 10 }} onClick={() => {
                 //returns the inverse of the friendship
                 const foundFriendship = friends.find(friendship => {
                     return (friendship.activeUserId === friend.userId && friendship.userId === parseInt(localStorage.getItem("nutty_user")))
