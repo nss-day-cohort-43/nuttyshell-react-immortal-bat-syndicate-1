@@ -4,6 +4,7 @@ import { EventContext } from "./EventProvider";
 import "./Event.css";
 import { WeatherCard } from "../weather/WeatherCard";
 import { WeatherContext } from "../weather/WeatherProvider";
+import { Button, Icon } from "semantic-ui-react"
 
 export const EventDetail = (_) => {
   const { getEventById, deleteEvent } = useContext(EventContext);
@@ -14,7 +15,7 @@ export const EventDetail = (_) => {
   const user = parseInt(localStorage.getItem("nutty_user"));
   const [owned, setOwned] = useState(false);
   const history = useHistory();
-  var options = {timezone: 'UTC'}
+  var options = { timezone: 'UTC' }
 
   const { eventId } = useParams();
 
@@ -32,14 +33,14 @@ export const EventDetail = (_) => {
       .then((res) => {
         setWeather(res);
       });
-  }, []); 
+  }, []);
   useEffect(() => {
     getEventById(eventId)
       .then(getWeatherPop)
       .then((res) => {
         setPop(res);
       });
-  }, []); 
+  }, []);
 
   return (
     <section className="events">
@@ -51,16 +52,19 @@ export const EventDetail = (_) => {
         </div>
         <p></p>
         <div>
-          <button
+          <Button
+            icon
             hidden={!owned}
             onClick={() => {
               history.push(`/events/edit/${event.id}`);
             }}
           >
-            Edit
-          </button>
+            <Icon name="edit" />
+          </Button>
           <span> </span>
-          <button
+          <Button
+            icon
+            color="red"
             hidden={!owned}
             onClick={() => {
               deleteEvent(event.id).then((_) => {
@@ -68,13 +72,13 @@ export const EventDetail = (_) => {
               });
             }}
           >
-            Delete
-          </button>
+            <Icon name="trash" />
+          </Button>
         </div>
       </section>
       <section className="event">
-        { <WeatherCard key={event.id} temp={weather} weather={pop}/>} 
+        {<WeatherCard key={event.id} temp={weather} weather={pop} />}
       </section>
-    </section>
+    </section >
   );
 };
