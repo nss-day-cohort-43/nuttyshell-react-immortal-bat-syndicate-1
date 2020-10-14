@@ -14,14 +14,17 @@ export const ChatCard = ({ message }) => {
 
     const { friends, getFriends } = useContext(FriendContext)
     const [ currentFriends, setCurrentFriends ] = useState([])
-    
+
     useEffect(()=> {
-        getFriends()
-            .then(()=> {
                 let currentFriendObj= (friends.filter(friendship => friendship.activeUserId === parseInt(localStorage.getItem("nutty_user"))))
                 setCurrentFriends(currentFriendObj.map(friend => friend.userId))
-           })
+    },[friends])
+
+    useEffect(()=> {
+        getFriends()
     },[])
+
+
 
     if (message.userId === currentUser && !message.targetId) {
         // global chat for current user
