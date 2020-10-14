@@ -21,9 +21,9 @@ export const AddFriend = ({clickedUser, closeModal}) => {
     //Checks if the user exists
         const foundFriend = users.find(user => user.username.toUpperCase() === name.toUpperCase())
         //Checks if the friendship already exists and is not the user
-        if (foundFriend && foundFriend.id !== parseInt(localStorage.getItem("nutty_customer"))) {
+        if (foundFriend && foundFriend.id !== parseInt(localStorage.getItem("nutty_user"))) {
             const friendshipExist = friends.find(friend => {
-                if (friend.activeUserId === parseInt(localStorage.getItem("nutty_customer")) 
+                if (friend.activeUserId === parseInt(localStorage.getItem("nutty_user")) 
                     && friend.userId === foundFriend.id) {
                         return true
                 } else {
@@ -36,18 +36,18 @@ export const AddFriend = ({clickedUser, closeModal}) => {
             } else {
                 //When everything checks out, creates new friendship
                 addFriend({
-                    activeUserId: parseInt(localStorage.getItem("nutty_customer")),
+                    activeUserId: parseInt(localStorage.getItem("nutty_user")),
                     userId: foundFriend.id
                 })
                 addFriend({
                     activeUserId: foundFriend.id,
-                    userId: parseInt(localStorage.getItem("nutty_customer"))
+                    userId: parseInt(localStorage.getItem("nutty_user"))
                 })
                 closeModal()
                 alert(`You added ${foundFriend.username}!`)
                 return foundFriend
             }
-        } else if (foundFriend?.id === parseInt(localStorage.getItem("nutty_customer"))) {
+        } else if (foundFriend?.id === parseInt(localStorage.getItem("nutty_user"))) {
             alert("Can't add yourself as a friend")
         } else {
             alert("User does not exist!")

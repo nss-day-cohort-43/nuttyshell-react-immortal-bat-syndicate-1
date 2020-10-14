@@ -15,7 +15,7 @@ export const ArticleList = (props) => {
 
     useEffect(() => {
         getArticles()
-    }, [getArticles])
+    }, [])
     return (
         <>
             <div className="articlesContainer">

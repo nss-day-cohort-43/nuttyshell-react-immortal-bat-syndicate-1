@@ -21,9 +21,7 @@ export const Article = ({ article }) => {
                 let currentFriendObj= (friends.filter(friendship => friendship.activeUserId === parseInt(localStorage.getItem("nutty_user"))))
                 setCurrentFriends(currentFriendObj.map(friend => friend.userId))
             })
-
-
-    })
+    },[])
 
     //returns an article in semantic Ui elements, pass as a prop a function that will set modal to false line 31
     return (
