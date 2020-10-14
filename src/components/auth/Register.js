@@ -89,6 +89,11 @@ export const Register = (props) => {
                         <fieldset>
                             <Button primary type="submit"> Sign in </Button>
                         </fieldset>
+                        <fieldset>
+                            <Button type="button" onClick={() => {
+                                history.push("/login")
+                            }}> Cancel </Button>
+                        </fieldset>
                     </form>
                 </main>
 
