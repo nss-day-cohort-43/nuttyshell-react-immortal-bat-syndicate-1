@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { WeatherCard } from "./weather/WeatherCard";
 import { WeatherContext } from "./weather/WeatherProvider";
+import { Divider } from "semantic-ui-react"
+import logo from "../img/ibs-logo_words.png"
+import "./Home.css"
 
 export const Home = () => {
   const { getCurrentWeather } = useContext(WeatherContext)
@@ -28,8 +31,13 @@ export const Home = () => {
   return (
     <>
       <div className="homeContainer">
-        <h2>IBS</h2>
-        <WeatherCard key="1" weather={weather} temp={temp}></WeatherCard>
+        <div className="homeInfo">
+          <img src={logo} alt="IBS logo" className="ibsLogoHome" />
+
+          <Divider />
+
+          <WeatherCard key="1" weather={weather} temp={temp}></WeatherCard>
+        </div>
       </div>
     </>
   )

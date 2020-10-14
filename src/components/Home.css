@@ -1,0 +1,20 @@
+.homeContainer {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../img/ballpark.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeInfo {
+    background-color: rgba(255, 255, 255, .85);
+    padding: 50px;
+    border-radius: 25px;
+}
+
+.homeInfo p {
+    margin-bottom: 0;
+}
