@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { useHistory } from "react-router-dom"
-import { Button, Input } from "semantic-ui-react"
+import { Button } from "semantic-ui-react"
 import video from "../../video/ibs-video.mp4"
 import "./Login.css"
 
