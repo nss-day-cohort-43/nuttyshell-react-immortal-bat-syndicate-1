@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { EventCard, UpcomingEventCard } from "./EventCard";
 import { EventContext } from "./EventProvider";
 import { useInterval } from "../useInterval"
-import { Checkbox, Divider } from "semantic-ui-react"
+import { Button, Checkbox, Icon, Divider } from "semantic-ui-react"
 import "./Event.css";
 
 export const EventList = (_) => {
@@ -26,7 +26,7 @@ export const EventList = (_) => {
     <>
       <div className="eventsContainer">
         <div className="eventsHeader">
-          <h2>Events</h2>
+          <h2><Icon name="calendar alternate" />Events</h2>
           <Checkbox toggle
             onChange={() => setUpdate(!update)}
             label={update ? "Disable real-time updates" : "Allow real-time updates"}
@@ -35,13 +35,14 @@ export const EventList = (_) => {
 
         <Divider />
 
-        <button
+        <Button
+          primary
           onClick={() => {
             history.push("events/create");
           }}
         >
           Add Event
-      </button>
+      </Button>
         <div className="events">
           {filteredEvents.map((event) => {
             if (event.id === filteredEvents[0].id) {
