@@ -20,7 +20,7 @@ export const Article = ({ article }) => {
             .then(()=> {
                 let currentFriendObj= (friends.filter(friendship => friendship.activeUserId === parseInt(localStorage.getItem("nutty_user"))))
                 setCurrentFriends(currentFriendObj.map(friend => friend.userId))
-            })
+           })
     },[])
 
     //returns an article in semantic Ui elements, pass as a prop a function that will set modal to false line 31
@@ -30,7 +30,10 @@ export const Article = ({ article }) => {
                 <Header as='h3'>{article.title}</Header>
                 <p>
                     Posted by: {article.user.id === parseInt(localStorage.getItem("nutty_user"))  
-                    ? `${article.user.username}(you)` :
+                    ? `${article.user.username}(you)`
+                    : currentFriends.includes(article.userId) && article.user.id !== parseInt(localStorage.getItem("nutty_user"))
+                    ? `${article.user.username}` 
+                    :
                     <Button size='mini' className="addButton"
                         onClick={()=>showModal(true)}
                         >
