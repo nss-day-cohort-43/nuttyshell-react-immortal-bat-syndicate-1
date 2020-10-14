@@ -1,3 +1,9 @@
+.friendsContainer {
+    max-width: 1100px;
+    margin: 25px auto 0 auto;
+}
+
 .friend {
     display: flex;
+    align-items: baseline;
 }
