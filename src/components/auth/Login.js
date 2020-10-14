@@ -48,8 +48,12 @@ export const Login = props => {
 
                             <Divider />
 
-                            <p className="about">The Immortal Bat Syndicate is an online community for the most elite baseball fans, those who understand the un-swung legacy of the game's greatest bats.  The Immortal Bat Syndicate community is wholly owned and operated by the Immortal Bat Syndicate Trust and Charitable Foundation.  All profits from this endeavor go to fund the care and repair of the bats which have been retired or damaged on the field.
-</p>
+                            <p className="about">The Immortal Bat Syndicate is an online community
+                            for the most elite baseball fans, those who understand the un-swung legacy
+                            of the game's greatest bats.  The Immortal Bat Syndicate community is wholly
+                            owned and operated by the Immortal Bat Syndicate Trust and Charitable
+                            Foundation.  All profits from this endeavor go to fund the care and repair
+                            of the bats which have been retired or damaged on the field.</p>
 
                             <Divider />
 
