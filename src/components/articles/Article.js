@@ -1,26 +1,55 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import "./Article.css"
 import { Button, Container, Divider, Header, Icon } from 'semantic-ui-react'
 import { ArticleContext } from "./ArticleProvider"
 import { useHistory } from "react-router-dom"
+import { AddFriend } from "../friend/AddFriend"
+import { FriendContext } from "../friend/FriendProvider"
 
 export const Article = ({ article }) => {
-    //useContext hook allows the use of functins formt he articleProvider
+    //useContext hook allows the use of functions form the articleProvider
     const { deleteArticle } = useContext(ArticleContext)
+
+    const { friends, getFriends } = useContext(FriendContext)
     const history = useHistory()
-    //returns an article in semantic Ui elements
+    const [ modal, showModal ] = useState(false)
+    const [ currentFriends, setCurrentFriends ] = useState([])
+    useEffect(()=> {
+                let currentFriendObj= (friends.filter(friendship => friendship.activeUserId === parseInt(localStorage.getItem("nutty_user"))))
+                setCurrentFriends(currentFriendObj.map(friend => friend.userId))
+    },[friends])
+    
+    useEffect(()=> {
+        getFriends()
+    }, []) 
+
+
+    //returns an article in semantic Ui elements, pass as a prop a function that will set modal to false line 31
     return (
         <>
-            <Container className="article--container" >
+            <Container className="article--container" className={currentFriends.includes(article.user.id) ? "friendArticle" : null }>
                 <Header as='h3'>{article.title}</Header>
-                <p>Posted by: {article.user.username}</p>
+                <p>
+                    Posted by: {article.user.id === parseInt(localStorage.getItem("nutty_user"))  
+                    ? `${article.user.username}(you)`
+                    : currentFriends.includes(article.userId) && article.user.id !== parseInt(localStorage.getItem("nutty_user"))
+                    ? `${article.user.username}` 
+                    :
+                    <Button size='mini' className="addButton"
+                        onClick={()=>showModal(true)}
+                        >
+                        <Icon name="user"></Icon>
+                        {article.user.username}
+                    </Button>
+                    }
+                    {modal ? <AddFriend clickedUser={article.user.username} closeModal={()=>showModal(false)}/> : null }
+                </p>
                 <p>Date: {new Date(article.date).toLocaleDateString('en-US')}</p>
                 <p>{article.synopsis}</p>
                 <div className="article--actions">
                     <a href={article.url} target="_blank">
                         Read More
                 </a>
-
                     <div className="formBtns">
                         {/* if the article was posted by the current user it renders buttons for edit or delete */}
                         {article.user.id === parseInt(localStorage.getItem("nutty_user")) ?
