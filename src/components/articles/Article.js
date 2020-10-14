@@ -1,26 +1,37 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import "./Article.css"
 import { Button, Container, Divider, Header, Icon } from 'semantic-ui-react'
 import { ArticleContext } from "./ArticleProvider"
 import { useHistory } from "react-router-dom"
 import { AddFriend } from "../friend/AddFriend"
+import { FriendContext } from "../friend/FriendProvider"
 
 export const Article = ({ article }) => {
     //useContext hook allows the use of functions form the articleProvider
     const { deleteArticle } = useContext(ArticleContext)
+
+    // const { users, getUsers } = useContext(UserContext)
+    const { friends, getFriends } = useContext(FriendContext)
     const history = useHistory()
     const [modal, showModal] = useState(false)
-    // const [ userTarget, setUserTarget ] = useState()
+    const [ currentFriends, setCurrentFriends ] = useState([])
+    useEffect(()=> {
+        getFriends()
+            .then(()=> {
+                let currentFriendObj= (friends.filter(friendship => friendship.activeUserId === parseInt(localStorage.getItem("nutty_user"))))
+                setCurrentFriends(currentFriendObj.map(friend => friend.userId))
+            })
 
-    // AddFriend(userTarget)
+
+    })
 
     //returns an article in semantic Ui elements, pass as a prop a function that will set modal to false line 31
     return (
         <>
-            <Container className="article--container" >
+            <Container className="article--container" className={currentFriends.contains(article.user.id) ? "friendArticle" : null }>
                 <Header as='h3'>{article.title}</Header>
                 <p>
-                    Posted by: {article.user.id === parseInt(localStorage.getItem("nutty_customer"))  
+                    Posted by: {article.user.id === parseInt(localStorage.getItem("nutty_user"))  
                     ? `${article.user.username}(you)` :
                     <Button size='mini' className="addButton"
                         onClick={()=>showModal(true)}
