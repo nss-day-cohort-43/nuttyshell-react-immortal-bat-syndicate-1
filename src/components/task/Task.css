@@ -8,7 +8,7 @@
     flex-flow: row wrap;
     justify-content: left;
 }
-  
+
 .task {
     flex-basis: 28%;
     margin: 1em;
@@ -20,4 +20,16 @@
 .taskForm {
     max-width: 1100px;
     margin: 25px auto 0 auto;
+}
+
+.taskLabel {
+    margin-right: 5px !important;
+}
+
+.taskInput {
+    margin-right: 10px;
+}
+
+.cancelBtn {
+    margin-left: 10px !important;
 }
